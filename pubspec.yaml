@@ -37,6 +37,10 @@ dependencies:
   google_fonts:
   flutter_svg: ^0.17.4
 
+  #firebase auth and firebase core
+  firebase_core: ^1.17.0
+  firebase_auth: ^3.3.18
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -77,10 +81,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-  #   - family: Schyler
+  #   - family: Schuyler
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  #       - asset: fonts/Schuyler-Regular.ttf
+  #       - asset: fonts/Schuyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

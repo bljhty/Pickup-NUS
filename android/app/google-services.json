@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "416661094567",
+    "project_id": "pickup-nus",
+    "storage_bucket": "pickup-nus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:416661094567:android:659754b041fe43711d9b82",
+        "android_client_info": {
+          "package_name": "com.example.orbital_nus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "416661094567-oifqnh1klcvncln1qj5qsclj9mvj2gs1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtb5aA78YgCAFqMrDBboQ9lxOjh5_VnzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "416661094567-oifqnh1klcvncln1qj5qsclj9mvj2gs1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

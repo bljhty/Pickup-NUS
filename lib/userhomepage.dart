@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class UserHomePage extends StatefulWidget {
@@ -8,10 +9,26 @@ class UserHomePage extends StatefulWidget {
 }
 
 class _UserHomePageState extends State<UserHomePage> {
+  final user = FirebaseAuth.instance.currentUser!;
+
   @override
+  // placeholder text (center of the screen)
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: const Text('UR MOM IS IN'),
+    return Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Signed in as: ${user.email!}'),
+              MaterialButton(onPressed: (){
+                FirebaseAuth.instance.signOut();
+              },
+              color: Colors.blueGrey,
+              child: Text('Sign Out'),
+              )
+            ],
+          ),
+        )
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:orbital_nus/login_screen.dart';
 import 'package:orbital_nus/userhomepage.dart';
 
+// MainPage checks if user has already been logged in upon starting the app
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 

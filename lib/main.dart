@@ -6,8 +6,10 @@ import 'login_screen.dart';
 
 
 void main() async {
+  // Initialise firebase as a database
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));

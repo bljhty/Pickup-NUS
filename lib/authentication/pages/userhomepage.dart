@@ -17,7 +17,6 @@ class _UserHomePageState extends State<UserHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -41,15 +40,7 @@ class _UserHomePageState extends State<UserHomePage> {
               )
             ],
           ),
-          MaterialButton(
-            onPressed: () {
-              FirebaseAuth.instance.signOut();
-            },
-            color: Colors.blueGrey,
-            child: const Text('Sign Out'),
-          )
-        ],
-      ),
-    ));
+        )
+    );
   }
 }

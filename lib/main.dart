@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:orbital_nus/Pages/mainpage.dart';
 import 'Pages/login_screen.dart';
 
+
 void main() async {
   // Initialise firebase as a database
   WidgetsFlutterBinding.ensureInitialized();

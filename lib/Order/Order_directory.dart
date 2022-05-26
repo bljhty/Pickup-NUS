@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/screen/widgets/app_bar.dart';
 
+
 class OrderDirectoryPage extends StatefulWidget {
   const OrderDirectoryPage({Key? key}) : super(key: key);
 
@@ -22,6 +23,8 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
           ),
         ],
       ),
+
+    return Container();
     );
   }
 }

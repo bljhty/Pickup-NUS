@@ -17,21 +17,29 @@ class _UserHomePageState extends State<UserHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Signed in as: ${user.email!}'),
-          MaterialButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return const OrderDirectoryPage();
-                }),
-              );
-            },
-            color: Colors.amber,
-            child: const Text('Order'),
+
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Signed in as: ${user.email!}'),
+              MaterialButton(onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return const OrderDirectoryPage();
+                  }),
+                );
+              },
+              color: Colors.amber,
+              child: const Text('Order'),
+              ),
+              MaterialButton(onPressed: (){
+                FirebaseAuth.instance.signOut();
+              },
+              color: Colors.blueGrey,
+              child: const Text('Sign Out'),
+              )
+            ],
           ),
           MaterialButton(
             onPressed: () {

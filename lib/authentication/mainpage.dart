@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:orbital_nus/authentication/pages/login_screen.dart';
 import 'package:orbital_nus/authentication/pages/userhomepage.dart';
+
 import 'auth_page.dart';
 
 // MainPage checks if user has already been logged in upon starting the app

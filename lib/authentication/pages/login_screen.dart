@@ -15,7 +15,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   // text controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -135,7 +134,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-
                   SizedBox(height: 10),
 
                   // sign in button
@@ -174,9 +172,9 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.white,
                         ),
                       ),
-
                       GestureDetector(
-                        onTap: widget.showRegisterPage, // directs user to a sign up page
+                        onTap: widget
+                            .showRegisterPage, // directs user to a sign up page
                         child: Text(
                           ' Sign up now!',
                           style: TextStyle(

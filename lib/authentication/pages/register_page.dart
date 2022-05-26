@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,13 +17,16 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmpasswordController = TextEditingController();
-  final _nameController = TextEditingController();
+
+  final _namecontroller = TextEditingController();
 
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     _confirmpasswordController.dispose();
-    _nameController.dispose();
+
+    _namecontroller.dispose();
+
     super.dispose();
   }
 
@@ -31,15 +35,29 @@ class _RegisterPageState extends State<RegisterPage> {
     // ensure that confirm password matches
     if (passwordConfirmed()) {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+
+      // add user details
+      addUserDetails(
+        _namecontroller.text.trim(),
+        _emailController.text.trim(),
       );
     }
   }
 
+  Future addUserDetails(String name, String email) async {
+    await FirebaseFirestore.instance.collection('users').add({
+      'name': name,
+      'email': email,
+    });
+  }
+
   // function to check if password and confirm password matches
   bool passwordConfirmed() {
-    return (_passwordController.text.trim() == _confirmpasswordController.text.trim());
+    return (_passwordController.text.trim() ==
+        _confirmpasswordController.text.trim());
   }
 
   @override
@@ -68,6 +86,29 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   const SizedBox(height: 30),
+
+                  // Name
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: TextField(
+                          controller: _namecontroller,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Name',
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
 
                   // Email
                   Padding(
@@ -152,7 +193,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
-                          controller: _nameController,
+
+                          controller: _namecontroller,
                           obscureText: true,
                           decoration: const InputDecoration(
                             border: InputBorder.none,

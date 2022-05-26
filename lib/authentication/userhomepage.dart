@@ -15,20 +15,21 @@ class _UserHomePageState extends State<UserHomePage> {
   // placeholder text (center of the screen)
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.blue[900],
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Signed in as: ${user.email!}'),
-              MaterialButton(onPressed: (){
-                FirebaseAuth.instance.signOut();
-              },
-              color: Colors.blueGrey,
-              child: Text('Sign Out'),
+              MaterialButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                },
+                color: Colors.blueGrey,
+                child: Text('Sign Out'),
               )
             ],
           ),
-        )
-    );
+        ));
   }
 }

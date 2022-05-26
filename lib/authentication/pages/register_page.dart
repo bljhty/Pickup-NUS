@@ -17,13 +17,13 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmpasswordController = TextEditingController();
-  final _namecontroller = TextEditingController();
+  final _nameController = TextEditingController();
 
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     _confirmpasswordController.dispose();
-    _namecontroller.dispose();
+    _nameController.dispose();
     super.dispose();
   }
 
@@ -38,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
       // add user details
       addUserDetails(
-        _namecontroller.text.trim(),
+        _nameController.text.trim(),
         _emailController.text.trim(),
       );
     }
@@ -96,7 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
-                          controller: _namecontroller,
+                          controller: _nameController,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                             hintText: 'Name',

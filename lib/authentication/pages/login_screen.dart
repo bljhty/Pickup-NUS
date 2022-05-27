@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:orbital_nus/authentication/userhomepage.dart';
+import 'forgot_password_page.dart';
 import 'forgot_password_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -15,10 +15,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   // text controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  bool isvisible = false;
 
   // To enable Sign in
   Future signIn() async {
@@ -73,9 +73,10 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
-                        child: TextField(
+                        child: TextFormField(
                           controller: _emailController,
                           decoration: InputDecoration(
+                            suffixIcon: Icon(Icons.email_outlined),
                             border: InputBorder.none,
                             hintText: 'Email',
                           ),
@@ -98,8 +99,17 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
                           controller: _passwordController,
-                          obscureText: true,
+                          obscureText: isvisible,
                           decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isvisible = !isvisible;
+                                  });
+                                },
+                                icon: isvisible == true
+                                    ? Icon(Icons.visibility_off)
+                                    : Icon(Icons.visibility)),
                             border: InputBorder.none,
                             hintText: 'Password',
                           ),
@@ -126,6 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text(
                             'Forgot Password?',
                             style: TextStyle(
+                              fontSize: 14,
                               color: Color.fromARGB(255, 244, 127, 54),
                               fontWeight: FontWeight.bold,
                             ),
@@ -134,7 +145,6 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-
 
                   SizedBox(height: 10),
 
@@ -163,7 +173,9 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height: 10),
+
                   // not a user? sign up now
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -174,9 +186,9 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.white,
                         ),
                       ),
-
                       GestureDetector(
-                        onTap: widget.showRegisterPage, // directs user to a sign up page
+                        onTap: widget
+                            .showRegisterPage, // directs user to a sign up page
                         child: Text(
                           ' Sign up now!',
                           style: TextStyle(

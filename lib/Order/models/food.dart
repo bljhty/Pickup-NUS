@@ -21,14 +21,14 @@ class Food{
         'Honey Glazed Chicken Rice',
         '15 min',
         5.10,
-        1,
+        0,
       ),
       Food(
         'assets/images/dish2.png',
         'XXL Chicken Rice',
         '15 min',
         5.50,
-        1,
+        0,
       )
     ];
   }

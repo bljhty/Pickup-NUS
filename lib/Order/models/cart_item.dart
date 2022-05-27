@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'food.dart';
-
-class FoodItem extends StatelessWidget {
+// regarding the individual items in the cart
+class CartItem extends StatelessWidget {
   final Food food;
-
-  FoodItem(this.food);
+  CartItem(this.food);
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +15,7 @@ class FoodItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Container(
-              padding: const EdgeInsets.all(5),
-              width: 110,
-              height: 110,
-              child: Image.asset(
-                food.imgUrl,
-                fit: BoxFit.fitHeight,
-              )),
-          Expanded(
-              child: Container(
+          Expanded(child: Container(
             padding: const EdgeInsets.only(
               top: 20,
               left: 10,
@@ -45,31 +35,44 @@ class FoodItem extends StatelessWidget {
                         height: 1.5,
                       ),
                     ),
-                    const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      size: 15,
-                    )
                   ],
                 ),
                 Row(
                   children: [
                     const Text(
-                      '\$',
+                      'Quantity: ',
                       style: TextStyle(
+                        color: Colors.black54,
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      '${food.price}',
-                      style:
-                          const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold
-                          ),
+                      '${food.quantity}',
+                      style: const TextStyle(
+                        color: Colors.black54,
+                        fontSize: 18,
+                      ),
                     ),
                   ],
-                )
+                ),
+                Row(
+                  children: [
+                    const Text(
+                      'Subprice: \$',
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 20,
+                      ),
+                    ),
+                    Text(
+                      '${food.quantity * food.price}',
+                      style: const TextStyle(
+                        color: Colors.black54,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ))

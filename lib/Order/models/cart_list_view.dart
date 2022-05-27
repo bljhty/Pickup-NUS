@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Order/models/food_detail_page.dart';
 import 'package:orbital_nus/Order/models/restaurant.dart';
-import 'food_item.dart';
 
-class FoodListView extends StatelessWidget {
+import 'cart_item.dart';
+
+class CartListView extends StatelessWidget {
   final int selected;
   final Function callback;
   final PageController pageController;
   final Restaurant restaurant;
 
-  FoodListView(
+  CartListView(
       this.selected, this.callback, this.pageController, this.restaurant);
 
   @override
@@ -25,11 +25,8 @@ class FoodListView extends StatelessWidget {
               .map((e) => ListView.separated(
                   padding: EdgeInsets.zero,
                   itemBuilder: (context, index) => GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => FoodDetailPage(restaurant.menu[category[selected]]![index])));
-                      },
-                      child: FoodItem(
+                      onTap: () {},
+                      child: CartItem(
                           restaurant.menu[category[selected]]![index])),
                   separatorBuilder: (_, index) => const SizedBox(
                         height: 15,

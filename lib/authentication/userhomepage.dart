@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../../Order/Order_directory.dart';
+import '../Order/Order_directory_page.dart';
 
 class UserHomePage extends StatefulWidget {
   const UserHomePage({Key? key}) : super(key: key);
@@ -21,6 +21,7 @@ class _UserHomePageState extends State<UserHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Signed in as: ${user.email!}'),
+              // order button (something wrong here it is not updating
               MaterialButton(onPressed: () {
                 Navigator.push(
                   context,
@@ -29,14 +30,16 @@ class _UserHomePageState extends State<UserHomePage> {
                   }),
                 );
               },
-              color: Colors.amber,
-              child: const Text('Order'),
+                color: Colors.orangeAccent,
+                child: const Text('Order here'),
               ),
+
+              //sign out button
               MaterialButton(onPressed: (){
                 FirebaseAuth.instance.signOut();
               },
-              color: Colors.blueGrey,
-              child: const Text('Sign Out'),
+                color: Colors.blueGrey,
+                child: const Text('Sign Out'),
               )
             ],
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Order/models/food_list.dart';
 import 'package:orbital_nus/Order/models/restaurant_info.dart';
+import 'cart_page.dart';
 import 'models/restaurant.dart';
 import 'package:orbital_nus/Order/models/food_list_view.dart';
 
@@ -22,8 +23,9 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // include the AppBar
+          // TODO: include the appbar
           RestaurantInfo(),
+          // Recommended page, popular page, etc.
           FoodList(selected, (int index) {
             setState(() {
               selected = index;
@@ -44,13 +46,21 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
           )
         ],
       ),
+      // cart button
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.blue,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) {
+              return const CartPage();
+            }),
+          );
+        },
+        backgroundColor: Colors.orange,
         elevation: 2,
-        child: Icon(
+        child: const Icon(
           Icons.shopping_bag_outlined,
-          color: Colors.black,
+          color: Colors.white,
           size: 30,
         ),
       ),

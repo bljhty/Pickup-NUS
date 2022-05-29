@@ -1,6 +1,8 @@
+// Provides a list view of the food items currently in the cart
+// at cart_page.dart
+
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Order/models/restaurant.dart';
-
 import 'cart_item.dart';
 
 class CartListView extends StatelessWidget {

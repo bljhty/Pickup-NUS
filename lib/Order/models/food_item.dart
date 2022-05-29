@@ -1,3 +1,6 @@
+// display of each food item on Order_directory_page.dart
+// through food_list_view.dart
+
 import 'package:flutter/material.dart';
 import 'food.dart';
 
@@ -16,6 +19,7 @@ class FoodItem extends StatelessWidget {
       ),
       child: Row(
         children: [
+          // image of the food
           Container(
               padding: const EdgeInsets.all(5),
               width: 110,
@@ -37,6 +41,7 @@ class FoodItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // Food name
                     Text(
                       food.name,
                       style: const TextStyle(
@@ -45,6 +50,8 @@ class FoodItem extends StatelessWidget {
                         height: 1.5,
                       ),
                     ),
+
+                    // arrow icon to indicate that it can be clicked on
                     const Icon(
                       Icons.arrow_forward_ios_outlined,
                       size: 15,
@@ -52,6 +59,7 @@ class FoodItem extends StatelessWidget {
                   ],
                 ),
                 Row(
+                  // price of the food item
                   children: [
                     const Text(
                       '\$',

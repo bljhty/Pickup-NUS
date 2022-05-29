@@ -1,3 +1,5 @@
+// page for new users to register for an account
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +16,10 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   // text controllers
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmpasswordController = TextEditingController();
-  final _nameController = TextEditingController();
 
   void dispose() {
     _emailController.dispose();
@@ -36,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
         password: _passwordController.text.trim(),
       );
 
-      // add user details
+      // add user details into the database
       addUserDetails(
         _nameController.text.trim(),
         _emailController.text.trim(),
@@ -68,23 +70,25 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
+                  // pickup@NUS logo
                   Image.asset(
                     'assets/images/Logo.png',
                     height: 100,
                     width: 100,
                   ),
                   const SizedBox(height: 10),
-                  // Pick_up@NUS
+
+                  // Instructions text
                   Text(
                     'Fill in the following details to register!',
-                    style: GoogleFonts.bebasNeue(
-                      fontSize: 24,
+                    style: GoogleFonts.robotoCondensed(
+                      fontSize: 20,
                       color: Colors.white,
                     ),
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 25),
 
-                  // Name
+                  // Name text box
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
@@ -107,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 10),
 
-                  // Email
+                  // Email text box
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
@@ -130,7 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 10),
 
-                  // Password
+                  // Password text box
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
@@ -154,7 +158,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 10),
 
-                  // Confirm Password
+                  // Confirm Password text box
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
@@ -178,7 +182,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const SizedBox(height: 10),
 
-                  // sign up button
+                  // Sign Up button
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: GestureDetector(
@@ -203,7 +207,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  // not a user? sign up now
+
+                  // Sign In button
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

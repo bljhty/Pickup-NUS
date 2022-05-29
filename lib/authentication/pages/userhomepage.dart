@@ -1,3 +1,5 @@
+// Page once user has successfully logged in
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../Order/Order_directory_page.dart';
@@ -20,7 +22,10 @@ class _UserHomePageState extends State<UserHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // text showing the user's email address
               Text('Signed in as: ${user.email!}'),
+
+              // Order button
               MaterialButton(onPressed: () {
                 Navigator.push(
                   context,
@@ -32,6 +37,8 @@ class _UserHomePageState extends State<UserHomePage> {
               color: Colors.amber,
               child: const Text('Order'),
               ),
+
+              // Sign Out button
               MaterialButton(onPressed: (){
                 FirebaseAuth.instance.signOut();
               },

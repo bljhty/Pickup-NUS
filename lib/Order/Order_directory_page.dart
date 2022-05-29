@@ -1,3 +1,5 @@
+// Main page to order food, after clicking the order button
+
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Order/models/food_list.dart';
 import 'package:orbital_nus/Order/models/restaurant_info.dart';
@@ -24,14 +26,22 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // TODO: include the appbar
+
+          // Top information, regarding the food stall being ordered from
+          // uses restaurant_info.dart as widget
           RestaurantInfo(),
-          // Recommended page, popular page, etc.
+
+          // Bar to select Recommended page, popular page, etc.
+          // uses food_list.dart as widget
           FoodList(selected, (int index) {
             setState(() {
               selected = index;
             });
             pageController.jumpToPage(index);
           }, restaurant),
+
+          // List of available food in the page selected
+          // uses food_list_view.dart as widget
           Expanded(
             child: FoodListView(
               selected,
@@ -46,7 +56,8 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
           )
         ],
       ),
-      // cart button
+
+      // View Cart button
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(

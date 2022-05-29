@@ -1,3 +1,5 @@
+// placeholder restaurant
+
 import 'food.dart';
 
 class Restaurant {

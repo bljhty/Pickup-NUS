@@ -1,3 +1,5 @@
+// switches between the register page and the login page
+
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/authentication/pages/register_page.dart';
 import 'package:orbital_nus/authentication/pages/login_screen.dart';

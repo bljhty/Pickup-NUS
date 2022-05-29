@@ -1,3 +1,5 @@
+// Page for users who forgot their password and would like to reset it
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +26,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       showDialog(
         context: context,
         builder: (context) {
+          // provides an alert message once reset password button is clicked
           return const AlertDialog(
             content: Text('Password reset link sent to Email'),
           );
@@ -53,15 +56,17 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          // pickup@NUS logo
           Image.asset(
             'assets/images/Logo.png',
             height: 150,
             width: 150,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25.0),
+            // Instruction text
             child: Text(
-              'Enter Your Email, Password reset link will be sent to your Email',
+              'Enter Your Email, Password reset link will then be sent to your Email',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20,
@@ -70,20 +75,20 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             ),
           ),
 
-          SizedBox(height: 10),
+          const SizedBox(height: 15),
 
-          // Email textfield
+          // Email text box
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: TextField(
               controller: _emailController,
               decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: const BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide: const BorderSide(color: Colors.blue),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 hintText: 'Email',
@@ -92,12 +97,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
 
+          // Reset Password button
           MaterialButton(
             onPressed: passwordReset,
-            child: Text('Reset Password'),
-            color: Color.fromARGB(255, 244, 127, 54),
+            color: const Color.fromARGB(255, 244, 127, 54),
+            child: const Text('Reset Password'),
           ),
         ],
       ),

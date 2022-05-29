@@ -1,3 +1,5 @@
+// lists out the food on the menu available in Order_directory_page.dart
+
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Order/models/food_detail_page.dart';
 import 'package:orbital_nus/Order/models/restaurant.dart';
@@ -24,11 +26,13 @@ class FoodListView extends StatelessWidget {
           children: category
               .map((e) => ListView.separated(
                   padding: EdgeInsets.zero,
+                  // Upon tap, redirects to the specific food_detail_page.dart
                   itemBuilder: (context, index) => GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => FoodDetailPage(restaurant.menu[category[selected]]![index])));
                       },
+                      // uses food_item.dart to show how the food item is layed out
                       child: FoodItem(
                           restaurant.menu[category[selected]]![index])),
                   separatorBuilder: (_, index) => const SizedBox(

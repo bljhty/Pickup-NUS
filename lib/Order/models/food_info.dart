@@ -1,8 +1,11 @@
+// initial information about the food right below the picture
+// in food_detail_page.dart
+// includes the food item picture, name, waiting time, price and quantity
+
 import 'package:flutter/material.dart';
 import 'food.dart';
 import 'food_price_quantity.dart';
 
-// Widget showing what food it is and the price of it
 class FoodInfo extends StatelessWidget {
   final Food food;
 
@@ -15,7 +18,7 @@ class FoodInfo extends StatelessWidget {
       color: Colors.white,
       child: Column(
         children: [
-          // name of the food
+          // name of the food item
           Text(food.name,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
@@ -23,10 +26,11 @@ class FoodInfo extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 15,),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // indicate wait time
+              // Waiting time
               _buildIconText(
                   Icons.access_time_outlined,
                   Colors.blue,
@@ -35,7 +39,9 @@ class FoodInfo extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 30,),
+
           // Price of food and its quantity to add
+          // uses food_price_quantity.dart as widget
           FoodPriceQuantity(food),
         ],
       ),

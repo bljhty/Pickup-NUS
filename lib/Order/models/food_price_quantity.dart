@@ -1,7 +1,8 @@
+// Indicate price and quantity of food in food_detail_page.dart
+
 import 'package:flutter/material.dart';
 import 'food.dart';
 
-// Indicate price and quantity of food
 class FoodPriceQuantity extends StatelessWidget {
   final Food food;
 
@@ -14,6 +15,7 @@ class FoodPriceQuantity extends StatelessWidget {
       height: 40,
       child: Stack(
         children: [
+          // Text holder for price
           Align(
             alignment: const Alignment(-0.3, 0),
             child: Container(
@@ -23,6 +25,8 @@ class FoodPriceQuantity extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(30),
               ),
+
+              // Price text
               child: Row(
                 children: [
                   const SizedBox(
@@ -47,7 +51,8 @@ class FoodPriceQuantity extends StatelessWidget {
               ),
             ),
           ),
-          // quantity widget with slider
+
+          // Widget to choose quantity with slider (to be completed)
           Align(
             alignment: const Alignment(0.3, 0),
             child: Container(

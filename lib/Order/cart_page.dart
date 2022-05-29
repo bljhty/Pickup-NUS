@@ -1,5 +1,8 @@
+// Page to view the food items in the cart and to finalize the orders
+
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Order/models/restaurant.dart';
+import 'package:orbital_nus/authentication/userhomepage.dart';
 import 'models/cart_list_view.dart';
 
 class CartPage extends StatefulWidget {
@@ -14,9 +17,30 @@ class _CartPageState extends State<CartPage> {
   final pageController = PageController();
   final restaurant = Restaurant.generateRestaurant();
 
+  // Alert message indicating order has been sent
+  Future orderSubmittedNotif() => showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+            title: const Text('Order has been sent to the kitchen'),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        // redirects back to user home page once message is closed
+                        return const UserHomePage();
+                      }),
+                    );
+                  },
+                  child: const Text('Close'))
+            ],
+          ));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // AppBar with back button and my cart text
       appBar: AppBar(
         backgroundColor: Colors.blue,
         title: const Text(
@@ -31,6 +55,7 @@ class _CartPageState extends State<CartPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // list of items ordered (to be completed)
           Expanded(
             child: CartListView(
               selected,
@@ -45,7 +70,8 @@ class _CartPageState extends State<CartPage> {
           )
         ],
       ),
-      // order button
+
+      // Order button
       floatingActionButton: SizedBox(
         width: 250,
         height: 56,
@@ -68,7 +94,9 @@ class _CartPageState extends State<CartPage> {
               ),
             ],
           ),
-          onPressed: () {},
+          onPressed: () {
+            orderSubmittedNotif();
+          },
         ),
       ),
     );

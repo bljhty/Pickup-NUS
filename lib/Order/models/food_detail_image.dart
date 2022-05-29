@@ -1,3 +1,6 @@
+// shows the image of the food item in food_detail_page.dart
+// also provides the white border around the food information
+
 import 'package:flutter/material.dart';
 import 'food.dart';
 
@@ -10,6 +13,7 @@ class FoodImg extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 250,
+        // white border at the back
         child: Stack(
           children: [
             Column(
@@ -21,7 +25,7 @@ class FoodImg extends StatelessWidget {
                 Expanded(
                     flex: 1,
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(50),
                           topRight: Radius.circular(50),
@@ -31,16 +35,21 @@ class FoodImg extends StatelessWidget {
                     ))
               ],
             ),
-            Align( // input the image of the food
+
+            // image of the food
+            Align(
               alignment: Alignment.center,
               child: Container(
-                margin: EdgeInsets.all(15),
+                margin: const EdgeInsets.all(15),
                 width: 250,
                 height: 250,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                 ),
-                child: Image.asset(food.imgUrl, fit: BoxFit.cover,),
+                child: Image.asset(
+                  food.imgUrl,
+                  fit: BoxFit.cover,
+                ),
               ),
             )
           ],

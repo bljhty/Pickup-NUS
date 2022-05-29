@@ -1,3 +1,7 @@
+// Page showing the food details about the specific food,
+// upon clicking on it in the order directory page,
+// also where they can add item to cart
+
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Order/models/food_detail_image.dart';
 import 'package:orbital_nus/Order/models/food_info.dart';
@@ -9,6 +13,8 @@ class FoodDetailPage extends StatelessWidget {
 
   FoodDetailPage(this.food);
 
+  // TODO: Alert message indicating order has been added to cart
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,12 +22,18 @@ class FoodDetailPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            FoodImg(food), // food image
+            // image of the food item
+            // uses food_detail_image.dart
+            FoodImg(food),
+
+            // information about the food
+            //uses food_info.dart
             FoodInfo(food), // food information
           ],
         ),
       ),
-      // add to cart button
+
+      // Add to Cart button
       floatingActionButton: SizedBox(
         width: 250,
         height: 56,
@@ -34,10 +46,13 @@ class FoodDetailPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Icon(Icons.shopping_bag_outlined,
-              color: Colors.white,
-              size: 30,),
-              const Text('Add to Cart',
+              const Icon(
+                Icons.shopping_bag_outlined,
+                color: Colors.white,
+                size: 30,
+              ),
+              const Text(
+                'Add to Cart',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -46,19 +61,21 @@ class FoodDetailPage extends StatelessWidget {
               ),
               Container(
                 padding: const EdgeInsets.all(15),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle
+                decoration: const BoxDecoration(
+                    color: Colors.white, shape: BoxShape.circle),
+                child: Text(
+                  food.quantity.toString(),
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
-                child: Text(food.quantity.toString(),
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),),
+                ),
               ),
             ],
           ),
+          // TODO: Shows Alert Message that item has been added to cart
+          // and redirects back to order directory page
           onPressed: () {},
         ),
       ),

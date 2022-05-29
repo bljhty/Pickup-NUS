@@ -1,8 +1,12 @@
+// indicates the specific descriptions of the food items in the cart
+// through cart_list_view.dart in cart_page.dart
+
 import 'package:flutter/material.dart';
 import 'food.dart';
-// regarding the individual items in the cart
+
 class CartItem extends StatelessWidget {
   final Food food;
+
   CartItem(this.food);
 
   @override
@@ -15,7 +19,8 @@ class CartItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Expanded(child: Container(
+          Expanded(
+              child: Container(
             padding: const EdgeInsets.only(
               top: 20,
               left: 10,
@@ -27,6 +32,7 @@ class CartItem extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // Name of the food item
                     Text(
                       food.name,
                       style: const TextStyle(
@@ -39,6 +45,7 @@ class CartItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
+                    // Quantity of the food item ordered
                     const Text(
                       'Quantity: ',
                       style: TextStyle(
@@ -57,6 +64,7 @@ class CartItem extends StatelessWidget {
                 ),
                 Row(
                   children: [
+                    // Subprice of the food item
                     const Text(
                       'Subprice: \$',
                       style: TextStyle(

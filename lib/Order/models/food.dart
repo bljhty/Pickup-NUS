@@ -1,3 +1,5 @@
+// placeholder menu items
+
 class Food{
   String imgUrl;
   String name;
@@ -21,14 +23,14 @@ class Food{
         'Honey Glazed Chicken Rice',
         '15 min',
         5.10,
-        0,
+        1,
       ),
       Food(
         'assets/images/dish2.png',
         'XXL Chicken Rice',
         '15 min',
         5.50,
-        0,
+        1,
       )
     ];
   }

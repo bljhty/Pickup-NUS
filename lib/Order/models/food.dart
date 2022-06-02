@@ -20,7 +20,7 @@ class Food{
     return [
       Food(
         'assets/images/dish1.png',
-        'Honey Glazed Chicken Rice',
+        'Honey Chicken Rice',
         '15 min',
         5.10,
         1,

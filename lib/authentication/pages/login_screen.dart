@@ -7,6 +7,7 @@ import 'forgot_password_page.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
+
   const LoginPage({Key? key, required this.showRegisterPage}) : super(key: key);
 
   @override
@@ -100,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
                           controller: _passwordController,
-                          obscureText: isVisible,
+                          obscureText: !isVisible,
                           decoration: InputDecoration(
                             suffixIcon: IconButton(
                                 onPressed: () {
@@ -108,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
                                     isVisible = !isVisible;
                                   });
                                 },
-                                icon: isVisible == true
+                                icon: isVisible == false
                                     ? const Icon(Icons.visibility_off)
                                     : const Icon(Icons.visibility)),
                             border: InputBorder.none,

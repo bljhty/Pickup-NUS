@@ -39,6 +39,13 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         builder: (context) {
           return AlertDialog(
             content: Text(e.message.toString()),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Close')),
+            ],
           );
         },
       );

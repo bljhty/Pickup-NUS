@@ -22,9 +22,30 @@ class _LoginPageState extends State<LoginPage> {
 
   // To enable Sign in
   Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim());
+    } on FirebaseAuthException catch (e) {
+      // Alert Message if log in is unsuccessful
+      showDialog(
+        context: context,
+        barrierDismissible: false, // user must tap button
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Text(e.message.toString()),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Close')
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   @override

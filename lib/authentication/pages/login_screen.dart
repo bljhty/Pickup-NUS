@@ -9,6 +9,7 @@ import 'forgot_password_page.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback showRegisterPage;
+
   const LoginPage({Key? key, required this.showRegisterPage}) : super(key: key);
 
   @override
@@ -23,9 +24,30 @@ class _LoginPageState extends State<LoginPage> {
 
   // To enable Sign in
   Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim());
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: _emailController.text.trim(),
+          password: _passwordController.text.trim());
+    } on FirebaseAuthException catch (e) {
+      // Alert Message if log in is unsuccessful
+      showDialog(
+        context: context,
+        barrierDismissible: false, // user must tap button
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Text(e.message.toString()),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Close')
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   @override
@@ -102,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
                           controller: _passwordController,
-                          obscureText: isVisible,
+                          obscureText: !isVisible,
                           decoration: InputDecoration(
                             suffixIcon: IconButton(
                                 onPressed: () {
@@ -110,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                                     isVisible = !isVisible;
                                   });
                                 },
-                                icon: isVisible == true
+                                icon: isVisible == false
                                     ? const Icon(Icons.visibility_off)
                                     : const Icon(Icons.visibility)),
                             border: InputBorder.none,

@@ -20,6 +20,7 @@ class _CartPageState extends State<CartPage> {
   // Alert message indicating order has been sent
   Future orderSubmittedNotif() => showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (context) => AlertDialog(
             title: const Text('Order has been sent to the kitchen'),
             actions: [

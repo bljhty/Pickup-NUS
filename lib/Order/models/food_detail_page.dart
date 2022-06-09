@@ -5,12 +5,11 @@
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Order/models/food_detail_image.dart';
 import 'package:orbital_nus/Order/models/food_info.dart';
-import 'food.dart';
+import 'get_information/food.dart';
 
 // The page shown of specific food after clicking on it in the food directory menu
 class FoodDetailPage extends StatelessWidget {
   final Food food;
-
   FoodDetailPage(this.food);
 
   // TODO: Alert message indicating order has been added to cart

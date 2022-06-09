@@ -1,8 +1,8 @@
-// display of each food item on Order_directory_page.dart
+// display of each food item on order_directory_page.dart
 // through food_list_view.dart
 
 import 'package:flutter/material.dart';
-import 'food.dart';
+import 'get_information/food.dart';
 
 class FoodItem extends StatelessWidget {
   final Food food;

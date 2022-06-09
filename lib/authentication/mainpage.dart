@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/authentication/pages/userhomepage.dart';
+import 'package:orbital_nus/authentication/userhomepage.dart';
 import 'auth_page.dart';
 
 class MainPage extends StatelessWidget {

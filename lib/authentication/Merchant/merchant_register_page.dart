@@ -88,9 +88,16 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
   }
 
   Future addMerchantDetails(String name, String email) async {
+    // add onto user database
     await FirebaseFirestore.instance
         .collection('users')
         .add({'name': name, 'email': email, 'userType': 'Merchant'});
+
+    // add onto merchant database
+    await FirebaseFirestore.instance.collection('merchants').add({
+      'name': name,
+      'isOpen': false,
+    });
   }
 
   // function to check if password and confirm password matches
@@ -105,11 +112,8 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
       backgroundColor: Colors.blue[900],
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
-        title: const Text(
-            'Merchant Registration'
-        ),
+        title: const Text('Merchant Registration'),
       ),
-
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

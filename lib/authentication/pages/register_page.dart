@@ -90,11 +90,19 @@ class _RegisterPageState extends State<RegisterPage> {
         });
   }
 
+
+  // Add information about the buyer into the database
   Future addBuyerDetails(String name, String email) async {
+    // add onto user database
     await FirebaseFirestore.instance.collection('users').add({
       'name': name,
       'email': email,
       'userType': 'Buyer'
+    });
+
+    // add onto buyer database
+    await FirebaseFirestore.instance.collection('buyers').add({
+      'name': name,
     });
   }
 

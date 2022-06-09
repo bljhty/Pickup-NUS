@@ -2,10 +2,11 @@
 // Store name, waiting time, distance and logo
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Order/models/restaurant.dart';
+import 'package:orbital_nus/Order/models/get_information/restaurant.dart';
 
 class RestaurantInfo extends StatelessWidget {
-  final restaurant = Restaurant.generateRestaurant();
+  final Restaurant restaurant;
+  RestaurantInfo(this.restaurant);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class RestaurantInfo extends StatelessWidget {
                       Container(
                           padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.4),
+                            color: Colors.grey.withOpacity(0.6),
                             borderRadius: BorderRadius.circular(5),
                           ),
                           child: Text(restaurant.waitTime,
@@ -54,7 +55,7 @@ class RestaurantInfo extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey.withOpacity(0.4),
+                          color: Colors.grey.withOpacity(0.6),
                         ),
                       ),
                     ],

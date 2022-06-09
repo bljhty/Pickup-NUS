@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:orbital_nus/Merchant%20side/merchant_home_page.dart';
 import 'forgot_password_page.dart';
 
 import 'forgot_password_page.dart';
@@ -223,6 +224,19 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ),
                     ],
+                  ),
+
+                  // MERCHANT BUTTON FOR TESTING
+                  const SizedBox(height: 30),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return const MerchantHomePage();
+                          }));
+                    },
+                    child: const Text('Merchant Page'),
                   ),
                 ],
               ),

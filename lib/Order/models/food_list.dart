@@ -1,5 +1,8 @@
+// Widget bar to select the type of food in the menu i.e. Mains, Sides, etc.
+// used in order_directory_page.dart
+
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Order/models/restaurant.dart';
+import 'package:orbital_nus/Order/models/get_information/restaurant.dart';
 
 class FoodList extends StatelessWidget {
   final int selected;
@@ -23,6 +26,7 @@ class FoodList extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
+                  color: Colors.white70
                 ),
                 child: Text(
                   category[index],

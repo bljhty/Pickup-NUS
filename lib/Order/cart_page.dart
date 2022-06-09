@@ -1,9 +1,9 @@
 // Page to view the food items in the cart and to finalize the orders
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Order/models/restaurant.dart';
+import 'package:orbital_nus/Order/models/get_information/restaurant.dart';
 import 'package:orbital_nus/authentication/userhomepage.dart';
-import 'models/cart_list_view.dart';
+import 'models/cart/cart_list_view.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   var selected = 0;
   final pageController = PageController();
-  final restaurant = Restaurant.generateRestaurant();
+  final restaurant = Restaurant.generateRestaurant('TechnoEdge');
 
   // Alert message indicating order has been sent
   Future orderSubmittedNotif() => showDialog(
@@ -43,13 +43,13 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       // AppBar with back button and my cart text
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue[900],
+        centerTitle: true,
         title: const Text(
           'My Cart',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 24,
           ),
         ),
       ),
@@ -66,7 +66,7 @@ class _CartPageState extends State<CartPage> {
                 });
               },
               pageController,
-              restaurant,
+              restaurant[selected],
             ),
           )
         ],

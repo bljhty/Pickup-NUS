@@ -2,7 +2,7 @@
 // Displayed in restaurant_directory_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/models/Order%20pages/food%20directory/order_directory_page.dart';
+import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/order_directory_page.dart';
 import '../../../get_information/place.dart';
 import 'restaurant_item.dart';
 

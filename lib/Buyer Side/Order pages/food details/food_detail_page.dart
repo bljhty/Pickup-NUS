@@ -3,7 +3,7 @@
 // also where they can add item to cart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/models/Order%20pages/food%20details/models/food_info.dart';
+import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20details/models/food_info.dart';
 import 'models/food_add_on.dart';
 import '../../get_information/food.dart';
 import 'models/food_detail_image.dart';

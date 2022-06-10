@@ -3,7 +3,7 @@
 // includes the food item picture, name, waiting time, price and quantity
 
 import 'package:flutter/material.dart';
-import 'get_information/food.dart';
+import '../../../get_information/food.dart';
 import 'food_price_quantity.dart';
 
 class FoodInfo extends StatelessWidget {

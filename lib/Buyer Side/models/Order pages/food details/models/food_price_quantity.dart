@@ -1,7 +1,7 @@
 // Indicate price and quantity of food in food_detail_page.dart
 
 import 'package:flutter/material.dart';
-import 'get_information/food.dart';
+import '../../../get_information/food.dart';
 
 class FoodPriceQuantity extends StatefulWidget {
   final Food food;

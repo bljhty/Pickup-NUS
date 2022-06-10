@@ -1,12 +1,11 @@
 // Page to view the food items in the cart and to finalize the orders
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Order/models/get_information/restaurant.dart';
-import 'package:orbital_nus/Order/restaurant_directory_page.dart';
-import 'package:orbital_nus/authentication/userhomepage.dart';
-import '../Components/Bottom_bar.dart';
-import '../Components/enum.dart';
-import 'models/cart/cart_list_view.dart';
+import 'package:orbital_nus/Buyer Side/models/get_information/restaurant.dart';
+import 'package:orbital_nus/Buyer%20Side/models/Order pages/restaurant%20selection/restaurant_directory_page.dart';
+import '../../../Components/Bottom_bar.dart';
+import '../../../Components/enum.dart';
+import 'models/cart_list_view.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);

@@ -2,7 +2,7 @@
 // displayed in restaurant_directory_page.dart
 
 import 'package:flutter/material.dart';
-import '../../get_information/place.dart';
+import '../../../get_information/place.dart';
 
 class PlaceSelect extends StatelessWidget {
   final int selected;

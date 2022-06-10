@@ -2,7 +2,7 @@
 // Store name, waiting time, distance and logo
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Order/models/get_information/restaurant.dart';
+import 'package:orbital_nus/Buyer Side/models/get_information/restaurant.dart';
 
 class RestaurantInfo extends StatelessWidget {
   final Restaurant restaurant;

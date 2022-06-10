@@ -15,24 +15,6 @@ class FoodDetailPage extends StatelessWidget {
   FoodDetailPage(this.food);
 
   // TODO: Alert message indicating order has been added to cart
-  Future addedToCart() async {
-    // TODO: update the database that order is added to cart
-    showDialog<String>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: Text('Added to Cart!'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Close'),
-              ),
-            ],
-          );
-        });
-  }
 
   @override
   Widget build(BuildContext context) {

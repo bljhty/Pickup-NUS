@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Order/models/get_information/restaurant.dart';
+import 'package:orbital_nus/Order/restaurant_directory_page.dart';
 import 'package:orbital_nus/authentication/userhomepage.dart';
 import '../Components/Bottom_bar.dart';
 import '../Components/enum.dart';
@@ -32,7 +33,7 @@ class _CartPageState extends State<CartPage> {
                       context,
                       MaterialPageRoute(builder: (context) {
                         // redirects back to user home page once message is closed
-                        return const UserHomePage();
+                        return const RestaurantDirectoryPage();
                       }),
                     );
                   },

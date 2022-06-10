@@ -1,9 +1,11 @@
 // Main page to order food, after clicking the order button
 
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Components/Bottom_bar.dart';
 import 'package:orbital_nus/Order/models/food_list.dart';
 import 'package:orbital_nus/Order/models/restaurant_info.dart';
 import 'package:orbital_nus/Order/restaurant_directory_page.dart';
+import '../Components/enum.dart';
 import 'cart_page.dart';
 import 'models/get_information/restaurant.dart';
 import 'package:orbital_nus/Order/models/food_list_view.dart';
@@ -27,6 +29,9 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Bottombar(
+        selectMenu: MenuState.home,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -60,25 +65,6 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
             ),
           ),
         ],
-      ),
-
-      // View Cart button
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) {
-              return const CartPage();
-            }),
-          );
-        },
-        backgroundColor: Colors.orange,
-        elevation: 2,
-        child: const Icon(
-          Icons.shopping_bag_outlined,
-          color: Colors.white,
-          size: 30,
-        ),
       ),
     );
   }

@@ -1,6 +1,8 @@
 // Page to select the restaurant based on location
 
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Components/Bottom_bar.dart';
+import '../Components/enum.dart';
 import 'cart_page.dart';
 import 'models/Widgets/restaurant selection/place_select.dart';
 import 'models/Widgets/restaurant selection/restaurant_list_view.dart';
@@ -23,14 +25,15 @@ class _RestaurantDirectoryPageState extends State<RestaurantDirectoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const Bottombar(
+        selectMenu: MenuState.home,
+      ),
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
         centerTitle: true,
         title: const Text(
           'Select Restaurant',
-          style: TextStyle(
-            fontWeight: FontWeight.bold
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       body: Column(
@@ -59,25 +62,6 @@ class _RestaurantDirectoryPageState extends State<RestaurantDirectoryPage> {
             place,
           )),
         ],
-      ),
-
-      // View Cart Button (can maybe change to a separate dart file
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) {
-              return const CartPage();
-            }),
-          );
-        },
-        backgroundColor: Colors.orange,
-        elevation: 2,
-        child: const Icon(
-          Icons.shopping_bag_outlined,
-          color: Colors.white,
-          size: 30,
-        ),
       ),
     );
   }

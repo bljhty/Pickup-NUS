@@ -2,12 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Components/Bottom_bar.dart';
-import 'package:orbital_nus/Buyer%20Side/models/Order%20pages/food%20directory/models/food_list.dart';
-import 'package:orbital_nus/Buyer%20Side/models/Order%20pages/food%20directory/models/restaurant_info.dart';
-import 'package:orbital_nus/Buyer%20Side/models/Order pages/restaurant%20selection/restaurant_directory_page.dart';
+import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/food_list.dart';
+import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/restaurant_info.dart';
 import '../../../../Components/enum.dart';
 import '../../get_information/restaurant.dart';
-import 'package:orbital_nus/Buyer%20Side/models/Order%20pages/food%20directory/models/food_list_view.dart';
+import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/food_list_view.dart';
 
 class OrderDirectoryPage extends StatefulWidget {
   const OrderDirectoryPage({
@@ -28,7 +27,7 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Bottombar(
+      bottomNavigationBar: const Bottombar(
         selectMenu: MenuState.home,
       ),
       body: Column(

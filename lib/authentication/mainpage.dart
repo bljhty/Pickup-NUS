@@ -2,7 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../Buyer Side/models/Order pages/restaurant selection/restaurant_directory_page.dart';
+import '../Buyer Side/Order pages/restaurant selection/restaurant_directory_page.dart';
 import 'auth_page.dart';
 
 class MainPage extends StatelessWidget {

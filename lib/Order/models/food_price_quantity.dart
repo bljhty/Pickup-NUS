@@ -3,10 +3,17 @@
 import 'package:flutter/material.dart';
 import 'get_information/food.dart';
 
-class FoodPriceQuantity extends StatelessWidget {
+class FoodPriceQuantity extends StatefulWidget {
   final Food food;
 
   FoodPriceQuantity(this.food);
+
+  @override
+  State<FoodPriceQuantity> createState() => _FoodPriceQuantityState();
+}
+
+class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
+  int _qtyToOrder = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +48,7 @@ class FoodPriceQuantity extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    food.price.toString(),
+                    widget.food.price.toString(),
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -70,9 +77,12 @@ class FoodPriceQuantity extends StatelessWidget {
                     width: 40,
                     child: TextButton(
                       onPressed: () {
-                        if (food.quantity != 0) {
-                          food.quantity--;
-                        }
+                        setState(() {
+                          if (_qtyToOrder != 1) {
+                            _qtyToOrder--;
+                            widget.food.quantity = _qtyToOrder;
+                          }
+                        });
                       },
                       child: const Text(
                         '-',
@@ -91,7 +101,7 @@ class FoodPriceQuantity extends StatelessWidget {
                       color: Colors.white,
                     ),
                     child: Text(
-                      food.quantity.toString(),
+                      '$_qtyToOrder',
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -102,7 +112,10 @@ class FoodPriceQuantity extends StatelessWidget {
                     width: 40,
                     child: TextButton(
                       onPressed: () {
-                        food.quantity++;
+                        setState(() {
+                          _qtyToOrder++;
+                          widget.food.quantity = _qtyToOrder;
+                        });
                       },
                       child: const Text(
                         '+',

@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Order/restaurant_directory_page.dart';
 import 'package:orbital_nus/authentication/userhomepage.dart';
 import 'auth_page.dart';
 
@@ -15,7 +16,7 @@ class MainPage extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return const UserHomePage();
+              return const RestaurantDirectoryPage();
             } else {
               return const AuthPage();
             }

@@ -29,6 +29,7 @@ class _RestaurantDirectoryPageState extends State<RestaurantDirectoryPage> {
         selectMenu: MenuState.home,
       ),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.blue[900],
         centerTitle: true,
         title: const Text(

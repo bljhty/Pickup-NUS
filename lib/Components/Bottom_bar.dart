@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Order/cart_page.dart';
 import 'package:orbital_nus/Order/restaurant_directory_page.dart';
+import 'package:orbital_nus/Profile/profile_screen.dart';
+import 'package:orbital_nus/authentication/pages/orders_page.dart';
 
 import 'enum.dart';
 
@@ -45,7 +47,10 @@ class Bottombar extends StatelessWidget {
         ),
         //Orders button on bottom navigation bar
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const orderspage()));
+          },
           icon: Icon(Icons.receipt_long_outlined,
               color: MenuState.orders == selectMenu
                   ? Color(0xff09b44d)
@@ -66,7 +71,10 @@ class Bottombar extends StatelessWidget {
         ),
         //Profile button on bottom navigation bar
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const profilescreen()));
+          },
           icon: Icon(Icons.person_outline,
               color: MenuState.profile == selectMenu
                   ? Color(0xff09b44d)

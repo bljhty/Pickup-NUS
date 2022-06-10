@@ -11,7 +11,8 @@ class RestaurantInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 40),
+      color: Colors.blue[900],
+      margin: const EdgeInsets.only(top: 0),
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: Column(
         children: [
@@ -28,6 +29,7 @@ class RestaurantInfo extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
                   const SizedBox(
@@ -55,7 +57,7 @@ class RestaurantInfo extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey.withOpacity(0.6),
+                          color: Colors.grey.withOpacity(0.7),
                         ),
                       ),
                     ],
@@ -68,7 +70,7 @@ class RestaurantInfo extends StatelessWidget {
                 borderRadius: BorderRadius.circular(50),
                 child: Image.asset(
                   restaurant.logoURL,
-                  width: 80,
+                  width: 100,
                 ),
               )
             ],

@@ -17,7 +17,9 @@ class _profilescreenState extends State<profilescreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.blue[900],
+        centerTitle: true,
         title: const Text("My Profile",
             style: TextStyle(
               color: Colors.white,

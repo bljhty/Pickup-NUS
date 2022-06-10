@@ -19,7 +19,16 @@ class FoodDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white70,
+      appBar: AppBar(
+        backgroundColor: Colors.blue[900],
+        title: const Text(
+          "details",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: [

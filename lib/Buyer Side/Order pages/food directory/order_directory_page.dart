@@ -27,6 +27,11 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.blue[900],
+        elevation: 0,
+      ),
       bottomNavigationBar: const Bottombar(
         selectMenu: MenuState.home,
       ),

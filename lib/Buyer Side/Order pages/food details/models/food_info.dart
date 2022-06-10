@@ -26,20 +26,21 @@ class FoodInfo extends StatelessWidget {
               fontSize: 22,
             ),
           ),
-          const SizedBox(height: 15,),
+          const SizedBox(
+            height: 15,
+          ),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               // Waiting time
               _buildIconText(
-                  Icons.access_time_outlined,
-                  Colors.blue,
-                  food.waitTime
-              ),
+                  Icons.access_time_outlined, Colors.blue, food.waitTime),
             ],
           ),
-          const SizedBox(height: 30,),
+          const SizedBox(
+            height: 30,
+          ),
 
           // Price of food and its quantity to add
           // uses food_price_quantity.dart as widget
@@ -58,10 +59,9 @@ class FoodInfo extends StatelessWidget {
           color: Colors.grey,
           size: 20,
         ),
-        Text(text,
-          style: const TextStyle(
-              fontSize: 16
-          ),
+        Text(
+          text,
+          style: const TextStyle(fontSize: 16),
         ),
       ],
     );

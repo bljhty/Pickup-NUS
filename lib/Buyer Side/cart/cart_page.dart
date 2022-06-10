@@ -48,6 +48,7 @@ class _CartPageState extends State<CartPage> {
       ),
       // AppBar with back button and my cart text
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.blue[900],
         centerTitle: true,
         title: const Text(

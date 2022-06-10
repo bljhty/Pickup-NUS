@@ -19,7 +19,8 @@ class FoodInfo extends StatelessWidget {
       child: Column(
         children: [
           // name of the food item
-          Text(food.name,
+          Text(
+            food.name,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 22,

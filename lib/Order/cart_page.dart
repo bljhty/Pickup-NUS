@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Order/models/get_information/restaurant.dart';
 import 'package:orbital_nus/authentication/userhomepage.dart';
+import '../Components/Bottom_bar.dart';
+import '../Components/enum.dart';
 import 'models/cart/cart_list_view.dart';
 
 class CartPage extends StatefulWidget {
@@ -41,6 +43,9 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const Bottombar(
+        selectMenu: MenuState.home,
+      ),
       // AppBar with back button and my cart text
       appBar: AppBar(
         backgroundColor: Colors.blue[900],

@@ -2,7 +2,7 @@
 // also provides the white border around the food information
 
 import 'package:flutter/material.dart';
-import 'get_information/food.dart';
+import '../../../get_information/food.dart';
 
 class FoodImg extends StatelessWidget {
   final Food food;

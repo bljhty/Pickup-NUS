@@ -2,7 +2,7 @@
 // through food_list_view.dart
 
 import 'package:flutter/material.dart';
-import 'get_information/food.dart';
+import '../../../get_information/food.dart';
 
 class FoodItem extends StatelessWidget {
   final Food food;

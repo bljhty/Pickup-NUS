@@ -2,7 +2,7 @@
 // through cart_list_view.dart in cart_page.dart
 
 import 'package:flutter/material.dart';
-import '../get_information/food.dart';
+import '../../get_information/food.dart';
 
 class CartItem extends StatelessWidget {
   final Food food;

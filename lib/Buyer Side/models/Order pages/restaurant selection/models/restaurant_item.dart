@@ -2,8 +2,7 @@
 // on restaurant_directory_page.dart through restaurant_list_view.dart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Order/models/get_information/restaurant.dart';
-import 'package:orbital_nus/Order/models/restaurant_info.dart';
+import 'package:orbital_nus/Buyer Side/models/get_information/restaurant.dart';
 
 class RestaurantItem extends StatelessWidget {
   final Restaurant restaurant;

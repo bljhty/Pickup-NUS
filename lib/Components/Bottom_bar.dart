@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Order/cart_page.dart';
-import 'package:orbital_nus/Order/restaurant_directory_page.dart';
+import 'package:orbital_nus/Buyer%20Side/models/cart/cart_page.dart';
+import 'package:orbital_nus/Buyer%20Side/models/Order pages/restaurant%20selection/restaurant_directory_page.dart';
 import 'package:orbital_nus/Profile/profile_screen.dart';
 import 'package:orbital_nus/authentication/pages/orders_page.dart';
 

@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Components/Bottom_bar.dart';
-import '../Components/enum.dart';
-import 'cart_page.dart';
-import 'models/Widgets/restaurant selection/place_select.dart';
-import 'models/Widgets/restaurant selection/restaurant_list_view.dart';
-import 'models/get_information/place.dart';
+import '../../../../Components/enum.dart';
+import '../../cart/cart_page.dart';
+import 'models/place_select.dart';
+import 'models/restaurant_list_view.dart';
+import '../../get_information/place.dart';
 
 class RestaurantDirectoryPage extends StatefulWidget {
   const RestaurantDirectoryPage({Key? key}) : super(key: key);

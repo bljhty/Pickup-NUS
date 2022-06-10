@@ -3,10 +3,10 @@
 // also where they can add item to cart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Order/models/food_detail_image.dart';
-import 'package:orbital_nus/Order/models/food_info.dart';
-import 'food_add_on.dart';
-import 'get_information/food.dart';
+import 'package:orbital_nus/Buyer%20Side/models/Order%20pages/food%20details/models/food_info.dart';
+import 'models/food_add_on.dart';
+import '../../get_information/food.dart';
+import 'models/food_detail_image.dart';
 
 // The page shown of specific food after clicking on it in the food directory menu
 class FoodDetailPage extends StatelessWidget {

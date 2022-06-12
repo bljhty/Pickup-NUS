@@ -12,10 +12,9 @@ class RestaurantInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue[900],
+      color: kPrimaryColor,
       margin: const EdgeInsets.only(top: 0),
       padding: const EdgeInsets.symmetric(horizontal: 25),
-      color: kPrimaryColor,
       child: Column(
         children: [
           // 1st row:

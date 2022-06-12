@@ -30,7 +30,6 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
     return Scaffold(
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor: kPrimaryColor,
         elevation: 0,
       ),

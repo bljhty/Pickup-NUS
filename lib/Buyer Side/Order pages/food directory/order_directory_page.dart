@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:orbital_nus/Components/Bottom_bar.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/food_list.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/restaurant_info.dart';
-import '../../../../Components/enum.dart';
+import 'package:orbital_nus/Components/enum.dart';
+import 'package:orbital_nus/colors.dart';
 import '../../get_information/restaurant.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/food_list_view.dart';
 
@@ -27,9 +28,10 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue[900],
+        backgroundColor: kPrimaryColor,
         elevation: 0,
       ),
       bottomNavigationBar: const Bottombar(

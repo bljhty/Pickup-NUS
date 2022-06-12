@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/colors.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({Key? key}) : super(key: key);
@@ -33,7 +34,6 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         },
       );
     } on FirebaseAuthException catch (e) {
-      print(e);
       showDialog(
         context: context,
         builder: (context) {
@@ -55,9 +55,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[900],
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: kPrimaryColor,
         elevation: 0,
       ),
       body: Column(
@@ -95,11 +95,11 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.blue),
+                  borderSide: const BorderSide(color: kPrimaryColor),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 hintText: 'Email',
-                fillColor: Colors.grey[200],
+                fillColor: kBackgroundColor,
                 filled: true,
               ),
             ),
@@ -109,7 +109,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           // Reset Password button
           MaterialButton(
             onPressed: passwordReset,
-            color: const Color.fromARGB(255, 244, 127, 54),
+            color: kSecondaryColor,
             child: const Text('Reset Password'),
           ),
         ],

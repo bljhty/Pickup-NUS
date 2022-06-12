@@ -2,6 +2,7 @@
 // displayed in restaurant_directory_page.dart
 
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/colors.dart';
 import '../../../get_information/place.dart';
 
 class PlaceSelect extends StatelessWidget {
@@ -27,7 +28,7 @@ class PlaceSelect extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             decoration: BoxDecoration(
-              color: Colors.white70,
+              color: Colors.white,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(

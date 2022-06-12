@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer Side/get_information/restaurant.dart';
+import 'package:orbital_nus/colors.dart';
 
 class RestaurantInfo extends StatelessWidget {
   final Restaurant restaurant;
@@ -14,6 +15,7 @@ class RestaurantInfo extends StatelessWidget {
       color: Colors.blue[900],
       margin: const EdgeInsets.only(top: 0),
       padding: const EdgeInsets.symmetric(horizontal: 25),
+      color: kPrimaryColor,
       child: Column(
         children: [
           // 1st row:
@@ -57,7 +59,7 @@ class RestaurantInfo extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey.withOpacity(0.7),
+                          color: Colors.grey,
                         ),
                       ),
                     ],

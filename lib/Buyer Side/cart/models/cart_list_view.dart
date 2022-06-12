@@ -29,7 +29,8 @@ class CartListView extends StatelessWidget {
                   itemBuilder: (context, index) => GestureDetector(
                       onTap: () {},
                       child: CartItem(
-                          restaurant.menu[category[selected]]![index])),
+                          restaurant.menu[category[selected]]![index]
+                          )),
                   separatorBuilder: (_, index) => const SizedBox(
                         height: 15,
                       ),

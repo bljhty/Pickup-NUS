@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:orbital_nus/Merchant%20side/merchant_home_page.dart';
+import 'package:orbital_nus/colors.dart';
 import 'forgot_password_page.dart';
 
 import 'forgot_password_page.dart';
@@ -61,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: kPrimaryColor,
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -93,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: kBackgroundColor,
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -117,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: kBackgroundColor,
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -143,6 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 5,),
 
                   // Forgot Password button
                   Padding(
@@ -165,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                             'Forgot Password?',
                             style: TextStyle(
                               fontSize: 14,
-                              color: Color.fromARGB(255, 244, 127, 54),
+                              color: kSecondaryColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -173,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 30),
 
                   // Sign In button
                   Padding(
@@ -183,7 +185,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Container(
                         padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                          color: Colors.deepOrange[800],
+                          color: kSecondaryColor,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: const Center(
@@ -199,7 +201,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
 
                   // Sign up button
                   Row(
@@ -218,7 +220,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: const Text(
                           ' Sign up now!',
                           style: TextStyle(
-                            color: Color.fromARGB(255, 244, 127, 54),
+                            color: kSecondaryColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

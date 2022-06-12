@@ -33,7 +33,7 @@ class FoodListView extends StatelessWidget {
                             builder: (context) => FoodDetailPage(
                                 restaurant.menu[category[selected]]![index])));
                       },
-                      // uses food_item.dart to show how the food item is layed out
+                      // uses food_item.dart to show how the food item is laid out
                       child: FoodItem(
                           restaurant.menu[category[selected]]![index])),
                   separatorBuilder: (_, index) => const SizedBox(

@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20details/models/food_info.dart';
+import 'package:orbital_nus/colors.dart';
 import 'models/food_add_on.dart';
 import '../../get_information/food.dart';
 import 'models/food_detail_image.dart';
@@ -19,8 +20,9 @@ class FoodDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kBackgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: kPrimaryColor,
         title: const Text(
           "details",
           style: TextStyle(
@@ -28,7 +30,7 @@ class FoodDetailPage extends StatelessWidget {
           ),
         ),
       ),
-      backgroundColor: Colors.white,
+
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -54,7 +56,7 @@ class FoodDetailPage extends StatelessWidget {
         width: 200,
         height: 56,
         child: RawMaterialButton(
-          fillColor: Colors.orange,
+          fillColor: kSecondaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
           ),

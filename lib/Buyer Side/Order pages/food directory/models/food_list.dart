@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer Side/get_information/restaurant.dart';
+import 'package:orbital_nus/colors.dart';
 
 class FoodList extends StatelessWidget {
   final int selected;
@@ -26,7 +27,7 @@ class FoodList extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.white70
+                  color: Colors.white,
                 ),
                 child: Text(
                   category[index],

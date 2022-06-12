@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Components/Bottom_bar.dart';
-import '../../../../Components/enum.dart';
-import '../../cart/cart_page.dart';
+import 'package:orbital_nus/Components/enum.dart';
+import 'package:orbital_nus/colors.dart';
 import 'models/place_select.dart';
 import 'models/restaurant_list_view.dart';
 import '../../get_information/place.dart';
@@ -30,7 +30,7 @@ class _RestaurantDirectoryPageState extends State<RestaurantDirectoryPage> {
       ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue[900],
+        backgroundColor: kPrimaryColor,
         centerTitle: true,
         title: const Text(
           'Select Restaurant',

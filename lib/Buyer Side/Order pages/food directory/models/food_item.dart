@@ -2,6 +2,7 @@
 // through food_list_view.dart
 
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/colors.dart';
 import '../../../get_information/food.dart';
 
 class FoodItem extends StatelessWidget {

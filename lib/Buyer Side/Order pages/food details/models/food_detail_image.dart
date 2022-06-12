@@ -2,6 +2,7 @@
 // also provides the white border around the food information
 
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/colors.dart';
 import '../../../get_information/food.dart';
 
 class FoodImg extends StatelessWidget {
@@ -30,7 +31,7 @@ class FoodImg extends StatelessWidget {
                           topLeft: Radius.circular(50),
                           topRight: Radius.circular(50),
                         ),
-                        color: Colors.white,
+                        color: kBackgroundColor,
                       ),
                     ))
               ],

@@ -1,6 +1,7 @@
 // Indicate price and quantity of food in food_detail_page.dart
 
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/colors.dart';
 import '../../../get_information/food.dart';
 
 class FoodPriceQuantity extends StatefulWidget {
@@ -66,7 +67,7 @@ class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
               height: double.maxFinite,
               width: 120,
               decoration: BoxDecoration(
-                color: Colors.orange,
+                color: kSecondaryColor,
                 borderRadius: BorderRadius.circular(30),
               ),
               child: Row(

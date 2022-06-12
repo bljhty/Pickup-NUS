@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:orbital_nus/colors.dart';
 
 class MerchantRegisterPage extends StatefulWidget {
   const MerchantRegisterPage({Key? key}) : super(key: key);
@@ -109,9 +110,9 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[900],
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: kPrimaryColor,
         title: const Text('Merchant Registration'),
       ),
       body: SafeArea(
@@ -144,7 +145,7 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                      color: kBackgroundColor,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -167,7 +168,7 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                      color: kBackgroundColor,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -190,7 +191,7 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                      color: kBackgroundColor,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -214,7 +215,7 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[200],
+                      color: kBackgroundColor,
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -241,7 +242,7 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
                     child: Container(
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
-                        color: Colors.deepOrange[800],
+                        color: kSecondaryColor,
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: const Center(

@@ -3,8 +3,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:orbital_nus/authentication/Merchant/merchant_register_page.dart';
+import 'package:orbital_nus/colors.dart';
 
 class RegisterPage extends StatefulWidget {
   final VoidCallback showLoginPage;
@@ -22,6 +22,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final _passwordController = TextEditingController();
   final _confirmpasswordController = TextEditingController();
 
+  @override
+
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
@@ -36,10 +38,8 @@ class _RegisterPageState extends State<RegisterPage> {
     switch (regCode) {
       case 1:
         return 'Error: Password is too weak, ensure it has at least 6 characters';
-        break;
       case 2:
         return 'Error: The email provided already has an active account';
-        break;
       case 3:
         return 'Error: Passwords do not match';
     }
@@ -115,7 +115,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: kPrimaryColor,
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -135,7 +135,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: const Text(
                       'Sign up as a Merchant instead?',
                       style: TextStyle(
-                        color: Color.fromARGB(255, 244, 127, 54),
+                        color: kSecondaryColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -150,21 +150,21 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 10),
 
                   // Instructions text
-                  Text(
-                    'Fill in the following details to register!',
-                    style: GoogleFonts.robotoCondensed(
-                      fontSize: 20,
+                  const Text(
+                    'Fill in the following details:',
+                    style: TextStyle(
+                      fontSize: 18,
                       color: Colors.white,
                     ),
                   ),
-                  const SizedBox(height: 25),
+                  const SizedBox(height: 15),
 
                   // Name text box
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: kBackgroundColor,
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -187,7 +187,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: kBackgroundColor,
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -210,7 +210,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: kBackgroundColor,
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -234,7 +234,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: kBackgroundColor,
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -261,7 +261,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Container(
                         padding: const EdgeInsets.all(15),
                         decoration: BoxDecoration(
-                          color: Colors.deepOrange[800],
+                          color: kSecondaryColor,
                           borderRadius: BorderRadius.circular(15),
                         ),
                         child: const Center(
@@ -296,7 +296,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: const Text(
                           ' Sign In!',
                           style: TextStyle(
-                            color: Color.fromARGB(255, 244, 127, 54),
+                            color: kSecondaryColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

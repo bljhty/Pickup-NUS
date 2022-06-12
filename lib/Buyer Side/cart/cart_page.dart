@@ -3,8 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer Side/get_information/restaurant.dart';
 import 'package:orbital_nus/Buyer%20Side/Order pages/restaurant%20selection/restaurant_directory_page.dart';
-import '../../../Components/Bottom_bar.dart';
-import '../../../Components/enum.dart';
+import 'package:orbital_nus/Components/Bottom_bar.dart';
+import 'package:orbital_nus/Components/enum.dart';
+import 'package:orbital_nus/colors.dart';
 import 'models/cart_list_view.dart';
 
 class CartPage extends StatefulWidget {
@@ -48,7 +49,7 @@ class _CartPageState extends State<CartPage> {
       ),
       // AppBar with back button and my cart text
       appBar: AppBar(
-        backgroundColor: Colors.blue[900],
+        backgroundColor: kPrimaryColor,
         centerTitle: true,
         title: const Text(
           'My Cart',
@@ -82,7 +83,7 @@ class _CartPageState extends State<CartPage> {
         width: 250,
         height: 56,
         child: RawMaterialButton(
-          fillColor: Colors.orange,
+          fillColor: kSecondaryColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
           ),

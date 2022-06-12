@@ -12,7 +12,8 @@ class RestaurantInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 40),
+      color: Colors.blue[900],
+      margin: const EdgeInsets.only(top: 0),
       padding: const EdgeInsets.symmetric(horizontal: 25),
       color: kPrimaryColor,
       child: Column(
@@ -71,7 +72,7 @@ class RestaurantInfo extends StatelessWidget {
                 borderRadius: BorderRadius.circular(50),
                 child: Image.asset(
                   restaurant.logoURL,
-                  width: 80,
+                  width: 100,
                 ),
               )
             ],

@@ -2,7 +2,7 @@
 // on restaurant_directory_page.dart through restaurant_list_view.dart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer Side/get_information/restaurant.dart';
+import 'package:orbital_nus/Buyer Side/get_information/get_restaurant.dart';
 
 class RestaurantItem extends StatelessWidget {
   final Restaurant restaurant;
@@ -25,7 +25,7 @@ class RestaurantItem extends StatelessWidget {
             width: 110,
             height: 110,
             child: Image.asset(
-              restaurant.logoURL,
+              restaurant.logoUrl!,
               fit: BoxFit.fitHeight,
             ),
           ),
@@ -45,7 +45,7 @@ class RestaurantItem extends StatelessWidget {
                       children: [
                         // Restaurant name
                         Text(
-                          restaurant.merchantName,
+                          restaurant.merchantName!,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,

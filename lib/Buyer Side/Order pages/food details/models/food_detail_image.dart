@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/colors.dart';
-import '../../../get_information/food.dart';
+import '../../../get_information/get_food.dart';
 
 class FoodImg extends StatelessWidget {
   final Food food;
@@ -48,7 +48,7 @@ class FoodImg extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: Image.asset(
-                  food.imgUrl,
+                  food.imgUrl!,
                   fit: BoxFit.cover,
                 ),
               ),

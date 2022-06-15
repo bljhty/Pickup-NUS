@@ -2,28 +2,28 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20details/food_detail_page.dart';
-import 'package:orbital_nus/Buyer Side/get_information/restaurant.dart';
+import 'package:orbital_nus/Buyer%20Side/get_information/get_food.dart';
 import 'food_item.dart';
 
 class FoodListView extends StatelessWidget {
   final int selected;
   final Function callback;
   final PageController pageController;
-  final Restaurant restaurant;
+  final List<String> menuType;
+  final Map<String, List<Food>> foods;
 
   FoodListView(
-      this.selected, this.callback, this.pageController, this.restaurant);
+      this.selected, this.callback, this.pageController, this.menuType, this.foods);
 
   @override
   Widget build(BuildContext context) {
-    final category = restaurant.menu.keys.toList();
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: PageView(
           controller: pageController,
           onPageChanged: (index) => callback(index),
-          children: category
+          children: menuType
               .map((e) => ListView.separated(
                   padding: EdgeInsets.zero,
                   // Upon tap, redirects to the specific food_detail_page.dart
@@ -31,15 +31,15 @@ class FoodListView extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => FoodDetailPage(
-                                restaurant.menu[category[selected]]![index])));
+                                foods[menuType[selected]]![index])));
                       },
                       // uses food_item.dart to show how the food item is laid out
                       child: FoodItem(
-                          restaurant.menu[category[selected]]![index])),
+                          foods[menuType[selected]]![index])),
                   separatorBuilder: (_, index) => const SizedBox(
                         height: 15,
                       ),
-                  itemCount: restaurant.menu[category[selected]]!.length))
+                  itemCount: foods[menuType[selected]]!.length))
               .toList()),
     );
   }

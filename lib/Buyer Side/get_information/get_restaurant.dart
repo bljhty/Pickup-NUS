@@ -1,26 +1,44 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+// implementation of database to obtain the merchants available as
+// restaurants to order from
 
-class GetRestaurant extends StatelessWidget {
-  final String documentId;
+class Restaurant {
+  String? merchantId;
+  String? merchantName;
+  String? waitTime;
+  String? distance;
+  String? logoUrl;
+  String? place;
 
-  GetRestaurant({required this.documentId});
+  Restaurant({
+    this.merchantId,
+    this.merchantName,
+    this.waitTime,
+    this.distance,
+    this.logoUrl,
+    this.place,
+  });
 
-  @override
-  Widget build(BuildContext context) {
-    // obtain the collection from Firebase database
-    CollectionReference merchant = FirebaseFirestore.instance.collection(
-        'merchant');
-    return FutureBuilder<DocumentSnapshot>(
-      future: merchant.doc(documentId).get(),
-        builder: ((context, snapshot) {
-      if (snapshot.connectionState ==
-          ConnectionState.done) { // determines if snapshot is fully loaded
-        Map<String, dynamic> data =
-        snapshot.data!.data() as Map<String, dynamic>;
-        return Text('Restaurant Name: ${data['merchantName']}');
-      }
-      return const Text('Loading...');
-    }));
+  // receiving data from database
+  factory Restaurant.fromMap(map) {
+    return Restaurant(
+      merchantId: map['merchantId'],
+      merchantName: map['merchantName'],
+      waitTime: map['waitTime'],
+      distance: map['distance'],
+      logoUrl: map['logoUrl'],
+      place: map['place'],
+    );
+  }
+
+  // sending data to the database
+  Map<String, dynamic> toMap() {
+    return {
+      'merchantId': merchantId,
+      'merchantName': merchantName,
+      'waitTime': waitTime,
+      'distance': distance,
+      'logoUrl': logoUrl,
+      'place': place,
+    };
   }
 }

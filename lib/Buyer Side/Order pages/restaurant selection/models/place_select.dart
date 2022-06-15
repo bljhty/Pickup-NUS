@@ -2,20 +2,19 @@
 // displayed in restaurant_directory_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/colors.dart';
-import '../../../get_information/place.dart';
+import 'package:orbital_nus/Buyer%20Side/get_information/get_restaurant.dart';
 
 class PlaceSelect extends StatelessWidget {
   final int selected;
   final Function callback;
-  final Place place;
+  final Map<String, List<Restaurant>> places;
 
-  PlaceSelect(this.selected, this.callback, this.place);
+  PlaceSelect(this.selected, this.callback, this.places);
 
   @override
   Widget build(BuildContext context) {
     // category lists out the different locations available
-    final category = place.stalls.keys.toList();
+    final category = places.keys.toList();
 
     return Container(
       height: 100,

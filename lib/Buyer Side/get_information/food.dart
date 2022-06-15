@@ -15,6 +15,24 @@ class Food {
     this.quantity,
   );
 
+  // factory Food.fromJson(Map<String, dynamic> json) {
+  //   return Food(
+  //     json['imgUrl'],
+  //       json['itemName'],
+  //     json['waitTime'],
+  //     double.parse(json['itemUnitPrice']),
+  //     int.parse(json['quantity'])
+  //   );
+  // }
+  //
+  // static List<Food> fromJsonArray(List<dynamic> jsonArray) {
+  //   List<Food> foodsFromJson = []; // list to store the foods in the menu
+  //
+  //   jsonArray.forEach((jsonData) {
+  //     foodsFromJson.add(Food.fromJson(jsonData));
+  //   });
+  // }
+
   // static list of the foods available from the merchant
   static List<Food> generateFoods(String restaurant, String menuType) {
     if (restaurant == 'Taiwan Ichiban') {

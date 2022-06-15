@@ -1,12 +1,14 @@
 // Main page to order food, after clicking the order button
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Buyer%20Side/get_information/get_food.dart';
+import 'package:orbital_nus/Buyer%20Side/get_information/get_restaurant.dart';
 import 'package:orbital_nus/Components/Bottom_bar.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/food_list.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/restaurant_info.dart';
 import 'package:orbital_nus/Components/enum.dart';
 import 'package:orbital_nus/colors.dart';
-import '../../get_information/restaurant.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/food_list_view.dart';
 
 class OrderDirectoryPage extends StatefulWidget {
@@ -22,8 +24,39 @@ class OrderDirectoryPage extends StatefulWidget {
 }
 
 class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
+  // variables used for the selection and scrolling of the food items
   var selected = 0;
   final pageController = PageController();
+
+  // Obtaining relevant food item data tagged to the merchant Id from database
+  // List of foods available for the specific restaurant
+  List<Food> foods = [];
+
+  // List of foods ordered based on menuType
+  Map<String, List<Food>> foodsByType = {};
+
+  // obtain database of foods for particular merchant as class Food
+  // and store in list foods
+  Future getFoods() async {
+    await FirebaseFirestore.instance
+        .collection('foods')
+        // .where('merchantId', isEqualTo: widget.restaurant.merchantId) // foods pertaining to specific merchantId only
+        .get()
+        .then((snapshot) => snapshot.docs.forEach((food) {
+              // for each item, to form it into class Food and add into list foods
+              foods.add(Food.fromMap(food.data()));
+            }));
+
+    // sort the foods into foodsByType based on the item's menuType
+    foods.forEach((food) {
+      if (foodsByType[food.menuType!] == null) {
+        // create an empty list if its a new menuType
+        foodsByType[food.menuType!] = [];
+      }
+      // add current food into the list of the menuType
+      foodsByType[food.menuType!]?.add(food);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,40 +69,39 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
       bottomNavigationBar: const Bottombar(
         selectMenu: MenuState.home,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // TODO: include the appbar
+      body: FutureBuilder(
+          future: getFoods(), // wait to compile foods
+          builder: (context, snapshot) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // TODO: include the appbar
 
-          // Top information, regarding the food stall being ordered from
-          // uses restaurant_info.dart as widget
-          RestaurantInfo(widget.restaurant),
+                // Top information, regarding the food stall being ordered from
+                // uses restaurant_info.dart as widget
+                RestaurantInfo(widget.restaurant),
 
-          // Bar to menuType, i.e. Mains, Sides, etc.
-          // uses food_list.dart as widget
-          FoodList(selected, (int index) {
-            setState(() {
-              selected = index;
-            });
-            pageController.jumpToPage(index);
-          }, widget.restaurant),
+                // Bar to menuType, i.e. Mains, Sides, etc.
+                // uses food_list.dart as widget
+                FoodList(selected, (int index) {
+                  setState(() {
+                    selected = index;
+                  });
+                  pageController.jumpToPage(index);
+                }, foodsByType.keys.toList()),
 
-          // List of available food in the page selected
-          // uses food_list_view.dart as widget
-          Expanded(
-            child: FoodListView(
-              selected,
-              (int index) {
-                setState(() {
-                  selected = index;
-                });
-              },
-              pageController,
-              widget.restaurant,
-            ),
-          ),
-        ],
-      ),
+                // List of available food in the page selected
+                // uses food_list_view.dart as widget
+                Expanded(
+                  child: FoodListView(selected, (int index) {
+                    setState(() {
+                      selected = index;
+                    });
+                  }, pageController, foodsByType.keys.toList(), foodsByType),
+                ),
+              ],
+            );
+          }),
     );
   }
 }

@@ -2,19 +2,16 @@
 // used in order_directory_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer Side/get_information/restaurant.dart';
-import 'package:orbital_nus/colors.dart';
 
 class FoodList extends StatelessWidget {
   final int selected;
   final Function callback;
-  final Restaurant restaurant;
+  final List<String> menuType;
 
-  FoodList(this.selected, this.callback, this.restaurant);
+  FoodList(this.selected, this.callback, this.menuType);
 
   @override
   Widget build(BuildContext context) {
-    final category = restaurant.menu.keys.toList();
     return Container(
       height: 100,
       padding: const EdgeInsets.symmetric(vertical: 30),
@@ -30,14 +27,14 @@ class FoodList extends StatelessWidget {
                   color: Colors.white,
                 ),
                 child: Text(
-                  category[index],
+                  menuType[index],
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               )),
           separatorBuilder: (_, index) => const SizedBox(width: 20),
-          itemCount: category.length),
+          itemCount: menuType.length),
     );
   }
 }

@@ -2,7 +2,7 @@
 // Store name, waiting time, distance and logo
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer Side/get_information/restaurant.dart';
+import 'package:orbital_nus/Buyer Side/get_information/get_restaurant.dart';
 import 'package:orbital_nus/colors.dart';
 
 class RestaurantInfo extends StatelessWidget {
@@ -26,7 +26,7 @@ class RestaurantInfo extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    restaurant.merchantName,
+                    restaurant.merchantName!,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -46,7 +46,7 @@ class RestaurantInfo extends StatelessWidget {
                             color: Colors.grey.withOpacity(0.6),
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          child: Text(restaurant.waitTime,
+                          child: Text(restaurant.waitTime!,
                               style: const TextStyle(
                                 color: Colors.white,
                               ))),
@@ -54,8 +54,8 @@ class RestaurantInfo extends StatelessWidget {
                         width: 10,
                       ),
                       Text(
-                        restaurant.distance,
-                        style: TextStyle(
+                        restaurant.distance!,
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                           color: Colors.grey,
@@ -70,7 +70,7 @@ class RestaurantInfo extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(50),
                 child: Image.asset(
-                  restaurant.logoURL,
+                  restaurant.logoUrl!,
                   width: 100,
                 ),
               )

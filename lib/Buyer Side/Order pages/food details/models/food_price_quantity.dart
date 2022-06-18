@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/colors.dart';
-import '../../../get_information/food.dart';
+import '../../../get_information/get_food.dart';
 
 class FoodPriceQuantity extends StatefulWidget {
   final Food food;

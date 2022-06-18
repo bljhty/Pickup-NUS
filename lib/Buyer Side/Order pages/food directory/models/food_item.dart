@@ -2,8 +2,7 @@
 // through food_list_view.dart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/colors.dart';
-import '../../../get_information/food.dart';
+import '../../../get_information/get_food.dart';
 
 class FoodItem extends StatelessWidget {
   final Food food;
@@ -26,7 +25,7 @@ class FoodItem extends StatelessWidget {
               width: 110,
               height: 110,
               child: Image.asset(
-                food.imgUrl,
+                food.imgUrl!,
                 fit: BoxFit.fitHeight,
               )),
           Expanded(
@@ -44,7 +43,7 @@ class FoodItem extends StatelessWidget {
                   children: [
                     // Food name
                     Text(
-                      food.name,
+                      food.itemName!,
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

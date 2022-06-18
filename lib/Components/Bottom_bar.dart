@@ -3,7 +3,6 @@ import 'package:orbital_nus/Buyer%20Side/cart/cart_page.dart';
 import 'package:orbital_nus/Buyer%20Side/Order pages/restaurant%20selection/restaurant_directory_page.dart';
 import 'package:orbital_nus/Profile/profile_screen.dart';
 import 'package:orbital_nus/authentication/pages/orders_page.dart';
-
 import 'enum.dart';
 
 class Bottombar extends StatelessWidget {

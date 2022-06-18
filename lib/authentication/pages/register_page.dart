@@ -23,7 +23,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final _confirmpasswordController = TextEditingController();
 
   @override
-
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
@@ -90,15 +89,12 @@ class _RegisterPageState extends State<RegisterPage> {
         });
   }
 
-
   // Add information about the buyer into the database
   Future addBuyerDetails(String name, String email) async {
     // add onto user database
-    await FirebaseFirestore.instance.collection('users').add({
-      'name': name,
-      'email': email,
-      'userType': 'Buyer'
-    });
+    await FirebaseFirestore.instance
+        .collection('users')
+        .add({'name': name, 'email': email, 'userType': 'Buyer'});
 
     // add onto buyer database
     await FirebaseFirestore.instance.collection('buyers').add({
@@ -115,6 +111,12 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: kPrimaryColor,
+          title: const Text('User Registration'),
+          automaticallyImplyLeading: false,
+        ),
         backgroundColor: kPrimaryColor,
         body: SafeArea(
           child: Center(
@@ -127,9 +129,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
-                        context, MaterialPageRoute(builder: (context) {
-                        return const MerchantRegisterPage();
-                      }),
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return const MerchantRegisterPage();
+                        }),
                       );
                     },
                     child: const Text(

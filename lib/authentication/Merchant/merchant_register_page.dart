@@ -112,6 +112,7 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: kPrimaryColor,
         title: const Text('Merchant Registration'),
       ),

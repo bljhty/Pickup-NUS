@@ -2,22 +2,97 @@
 // upon clicking on it in the order directory page,
 // also where they can add item to cart
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20details/models/food_info.dart';
+import 'package:orbital_nus/Buyer%20Side/get_information/get_order.dart';
+import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
 import 'package:orbital_nus/colors.dart';
 import 'models/food_add_on.dart';
 import '../../get_information/get_food.dart';
 import 'models/food_detail_image.dart';
 
 // The page shown of specific food after clicking on it in the food directory menu
-class FoodDetailPage extends StatelessWidget {
+
+class FoodDetailPage extends StatefulWidget {
   final Food food;
 
   FoodDetailPage(this.food);
 
-  // TODO: Alert message indicating order has been added to cart
+  @override
+  State<FoodDetailPage> createState() => _FoodDetailPageState();
+}
+
+class _FoodDetailPageState extends State<FoodDetailPage> {
+  //obtain information of current buyer based on log in info
+  final user = FirebaseAuth.instance.currentUser!;
+
+  // obtain buyerId and buyerName from database
+  Username user_info = Username();
+
+  // order class to store the information
+  Order order =
+      Order(
+          quantity: 1, // if not updated, put as 1
+          isOrderPlaced: false,
+          isOrderReady: false,
+          isOrderCollected: false
+      );
+
+  Future addToCart() async {
+    // obtain information about the logged in buyer
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.email)
+        .get()
+        .then((value) {
+          user_info = Username.fromMap(value.data());
+          order.buyerName = user_info.name;
+          order.buyerId = user_info.id;
+          print('done');
+    });
+
+    // create a new document of orders
+    // obtain the newly generated orderId
+    final orderId = FirebaseFirestore.instance.collection('orders').doc();
+    await orderId.set(order.toMap());
+
+    // input the order into the list of the user's cart
+    await FirebaseFirestore.instance
+        .collection('buyer')
+        .doc(order.buyerId)
+        .update({
+      'cart': FieldValue.arrayUnion([orderId.toString()]),
+    });
+
+    // popup alert showing that order has been added to cart (not working)
+    showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: const Text('Added to cart!'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(); // change to redirect to home
+                },
+                child: const Text('Close'),
+              )
+            ],
+          );
+        });
+  }
 
   @override
+  initState() {
+    super.initState();
+    // input all the information from food class into order class
+    order.merchantId = widget.food.merchantId;
+    order.itemId = widget.food.itemId;
+    order.subPrice = widget.food.price;
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
@@ -36,17 +111,17 @@ class FoodDetailPage extends StatelessWidget {
           children: [
             // image of the food item
             // uses food_detail_image.dart
-            FoodImg(food),
+            FoodImg(widget.food),
 
             // information about the food
             //uses food_info.dart
-            FoodInfo(food), // food information
+            FoodInfo(widget.food, order), // food information
             const SizedBox(
               height: 50,
             ),
 
             // Additional instructions
-            const FoodAddOn()
+            FoodAddOn(order),
           ],
         ),
       ),
@@ -81,7 +156,9 @@ class FoodDetailPage extends StatelessWidget {
           ),
           // TODO: Shows Alert Message that item has been added to cart
           // and redirects back to order directory page
-          onPressed: () {},
+          onPressed: () {
+            addToCart();
+          },
         ),
       ),
     );

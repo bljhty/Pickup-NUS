@@ -40,7 +40,7 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
   Future getFoods() async {
     await FirebaseFirestore.instance
         .collection('foods')
-        // .where('merchantId', isEqualTo: widget.restaurant.merchantId) // foods pertaining to specific merchantId only
+        .where('merchantId', isEqualTo: widget.restaurant.merchantId) // foods pertaining to specific merchantId only
         .get()
         .then((snapshot) => snapshot.docs.forEach((food) {
               // for each item, to form it into class Food and add into list foods

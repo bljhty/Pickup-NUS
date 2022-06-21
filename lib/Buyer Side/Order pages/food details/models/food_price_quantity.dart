@@ -1,13 +1,15 @@
 // Indicate price and quantity of food in food_detail_page.dart
 
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Buyer%20Side/get_information/get_order.dart';
 import 'package:orbital_nus/colors.dart';
 import '../../../get_information/get_food.dart';
 
 class FoodPriceQuantity extends StatefulWidget {
   final Food food;
+  final Order order;
 
-  FoodPriceQuantity(this.food);
+  FoodPriceQuantity(this.food, this.order);
 
   @override
   State<FoodPriceQuantity> createState() => _FoodPriceQuantityState();
@@ -81,7 +83,7 @@ class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
                         setState(() {
                           if (_qtyToOrder != 1) {
                             _qtyToOrder--;
-                            widget.food.quantity = _qtyToOrder;
+                            widget.order.quantity = _qtyToOrder;
                           }
                         });
                       },
@@ -115,7 +117,7 @@ class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
                       onPressed: () {
                         setState(() {
                           _qtyToOrder++;
-                          widget.food.quantity = _qtyToOrder;
+                          widget.order.quantity = _qtyToOrder;
                         });
                       },
                       child: const Text(

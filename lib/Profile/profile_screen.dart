@@ -4,6 +4,7 @@ import 'package:orbital_nus/Components/Bottom_bar.dart';
 import 'package:orbital_nus/Components/enum.dart';
 import 'package:orbital_nus/authentication/mainpage.dart';
 import 'package:orbital_nus/authentication/pages/login_screen.dart';
+import 'package:orbital_nus/colors.dart';
 
 class profilescreen extends StatefulWidget {
   const profilescreen({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _profilescreenState extends State<profilescreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue[900],
+        backgroundColor: kPrimaryColor,
         centerTitle: true,
         title: const Text("My Profile",
             style: TextStyle(

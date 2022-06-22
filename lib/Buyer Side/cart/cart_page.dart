@@ -2,12 +2,19 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Buyer%20Side/cart/models/cart_item.dart';
 import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
 import 'package:orbital_nus/Components/Bottom_bar.dart';
 import 'package:orbital_nus/Components/enum.dart';
 import 'package:orbital_nus/colors.dart';
 import 'models/cart_list_view.dart';
+
+/*
+  Cart page which contains orders which are being added in by users by receiving
+  the data that is stored in the data base to update their orders respectively
+*/
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -39,10 +46,24 @@ class _CartPageState extends State<CartPage> {
         .doc(userInfo.id)
         .get()
         .then((value) {
-          final buyerInfo = value.data() as Map<String, dynamic>;
-          orderIds = buyerInfo['cart'];
+      final buyerInfo = value.data() as Map<String, dynamic>;
+      orderIds = buyerInfo['cart'];
+      setState(() {});
     });
   }
+
+  createAlertDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Order has been placed'),
+          );
+        });
+  }
+
+  DatabaseReference reference =
+      FirebaseDatabase.instance.ref('buyer/KL8WZFbrdDlvqZFKdKs5');
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +74,7 @@ class _CartPageState extends State<CartPage> {
       // AppBar with back button and my cart text
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        automaticallyImplyLeading: false,
+        //automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
           'My Cart',
@@ -64,22 +85,21 @@ class _CartPageState extends State<CartPage> {
         ),
       ),
       body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // list of items ordered (to be completed)
-              FutureBuilder(
-                future: getCart(),
-                builder: (context, snapshot) {
-                  return Expanded(
-                    child: CartListView(
-                      pageController,
-                      orderIds,
-                    ),
-                  );
-                }
-              )
-            ],
-          ),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // list of items ordered (to be completed)
+          FutureBuilder(
+              future: getCart(),
+              builder: (context, snapshot) {
+                return Expanded(
+                  child: CartListView(
+                    pageController,
+                    orderIds,
+                  ),
+                );
+              })
+        ],
+      ),
 
       // Order button
       floatingActionButton: SizedBox(
@@ -104,7 +124,15 @@ class _CartPageState extends State<CartPage> {
               ),
             ],
           ),
-          onPressed: () {},
+          onPressed: () {
+            FirebaseFirestore.instance
+                .collection('buyer')
+                .doc('KL8WZFbrdDlvqZFKdKs5')
+                .update({'cart': FieldValue.delete()});
+            setState(() {});
+
+            createAlertDialog(context);
+          },
         ),
       ),
     );

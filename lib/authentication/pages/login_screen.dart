@@ -3,10 +3,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:orbital_nus/Merchant%20side/merchant_home_page.dart';
 import 'package:orbital_nus/colors.dart';
+import '../../Merchant side/merchant_register_page.dart';
 import 'forgot_password_page.dart';
-
 import 'forgot_password_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,11 +17,25 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+/*
+  This is the main log in page for both users as well as merchants 
+  where users will be directed to when they enter the app.
+  contains the logo and the app name 'pickup@NUS'
+  it contains the basic requirements for users to login into the app.
+  contains the sign up buttons for new users who wants to register
+  as a user of the app.  
+*/
+
 class _LoginPageState extends State<LoginPage> {
   // text controllers
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool isVisible = false;
+
+/*
+  Made use of Google firebase as our backend to store user datas when users
+  create a new account.
+*/
 
   // To enable Sign in
   Future signIn() async {
@@ -58,6 +71,12 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
+/*
+  Widgets containing email and password text fields for users to enter 
+  their respective emails and password.
+  contains the signup button for new users which will direct users
+  to the signup page for users to sign into the account
+*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(

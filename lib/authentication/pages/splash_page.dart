@@ -1,8 +1,14 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:orbital_nus/authentication/mainpage.dart';
+
+/*
+  Loading screen when users first boot up the app which contains the
+  logo of our app pickup@NUS.
+  makes use of animation at the start to display the logo of the app and
+  redirect to the log in page afterwards.
+*/
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({Key? key}) : super(key: key);

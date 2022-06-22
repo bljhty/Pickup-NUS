@@ -5,6 +5,15 @@ import 'package:orbital_nus/Profile/profile_screen.dart';
 import 'package:orbital_nus/authentication/pages/orders_page.dart';
 import 'enum.dart';
 
+/*
+  Includes the bottom navigation bar into the app which allows users to navigate
+  between the different pages available.
+  makes use of the navigation bar function with icons in placed.
+  Once clicked, users will be redirected to the respective page accordingly with
+  the material page route function.
+  Once clicked the icons will be highlighted in a certain color to show
+  which page the users are currently on.
+*/
 class Bottombar extends StatelessWidget {
   const Bottombar({
     Key? key,

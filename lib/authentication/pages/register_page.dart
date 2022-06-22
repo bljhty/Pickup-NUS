@@ -6,6 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:orbital_nus/authentication/Merchant/merchant_register_page.dart';
 import 'package:orbital_nus/colors.dart';
 
+/*
+  register page for new users who do not have an account to create one
+  and use the app.
+  contains standard widgets for users to enter their required information that
+  is used to create an account.
+*/
+
 class RegisterPage extends StatefulWidget {
   final VoidCallback showLoginPage;
 
@@ -31,6 +38,11 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
+/*
+  email and password verfication feature to ensure that a valid email is being
+  entered and password used matches the password requirement before users are
+  able to sign up for an account
+*/
   // function which stores the messages to be displayed
   String alertMessage(int regCode) {
     // error messages

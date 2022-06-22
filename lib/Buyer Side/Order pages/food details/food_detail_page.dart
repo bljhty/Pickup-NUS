@@ -55,15 +55,22 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
 
     // create a new document of orders
     // obtain the newly generated orderId
-    final orderId = FirebaseFirestore.instance.collection('orders').doc();
-    await orderId.set(order.toMap());
+    final getorderId = FirebaseFirestore.instance.collection('orders').doc();
+    await getorderId.set(order.toMap());
 
+    // Store the order Id as a string
+    String orderId = '';
+    await getorderId
+        .get()
+        .then((order) {
+      orderId = order.reference.id;
+    });
     // input the order into the list of the user's cart
     await FirebaseFirestore.instance
         .collection('buyer')
         .doc(order.buyerId)
         .update({
-      'cart': FieldValue.arrayUnion([orderId.toString()]),
+      'cart': FieldValue.arrayUnion([orderId]),
     });
 
     // popup alert showing that order has been added to cart (not working)
@@ -89,6 +96,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
     super.initState();
     // input all the information from food class into order class
     order.merchantId = widget.food.merchantId;
+    order.itemName = widget.food.itemName;
     order.itemId = widget.food.itemId;
     order.subPrice = widget.food.price;
   }
@@ -154,8 +162,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
               ),
             ],
           ),
-          // TODO: Shows Alert Message that item has been added to cart
-          // and redirects back to order directory page
+          // Add items to cart and update the database
           onPressed: () {
             addToCart();
           },

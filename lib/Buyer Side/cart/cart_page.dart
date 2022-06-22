@@ -1,8 +1,9 @@
 // Page to view the food items in the cart and to finalize the orders
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer Side/get_information/restaurant.dart';
-import 'package:orbital_nus/Buyer%20Side/Order pages/restaurant%20selection/restaurant_directory_page.dart';
+import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
 import 'package:orbital_nus/Components/Bottom_bar.dart';
 import 'package:orbital_nus/Components/enum.dart';
 import 'package:orbital_nus/colors.dart';
@@ -16,30 +17,32 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  var selected = 0;
   final pageController = PageController();
-  final restaurant = Restaurant.generateRestaurant('TechnoEdge');
 
-  // Alert message indicating order has been sent
-  Future orderSubmittedNotif() => showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AlertDialog(
-            title: const Text('Order has been sent to the kitchen'),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) {
-                        // redirects back to user home page once message is closed
-                        return const RestaurantDirectoryPage();
-                      }),
-                    );
-                  },
-                  child: const Text('Close'))
-            ],
-          ));
+  // Placeholders to store information of user
+  Username userInfo = Username();
+  List<dynamic> orderIds = []; // to store list of orderIds of buyer's cart
+
+  // to obtain the cart of the buyer
+  Future getCart() async {
+    // obtain information about logged in buyer
+    final user = FirebaseAuth.instance.currentUser!;
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.email)
+        .get()
+        .then((value) {
+      userInfo = Username.fromMap(value.data());
+    });
+    await FirebaseFirestore.instance
+        .collection('buyer')
+        .doc(userInfo.id)
+        .get()
+        .then((value) {
+          final buyerInfo = value.data() as Map<String, dynamic>;
+          orderIds = buyerInfo['cart'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,23 +64,22 @@ class _CartPageState extends State<CartPage> {
         ),
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // list of items ordered (to be completed)
-          Expanded(
-            child: CartListView(
-              selected,
-              (int index) {
-                setState(() {
-                  selected = index;
-                });
-              },
-              pageController,
-              restaurant[selected],
-            ),
-          )
-        ],
-      ),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // list of items ordered (to be completed)
+              FutureBuilder(
+                future: getCart(),
+                builder: (context, snapshot) {
+                  return Expanded(
+                    child: CartListView(
+                      pageController,
+                      orderIds,
+                    ),
+                  );
+                }
+              )
+            ],
+          ),
 
       // Order button
       floatingActionButton: SizedBox(
@@ -102,9 +104,7 @@ class _CartPageState extends State<CartPage> {
               ),
             ],
           ),
-          onPressed: () {
-            orderSubmittedNotif();
-          },
+          onPressed: () {},
         ),
       ),
     );

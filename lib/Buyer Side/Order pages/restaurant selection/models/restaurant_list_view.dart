@@ -12,7 +12,8 @@ class RestaurantListView extends StatelessWidget {
   final PageController pageController;
   final Map<String, List<Restaurant>> places;
 
-  RestaurantListView(this.selected,
+  RestaurantListView(
+      this.selected,
       this.callback,
       this.pageController,
       this.places);

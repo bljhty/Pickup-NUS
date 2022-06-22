@@ -3,6 +3,7 @@ class Order {
   String? buyerId;
   String? buyerName;
   String? merchantId;
+  String? itemName;
   String? itemId;
   String? instructions;
   num? quantity;
@@ -15,6 +16,7 @@ class Order {
     this.buyerId,
     this.buyerName,
     this.merchantId,
+    this.itemName,
     this.itemId,
     this.instructions,
     this.quantity,
@@ -30,6 +32,7 @@ class Order {
       buyerId: map['buyerId'],
       buyerName: map['buyerName'],
       merchantId: map['merchantId'],
+      itemName: map['itemName'],
       itemId: map['itemId'],
       instructions: map['instructions'],
       quantity: map['quantity'],
@@ -46,6 +49,7 @@ class Order {
       'buyerId': buyerId,
       'buyerName': buyerName,
       'merchantId': merchantId,
+      'itemName': itemName,
       'itemId': itemId,
       'instructions': instructions,
       'quantity': quantity,

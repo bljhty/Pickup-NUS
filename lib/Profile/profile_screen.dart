@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Components/Bottom_bar.dart';
 import 'package:orbital_nus/Components/enum.dart';
+import 'package:orbital_nus/Profile/Past%20Orders/past_order_page.dart';
 import 'package:orbital_nus/authentication/mainpage.dart';
-import 'package:orbital_nus/authentication/pages/login_screen.dart';
 import 'package:orbital_nus/colors.dart';
 
 class profilescreen extends StatefulWidget {
@@ -62,7 +62,11 @@ class _profilescreenState extends State<profilescreen> {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16.0),
                         )),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const PastOrderPage()
+                      ));
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[

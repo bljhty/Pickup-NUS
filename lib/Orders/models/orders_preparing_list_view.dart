@@ -1,14 +1,18 @@
-// Provides a list view of the food items currently in the cart
-// at cart_page.dart
-import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/cart/edit_order_page.dart';
-import 'cart_item.dart';
+// List containing boxes (order_box) that displays
+// information of orders being prepared
+// displayed in orders_page.dart
 
-class CartListView extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:orbital_nus/Orders/models/order_box.dart';
+
+class OrdersPreparingListView extends StatelessWidget {
   final PageController pageController;
   final List<dynamic> orderIds;
 
-  CartListView(this.pageController, this.orderIds);
+  OrdersPreparingListView(
+    this.pageController,
+    this.orderIds,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +24,8 @@ class CartListView extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         itemBuilder: (context, index) {
           return GestureDetector(
-            onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => EditOrderPage(orderIds[index]),
-              ));
-            },
-            child: CartItem(orderIds[index]),
+            onTap: () {},
+            child: OrderBox(orderIds[index]),
           );
         },
         separatorBuilder: (context, index) {

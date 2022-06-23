@@ -16,7 +16,8 @@ class FoodPriceQuantity extends StatefulWidget {
 }
 
 class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
-  num _qtyToOrder = 1; // to change to access the quantity
+  int _qtyToOrder = 1;
+
   @override
   Widget build(BuildContext context) {
     return Container(

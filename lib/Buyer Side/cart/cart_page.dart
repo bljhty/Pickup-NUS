@@ -9,6 +9,7 @@ import 'package:orbital_nus/Buyer%20Side/cart/models/cart_item.dart';
 import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
 import 'package:orbital_nus/Components/Bottom_bar.dart';
 import 'package:orbital_nus/Components/enum.dart';
+import 'package:orbital_nus/Orders/orders_page.dart';
 import 'package:orbital_nus/authentication/pages/login_screen.dart';
 import 'package:orbital_nus/colors.dart';
 import 'models/cart_list_view.dart';
@@ -67,6 +68,27 @@ class _CartPageState extends State<CartPage> {
     FirebaseFirestore.instance.collection('buyer').doc(userInfo.id).update({
       "cart": FieldValue.arrayRemove(orderIds),
     });
+
+    // Navigate to OrderPage and show alert message that order has been placed
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => const OrdersPage(),
+    ));
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: const Text('Order sent!'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Close'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   // Alert dialog pop up to confirm submitting order
@@ -157,16 +179,7 @@ class _CartPageState extends State<CartPage> {
             ],
           ),
           onPressed: () {
-            FirebaseFirestore.instance
-                .collection('buyer')
-                .doc('KL8WZFbrdDlvqZFKdKs5')
-                .update({'cart': FieldValue.delete()});
-            setState(() {});
-            createAlertDialog(context);
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const RestaurantDirectoryPage()));
+            confirmSubmission();
           },
         ),
       ),

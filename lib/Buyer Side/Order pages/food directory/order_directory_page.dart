@@ -103,7 +103,9 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
               ],
             );
           }
-          return const Text('Loading...');
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );

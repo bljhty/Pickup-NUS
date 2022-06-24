@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Orders/models/order_box.dart';
+import 'package:orbital_nus/colors.dart';
 
 class OrdersPreparingListView extends StatelessWidget {
   final PageController pageController;
@@ -17,8 +18,8 @@ class OrdersPreparingListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      color: kBackgroundColor,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: ListView.separated(
         controller: pageController,
         padding: const EdgeInsets.all(12),

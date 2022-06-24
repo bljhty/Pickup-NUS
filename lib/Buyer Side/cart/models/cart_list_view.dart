@@ -7,8 +7,7 @@ class CartListView extends StatelessWidget {
   final PageController pageController;
   final List<dynamic> orderIds;
 
-  CartListView(this.pageController,
-      this.orderIds);
+  CartListView(this.pageController, this.orderIds);
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +16,13 @@ class CartListView extends StatelessWidget {
       child: ListView.separated(
         controller: pageController,
         padding: const EdgeInsets.all(12),
-          itemBuilder: (context, index) {
+        itemBuilder: (context, index) {
           return CartItem(orderIds[index]);
-          },
-          separatorBuilder: (context, index) {
+        },
+        separatorBuilder: (context, index) {
           return const SizedBox(height: 12);
-          },
-          itemCount: orderIds.length,
+        },
+        itemCount: orderIds.length,
       ),
     );
   }

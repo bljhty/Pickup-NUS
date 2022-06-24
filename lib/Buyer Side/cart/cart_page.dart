@@ -2,10 +2,14 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Buyer%20Side/Order%20pages/restaurant%20selection/restaurant_directory_page.dart';
+import 'package:orbital_nus/Buyer%20Side/cart/models/cart_item.dart';
 import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
 import 'package:orbital_nus/Components/Bottom_bar.dart';
 import 'package:orbital_nus/Components/enum.dart';
+import 'package:orbital_nus/authentication/pages/login_screen.dart';
 import 'package:orbital_nus/colors.dart';
 import 'models/cart_list_view.dart';
 
@@ -39,7 +43,6 @@ class _CartPageState extends State<CartPage> {
         .then((value) {
       userInfo = Username.fromMap(value.data());
     });
-    // obtain and update list of orderIds
     await FirebaseFirestore.instance
         .collection('buyer')
         .doc(userInfo.id)
@@ -47,64 +50,26 @@ class _CartPageState extends State<CartPage> {
         .then((value) {
       final buyerInfo = value.data() as Map<String, dynamic>;
       orderIds = buyerInfo['cart'];
-      // update the page with setState
       setState(() {});
     });
   }
 
-  // to update the database to submit the order to merchant and empty the cart
-  Future submitCart() async {
-    // update database to submit the orders (i.e. change isOrderPlaced to true)
-    for (var orderId in orderIds) {
-      FirebaseFirestore.instance
-          .collection('orders')
-          .doc(orderId)
-          .update({
-        "isOrderPlaced": true,
-      });
-    }
-    
-    // empty the cart of the buyer (i.e. remove list of orderIds from cart)
-    FirebaseFirestore.instance
-    .collection('buyer')
-    .doc(userInfo.id)
-    .update({
-      "cart": FieldValue.arrayRemove(orderIds),
-    });
+  createAlertDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Order has been placed'),
+          );
+        });
   }
 
-  // Alert dialog pop up to confirm submitting order
-  Future confirmSubmission() async {
-    showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: const Text('Confirm Submit Order?'),
-            actions: <Widget>[
-              //confirm button
-              TextButton(
-                  onPressed: (){
-                    submitCart();
-                  },
-                  child: const Text('Confirm'),
-              ),
-              // cancel button
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Cancel'),
-              ),
-            ],
-          );
-        }
-    );
-  }
+  DatabaseReference reference =
+      FirebaseDatabase.instance.ref('buyer/KL8WZFbrdDlvqZFKdKs5');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
       bottomNavigationBar: const Bottombar(
         selectMenu: MenuState.home,
       ),
@@ -162,7 +127,16 @@ class _CartPageState extends State<CartPage> {
             ],
           ),
           onPressed: () {
-            confirmSubmission();
+            FirebaseFirestore.instance
+                .collection('buyer')
+                .doc('KL8WZFbrdDlvqZFKdKs5')
+                .update({'cart': FieldValue.delete()});
+            setState(() {});
+            createAlertDialog(context);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const RestaurantDirectoryPage()));
           },
         ),
       ),

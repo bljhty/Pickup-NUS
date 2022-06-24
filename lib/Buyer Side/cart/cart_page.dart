@@ -54,18 +54,47 @@ class _CartPageState extends State<CartPage> {
     });
   }
 
-  createAlertDialog(BuildContext context) {
-    return showDialog(
+  // to update the database to submit the order to merchant and empty the cart
+  Future submitCart() async {
+    // update database to submit the orders (i.e. change isOrderPlaced to true)
+    for (var orderId in orderIds) {
+      FirebaseFirestore.instance.collection('orders').doc(orderId).update({
+        "isOrderPlaced": true,
+      });
+    }
+
+    // empty the cart of the buyer (i.e. remove list of orderIds from cart)
+    FirebaseFirestore.instance.collection('buyer').doc(userInfo.id).update({
+      "cart": FieldValue.arrayRemove(orderIds),
+    });
+  }
+
+  // Alert dialog pop up to confirm submitting order
+  Future confirmSubmission() async {
+    showDialog<void>(
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Order has been placed'),
+            content: const Text('Confirm Submit Order?'),
+            actions: <Widget>[
+              //confirm button
+              TextButton(
+                onPressed: () {
+                  submitCart();
+                },
+                child: const Text('Confirm'),
+              ),
+              // cancel button
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Cancel'),
+              ),
+            ],
           );
         });
   }
-
-  DatabaseReference reference =
-      FirebaseDatabase.instance.ref('buyer/KL8WZFbrdDlvqZFKdKs5');
 
   @override
   Widget build(BuildContext context) {
@@ -91,15 +120,16 @@ class _CartPageState extends State<CartPage> {
         children: [
           // list of items ordered (to be completed)
           FutureBuilder(
-              future: getCart(),
-              builder: (context, snapshot) {
-                return Expanded(
-                  child: CartListView(
-                    pageController,
-                    orderIds,
-                  ),
-                );
-              })
+            future: getCart(),
+            builder: (context, snapshot) {
+              return Expanded(
+                child: CartListView(
+                  pageController,
+                  orderIds,
+                ),
+              );
+            },
+          ),
         ],
       ),
 

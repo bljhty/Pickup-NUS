@@ -19,7 +19,6 @@ class CartListView extends StatelessWidget {
         controller: pageController,
         padding: const EdgeInsets.all(12),
         itemBuilder: (context, index) {
-          return CartItem(orderIds[index]);
           return GestureDetector(
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(

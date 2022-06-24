@@ -39,7 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
 /*
-  email and password verfication feature to ensure that a valid email is being
+  email and password verification feature to ensure that a valid email is being
   entered and password used matches the password requirement before users are
   able to sign up for an account
 */
@@ -103,14 +103,25 @@ class _RegisterPageState extends State<RegisterPage> {
 
   // Add information about the buyer into the database
   Future addBuyerDetails(String name, String email) async {
-    // add onto user database
-    await FirebaseFirestore.instance
-        .collection('users')
-        .add({'name': name, 'email': email, 'userType': 'Buyer'});
-
     // add onto buyer database
-    await FirebaseFirestore.instance.collection('buyers').add({
-      'name': name,
+    final getBuyerId = FirebaseFirestore.instance.collection('buyer').doc();
+    // store buyerId as a string to be used
+    String buyerId = '';
+    await getBuyerId.get().then((buyer) {
+      buyerId = buyer.reference.id;
+    });
+    // set relevant information for buyer
+    await getBuyerId.set({
+      'buyerId': buyerId,
+      'buyerName': name,
+      'cart': [],
+    });
+
+    // add onto user database
+    await FirebaseFirestore.instance.collection('users').doc(email).set({
+      "name": name,
+      "id": buyerId,
+      "userType": "Buyer",
     });
   }
 

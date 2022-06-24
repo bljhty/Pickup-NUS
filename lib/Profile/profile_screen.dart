@@ -34,12 +34,11 @@ class _profilescreenState extends State<profilescreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(height: 10),
-                Text(
-                  'Bob',
-                  style: GoogleFonts.robotoCondensed(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                Image.asset(
+                  'assets/images/Logo.png',
+                  height: 150,
+                  width: 150,
+                  color: kPrimaryColor,
                 ),
                 const SizedBox(
                   height: 30,

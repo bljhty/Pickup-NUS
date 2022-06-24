@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/cart/cart_page.dart';
 import 'package:orbital_nus/Buyer%20Side/Order pages/restaurant%20selection/restaurant_directory_page.dart';
+import 'package:orbital_nus/Orders/orders_page.dart';
 import 'package:orbital_nus/Profile/profile_screen.dart';
-import 'package:orbital_nus/authentication/pages/orders_page.dart';
+import 'package:orbital_nus/colors.dart';
 import 'enum.dart';
 
 /*
@@ -39,7 +40,7 @@ class Bottombar extends StatelessWidget {
             )
           ]),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        //Homebutton on bottom navigation bar
+        //Home button on bottom navigation bar
         IconButton(
           onPressed: () {
             Navigator.push(
@@ -49,7 +50,7 @@ class Bottombar extends StatelessWidget {
           },
           icon: Icon(Icons.home_outlined,
               color: MenuState.home == selectMenu
-                  ? Color(0xff09b44d)
+                  ? kSecondaryColor
                   : Colors.grey,
               size: 30),
         ),
@@ -57,11 +58,11 @@ class Bottombar extends StatelessWidget {
         IconButton(
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const orderspage()));
+                MaterialPageRoute(builder: (context) => const OrdersPage()));
           },
           icon: Icon(Icons.receipt_long_outlined,
               color: MenuState.orders == selectMenu
-                  ? Color(0xff09b44d)
+                  ? kSecondaryColor
                   : Colors.grey,
               size: 30),
         ),
@@ -73,7 +74,7 @@ class Bottombar extends StatelessWidget {
           },
           icon: Icon(Icons.shopping_cart_outlined,
               color: MenuState.cart == selectMenu
-                  ? Color(0xff09b44d)
+                  ? kSecondaryColor
                   : Colors.grey,
               size: 30),
         ),
@@ -85,7 +86,7 @@ class Bottombar extends StatelessWidget {
           },
           icon: Icon(Icons.person_outline,
               color: MenuState.profile == selectMenu
-                  ? Color(0xff09b44d)
+                  ? kSecondaryColor
                   : Colors.grey,
               size: 30),
         ),

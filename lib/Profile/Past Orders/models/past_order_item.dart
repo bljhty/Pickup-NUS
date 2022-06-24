@@ -1,34 +1,13 @@
-// indicates the specific descriptions of the food items in the cart
-// through cart_list_view.dart in cart_page.dart
+// indicates the descriptions of the specific past orders
+// through past_order_list_view.dart in past_order_page.dart
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/get_information/get_order.dart';
 
-class CartItem extends StatefulWidget {
-  final String orderId;
+class PastOrderItem extends StatelessWidget {
+  final Order order;
 
-  CartItem(this.orderId);
-
-  @override
-  State<CartItem> createState() => _CartItemState();
-}
-
-class _CartItemState extends State<CartItem> {
-  Order order = Order();
-
-  @override
-  void initState() {
-    super.initState();
-    // get order info
-    FirebaseFirestore.instance
-        .collection('orders')
-        .doc(widget.orderId)
-        .get()
-        .then((value) {
-      order = Order.fromMap(value.data());
-    });
-  }
+  PastOrderItem(this.order);
 
   @override
   Widget build(BuildContext context) {

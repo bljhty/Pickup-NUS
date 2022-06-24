@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:orbital_nus/authentication/mainpage.dart';
 import 'package:orbital_nus/authentication/pages/splash_page.dart';
-import 'authentication/pages/login_screen.dart';
 
 
 void main() async {

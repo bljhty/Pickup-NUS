@@ -1,3 +1,6 @@
+// Page which displays buyer's orders and its current status,
+// whether it is still being prepared or ready for collection
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

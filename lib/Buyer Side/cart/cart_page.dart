@@ -121,13 +121,10 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const Bottombar(
-        selectMenu: MenuState.home,
-      ),
       // AppBar with back button and my cart text
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        //automaticallyImplyLeading: false,
+        automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
           'My Cart',
@@ -137,6 +134,8 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
       ),
+      bottomNavigationBar: const Bottombar(selectMenu: MenuState.cart),
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

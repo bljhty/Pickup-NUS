@@ -40,7 +40,9 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
   Future getFoods() async {
     await FirebaseFirestore.instance
         .collection('foods')
-        .where('merchantId', isEqualTo: widget.restaurant.merchantId) // foods pertaining to specific merchantId only
+        .where('merchantId',
+            isEqualTo: widget.restaurant
+                .merchantId) // foods pertaining to specific merchantId only
         .get()
         .then((snapshot) => snapshot.docs.forEach((food) {
               // for each item, to form it into class Food and add into list foods
@@ -70,8 +72,9 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
         selectMenu: MenuState.home,
       ),
       body: FutureBuilder(
-          future: getFoods(), // wait to compile foods
-          builder: (context, snapshot) {
+        future: getFoods(), // wait to compile foods
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -99,7 +102,10 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
                 ),
               ],
             );
-          }),
+          }
+          return const Text('Loading...');
+        },
+      ),
     );
   }
 }

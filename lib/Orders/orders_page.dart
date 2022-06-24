@@ -47,13 +47,13 @@ class _OrdersPageState extends State<OrdersPage> {
         .where('isOrderPlaced', isEqualTo: true)
         .where('isOrderReady', isEqualTo: false)
         .get()
-        .then((snapshot) =>
-        snapshot.docs.forEach(
-              (orderId) {
-            orderIdsPreparing.add(orderId.reference.id);
-          },
-        ),
-    );
+        .then(
+          (snapshot) => snapshot.docs.forEach(
+            (orderId) {
+              orderIdsPreparing.add(orderId.reference.id);
+            },
+          ),
+        );
 
     // obtain orderIds that are ready for collection
     await FirebaseFirestore.instance
@@ -62,13 +62,13 @@ class _OrdersPageState extends State<OrdersPage> {
         .where('isOrderReady', isEqualTo: true)
         .where('isOrderCollected', isEqualTo: false)
         .get()
-        .then((snapshot) =>
-        snapshot.docs.forEach(
-              (orderId) {
-            orderIdsReady.add(orderId.reference.id);
-          },
-        ),
-    );
+        .then(
+          (snapshot) => snapshot.docs.forEach(
+            (orderId) {
+              orderIdsReady.add(orderId.reference.id);
+            },
+          ),
+        );
     // if i put setState, it is gonna continue running and keep adding on to the list
   }
 
@@ -87,6 +87,7 @@ class _OrdersPageState extends State<OrdersPage> {
           ),
         ),
       ),
+      bottomNavigationBar: const Bottombar(selectMenu: MenuState.orders),
       body: FutureBuilder(
         future: getOrders(),
         builder: (context, snapshot) {
@@ -112,9 +113,7 @@ class _OrdersPageState extends State<OrdersPage> {
 
                 Expanded(
                   child: OrdersPreparingListView(
-                      pageControllerPreparing,
-                      orderIdsPreparing
-                  ),
+                      pageControllerPreparing, orderIdsPreparing),
                 ),
 
                 // List of foods ready for collection
@@ -134,19 +133,14 @@ class _OrdersPageState extends State<OrdersPage> {
                 ),
 
                 Expanded(
-                  child: OrdersReadyListView(
-                      pageControllerReady,
-                      orderIdsReady
-                  ),
+                  child:
+                      OrdersReadyListView(pageControllerReady, orderIdsReady),
                 ),
               ],
             );
           }
           return const Text('Loading...');
         },
-      ),
-      bottomNavigationBar: const Bottombar(
-        selectMenu: MenuState.orders,
       ),
     );
   }

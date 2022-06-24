@@ -20,13 +20,13 @@ class _profilescreenState extends State<profilescreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF003D7C),
+        backgroundColor: kPrimaryColor,
         automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text('My Profile'),
       ),
-      bottomNavigationBar: const Bottombar(selectMenu: MenuState.home),
-      backgroundColor: Colors.white,
+      bottomNavigationBar: const Bottombar(selectMenu: MenuState.profile),
+      backgroundColor: kBackgroundColor,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

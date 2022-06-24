@@ -25,6 +25,7 @@ class _RestaurantDirectoryPageState extends State<RestaurantDirectoryPage> {
   // Obtaining relevant places for order from database
   // List of restaurants available for order
   List<Restaurant> restaurants = [];
+
   // Map listing the locations as key and the list of restaurants in said location
   Map<String, List<Restaurant>> places = {};
 
@@ -34,13 +35,9 @@ class _RestaurantDirectoryPageState extends State<RestaurantDirectoryPage> {
         .collection('restaurants')
         .where('isOpenForOrder', isEqualTo: true)
         .get()
-        .then(
-        (snapshot) => snapshot.docs.forEach(
-            (restaurant) {
+        .then((snapshot) => snapshot.docs.forEach((restaurant) {
               restaurants.add(Restaurant.fromMap(restaurant.data()));
-            }
-        )
-    );
+            }));
 
     // sorting the restaurants based on location in map places
     restaurants.forEach((restaurant) {
@@ -56,9 +53,6 @@ class _RestaurantDirectoryPageState extends State<RestaurantDirectoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const Bottombar(
-        selectMenu: MenuState.home,
-      ),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: kPrimaryColor,
@@ -68,37 +62,42 @@ class _RestaurantDirectoryPageState extends State<RestaurantDirectoryPage> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
+      bottomNavigationBar: const Bottombar(selectMenu: MenuState.home),
       body: FutureBuilder(
         future: getRestaurants(), // wait to compile places
         builder: (context, snapshot) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Bar to select the locations to order from
-              // uses place_select.dart
-              PlaceSelect(selected, (int index) {
-                setState(() {
-                  selected = index;
-                });
-                pageController.jumpToPage(index);
-              }, places),
-
-              // List of the available restaurants in
-              // the particular location selected in PlaceSelect
-              Expanded(
-                  child: RestaurantListView(
-                selected,
-                (int index) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Bar to select the locations to order from
+                // uses place_select.dart
+                PlaceSelect(selected, (int index) {
                   setState(() {
                     selected = index;
                   });
-                },
-                pageController,
-                places,
-              )),
-            ],
-          );
-        }
+                  pageController.jumpToPage(index);
+                }, places),
+
+                // List of the available restaurants in
+                // the particular location selected in PlaceSelect
+                Expanded(
+                  child: RestaurantListView(
+                    selected,
+                    (int index) {
+                      setState(() {
+                        selected = index;
+                      });
+                    },
+                    pageController,
+                    places,
+                  ),
+                ),
+              ],
+            );
+          }
+          return const Text('Loading...');
+        },
       ),
     );
   }

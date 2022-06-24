@@ -75,8 +75,6 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // TODO: include the appbar
-
                 // Top information, regarding the food stall being ordered from
                 // uses restaurant_info.dart as widget
                 RestaurantInfo(widget.restaurant),

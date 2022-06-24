@@ -90,56 +90,59 @@ class _OrdersPageState extends State<OrdersPage> {
       body: FutureBuilder(
         future: getOrders(),
         builder: (context, snapshot) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // List of foods being prepared
-              Container(
-                width: double.maxFinite,
-                height: 40,
-                color: Colors.grey,
-                alignment: Alignment.centerLeft,
-                child: const Text(
-                  'Being prepared:',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // List of foods being prepared
+                Container(
+                  width: double.maxFinite,
+                  height: 40,
+                  color: Colors.grey,
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    'Being prepared:',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
-              ),
 
-              Expanded(
-                child: OrdersPreparingListView(
-                    pageControllerPreparing,
-                    orderIdsPreparing
-                ),
-              ),
-
-              // List of foods ready for collection
-              Container(
-                width: double.maxFinite,
-                height: 40,
-                color: Colors.grey,
-                alignment: Alignment.centerLeft,
-                child: const Text(
-                  'Ready for Collection:',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                Expanded(
+                  child: OrdersPreparingListView(
+                      pageControllerPreparing,
+                      orderIdsPreparing
                   ),
                 ),
-              ),
 
-              Expanded(
-                child: OrdersReadyListView(
-                  pageControllerReady,
-                  orderIdsReady
+                // List of foods ready for collection
+                Container(
+                  width: double.maxFinite,
+                  height: 40,
+                  color: Colors.grey,
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    'Ready for Collection:',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
-              ),
-            ],
-          );
+
+                Expanded(
+                  child: OrdersReadyListView(
+                      pageControllerReady,
+                      orderIdsReady
+                  ),
+                ),
+              ],
+            );
+          }
+          return const Text('Loading...');
         },
       ),
       bottomNavigationBar: const Bottombar(

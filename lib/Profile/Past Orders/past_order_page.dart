@@ -26,12 +26,13 @@ class _PastOrderPageState extends State<PastOrderPage> {
     // obtain information about logged in buyer
     final user = FirebaseAuth.instance.currentUser!;
     await FirebaseFirestore.instance
-        .collection('collectionPath')
+        .collection('users')
         .doc(user.email)
         .get()
         .then((value) {
       userInfo = Username.fromMap(value.data());
     });
+
     // obtain list of past orders and store in pastOrders
     await FirebaseFirestore.instance
         .collection('orders')
@@ -69,8 +70,12 @@ class _PastOrderPageState extends State<PastOrderPage> {
           FutureBuilder(
             future: getPastOrders(),
             builder: (context, snapshot) {
-              return Expanded(
-                  child: PastOrderListView(pageController, pastOrders));
+              if (snapshot.connectionState == ConnectionState.done) {
+                return Expanded(
+                  child: PastOrderListView(pageController, pastOrders),
+                );
+              }
+              return const Text('loading...');
             },
           ),
         ],

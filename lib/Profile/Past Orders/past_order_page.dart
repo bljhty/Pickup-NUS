@@ -75,7 +75,9 @@ class _PastOrderPageState extends State<PastOrderPage> {
                   child: PastOrderListView(pageController, pastOrders),
                 );
               }
-              return const Text('loading...');
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             },
           ),
         ],

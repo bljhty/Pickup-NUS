@@ -30,7 +30,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
   final user = FirebaseAuth.instance.currentUser!;
 
   // obtain buyerId and buyerName from database
-  Username user_info = Username();
+  Username userInfo = Username();
 
   // order class to store the information
   Order order =
@@ -48,10 +48,9 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
         .doc(user.email)
         .get()
         .then((value) {
-          user_info = Username.fromMap(value.data());
-          order.buyerName = user_info.name;
-          order.buyerId = user_info.id;
-          print('done');
+          userInfo = Username.fromMap(value.data());
+          order.buyerName = userInfo.name;
+          order.buyerId = userInfo.id;
     });
 
     // create a new document of orders

@@ -96,7 +96,9 @@ class _RestaurantDirectoryPageState extends State<RestaurantDirectoryPage> {
               ],
             );
           }
-          return const Text('Loading...');
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );

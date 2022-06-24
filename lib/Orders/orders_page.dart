@@ -72,7 +72,6 @@ class _OrdersPageState extends State<OrdersPage> {
             },
           ),
         );
-    // if i put setState, it is gonna continue running and keep adding on to the list
   }
 
   @override
@@ -142,7 +141,9 @@ class _OrdersPageState extends State<OrdersPage> {
               ],
             );
           }
-          return const Text('Loading...');
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );

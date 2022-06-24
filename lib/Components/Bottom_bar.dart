@@ -25,7 +25,7 @@ class Bottombar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.only(
@@ -78,7 +78,7 @@ class Bottombar extends StatelessWidget {
                   : Colors.grey,
               size: 30),
         ),
-        //Profile button on bottom navigation bar
+        // Profile button on bottom navigation bar
         IconButton(
           onPressed: () {
             Navigator.push(context,

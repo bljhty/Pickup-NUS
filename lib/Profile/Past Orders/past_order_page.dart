@@ -54,7 +54,7 @@ class _PastOrderPageState extends State<PastOrderPage> {
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         backgroundColor: kPrimaryColor,
-        automaticallyImplyLeading: false,
+        //automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
           'Past Orders',

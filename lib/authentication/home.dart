@@ -28,8 +28,6 @@ class _HomeState extends State<Home> {
         .then((value) {
       userInfo = Username.fromMap(value.data());
     });
-    print('OVER HERE!');
-    print(userInfo.userType);
   }
 
   @override

@@ -3,10 +3,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Buyer%20Side/Components/Bottom_bar.dart';
+import 'package:orbital_nus/Buyer%20Side/Components/enum.dart';
+import 'package:orbital_nus/Buyer%20Side/Orders/orders_page.dart';
 import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
-import 'package:orbital_nus/Components/Bottom_bar.dart';
-import 'package:orbital_nus/Components/enum.dart';
-import 'package:orbital_nus/Orders/orders_page.dart';
 import 'package:orbital_nus/colors.dart';
 import 'models/cart_list_view.dart';
 
@@ -47,7 +47,6 @@ class _CartPageState extends State<CartPage> {
         .then((value) {
       final buyerInfo = value.data() as Map<String, dynamic>;
       orderIds = buyerInfo['cart'];
-      setState(() {});
     });
   }
 

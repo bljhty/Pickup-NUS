@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20details/food_detail_page.dart';
 import 'package:orbital_nus/Buyer%20Side/get_information/get_food.dart';
+import 'package:orbital_nus/colors.dart';
 import 'food_item.dart';
 
 class FoodListView extends StatelessWidget {
@@ -12,13 +13,13 @@ class FoodListView extends StatelessWidget {
   final List<String> menuType;
   final Map<String, List<Food>> foods;
 
-  FoodListView(
-      this.selected, this.callback, this.pageController, this.menuType, this.foods);
+  FoodListView(this.selected, this.callback, this.pageController, this.menuType,
+      this.foods);
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
+      color: kBackgroundColor,
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: PageView(
           controller: pageController,
@@ -34,8 +35,7 @@ class FoodListView extends StatelessWidget {
                                 foods[menuType[selected]]![index])));
                       },
                       // uses food_item.dart to show how the food item is laid out
-                      child: FoodItem(
-                          foods[menuType[selected]]![index])),
+                      child: FoodItem(foods[menuType[selected]]![index])),
                   separatorBuilder: (_, index) => const SizedBox(
                         height: 15,
                       ),

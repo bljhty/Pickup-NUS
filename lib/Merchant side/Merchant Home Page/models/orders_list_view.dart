@@ -2,7 +2,7 @@
 // displayed in merchant_home_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Orders/models/order_box.dart';
+import 'package:orbital_nus/Buyer%20Side/Orders/models/order_box.dart';
 import 'package:orbital_nus/colors.dart';
 
 class OrdersListView extends StatelessWidget {

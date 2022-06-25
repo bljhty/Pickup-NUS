@@ -3,9 +3,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Buyer%20Side/Profile/Past%20Orders/models/past_order_list_view.dart';
 import 'package:orbital_nus/Buyer%20Side/get_information/get_order.dart';
 import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
-import 'package:orbital_nus/Profile/Past%20Orders/models/past_order_list_view.dart';
 import 'package:orbital_nus/colors.dart';
 
 class PastOrderPage extends StatefulWidget {

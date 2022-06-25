@@ -137,6 +137,7 @@ class _RegisterPageState extends State<RegisterPage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: kPrimaryColor,
+          centerTitle: true,
           title: const Text('User Registration'),
           automaticallyImplyLeading: false,
         ),
@@ -148,25 +149,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                  // sign up as a Merchant
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return const MerchantRegisterPage();
-                        }),
-                      );
-                    },
-                    child: const Text(
-                      'Sign up as a Merchant instead?',
-                      style: TextStyle(
-                        color: kSecondaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-
                   // pickup@NUS logo
                   Image.asset(
                     'assets/images/Logo.png',
@@ -277,7 +259,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 30),
 
                   // Sign Up button
                   Padding(
@@ -303,7 +285,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
 
                   // Sign In button
                   Row(
@@ -328,6 +310,28 @@ class _RegisterPageState extends State<RegisterPage> {
                         ),
                       ),
                     ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+
+                  // sign up as a Merchant
+                  GestureDetector(
+                    onTap: () {
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) {
+                      //     return const MerchantRegisterPage();
+                      //   }),
+                      // );
+                    },
+                    child: const Text(
+                      'Sign up as a Merchant instead? (Coming soon)',
+                      style: TextStyle(
+                        color: kSecondaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ],
               ),

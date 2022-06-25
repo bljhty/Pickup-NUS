@@ -1,8 +1,9 @@
 // Provides a list view of the past orders from the buyer
 
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Buyer%20Side/Profile/Past%20Orders/models/past_order_item.dart';
 import 'package:orbital_nus/Buyer%20Side/get_information/get_order.dart';
-import 'package:orbital_nus/Profile/Past%20Orders/models/past_order_item.dart';
+import 'package:orbital_nus/colors.dart';
 
 class PastOrderListView extends StatelessWidget {
   final PageController pageController;
@@ -14,8 +15,8 @@ class PastOrderListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      color: kBackgroundColor,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: ListView.separated(
           controller: pageController,
           padding: const EdgeInsets.all(12),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Buyer%20Side/Orders/orders_page.dart';
+import 'package:orbital_nus/Buyer%20Side/Profile/profile_screen.dart';
 import 'package:orbital_nus/Buyer%20Side/cart/cart_page.dart';
 import 'package:orbital_nus/Buyer%20Side/Order pages/restaurant%20selection/restaurant_directory_page.dart';
-import 'package:orbital_nus/Orders/orders_page.dart';
-import 'package:orbital_nus/Profile/profile_screen.dart';
 import 'package:orbital_nus/colors.dart';
 import 'enum.dart';
 

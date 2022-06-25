@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/order_directory_page.dart';
 import 'package:orbital_nus/Buyer%20Side/get_information/get_restaurant.dart';
+import 'package:orbital_nus/colors.dart';
 import 'restaurant_item.dart';
 
 class RestaurantListView extends StatelessWidget {
@@ -24,6 +25,7 @@ class RestaurantListView extends StatelessWidget {
     final category = places.keys.toList();
 
     return Container(
+      color: kBackgroundColor,
       padding: const EdgeInsets.symmetric(horizontal: 25,),
       child: PageView(
           controller: pageController,

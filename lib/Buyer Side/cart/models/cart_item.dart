@@ -17,11 +17,8 @@ class CartItem extends StatefulWidget {
 class _CartItemState extends State<CartItem> {
   Order order = Order();
 
-  @override
-  void initState() {
-    super.initState();
-    // get order info
-    FirebaseFirestore.instance
+  Future getOrder() async {
+    await FirebaseFirestore.instance
         .collection('orders')
         .doc(widget.orderId)
         .get()
@@ -38,101 +35,110 @@ class _CartItemState extends State<CartItem> {
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.only(
-                top: 20,
-                left: 10,
-                right: 10,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      child: FutureBuilder(
+          future: getOrder(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return Row(
                 children: [
-                  // name of item
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // Name of the food item
-                      Text(
-                        '${order.itemName}',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          height: 1.5,
-                        ),
+                  Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                        top: 20,
+                        left: 10,
+                        right: 10,
                       ),
-                    ],
-                  ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // name of item
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              // Name of the food item
+                              Text(
+                                '${order.itemName}',
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  height: 1.5,
+                                ),
+                              ),
+                            ],
+                          ),
 
-                  // quantity of food item ordered
-                  Row(
-                    children: [
-                      // Quantity of the food item ordered
-                      const Text(
-                        'Quantity: ',
-                        style: TextStyle(
-                          color: Color.fromARGB(86, 0, 0, 0),
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '${order.quantity}',
-                        style: const TextStyle(
-                          color: Color.fromARGB(86, 0, 0, 0),
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
+                          // quantity of food item ordered
+                          Row(
+                            children: [
+                              // Quantity of the food item ordered
+                              const Text(
+                                'Quantity: ',
+                                style: TextStyle(
+                                  color: Color.fromARGB(86, 0, 0, 0),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                '${order.quantity}',
+                                style: const TextStyle(
+                                  color: Color.fromARGB(86, 0, 0, 0),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
 
-                  // Instructions
-                  Row(
-                    children: [
-                      const Text(
-                        'Requests: ',
-                        style: TextStyle(
-                          color: Color.fromARGB(86, 0, 0, 0),
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
+                          // Instructions
+                          Row(
+                            children: [
+                              const Text(
+                                'Requests: ',
+                                style: TextStyle(
+                                  color: Color.fromARGB(86, 0, 0, 0),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text('${order.instructions}',
+                                  style: const TextStyle(
+                                    color: Color.fromARGB(86, 0, 0, 0),
+                                    fontSize: 12,
+                                  ))
+                            ],
+                          ),
+                          // price of food item
+                          Row(
+                            children: [
+                              // Subprice of the food item
+                              const Text(
+                                'Subprice: \$',
+                                style: TextStyle(
+                                  color: Color.fromARGB(86, 0, 0, 0),
+                                  fontSize: 14,
+                                ),
+                              ),
+                              Text(
+                                '${order.subPrice}',
+                                style: const TextStyle(
+                                  color: Color.fromARGB(86, 0, 0, 0),
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      Text('${order.instructions}',
-                          style: const TextStyle(
-                            color: Color.fromARGB(86, 0, 0, 0),
-                            fontSize: 12,
-                          ))
-                    ],
-                  ),
-                  // price of food item
-                  Row(
-                    children: [
-                      // Subprice of the food item
-                      const Text(
-                        'Subprice: \$',
-                        style: TextStyle(
-                          color: Color.fromARGB(86, 0, 0, 0),
-                          fontSize: 14,
-                        ),
-                      ),
-                      Text(
-                        '${order.subPrice}',
-                        style: const TextStyle(
-                          color: Color.fromARGB(86, 0, 0, 0),
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
-              ),
-            ),
-          ),
-        ],
-      ),
+              );
+            }
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }),
     );
   }
 }

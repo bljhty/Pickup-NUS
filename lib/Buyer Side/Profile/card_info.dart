@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_brand.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-
-import '../colors.dart';
+import 'package:orbital_nus/colors.dart';
 
 class paymentpage extends StatefulWidget {
   const paymentpage({Key? key}) : super(key: key);

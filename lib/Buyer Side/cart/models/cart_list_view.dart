@@ -2,6 +2,7 @@
 // at cart_page.dart
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/cart/edit_order_page.dart';
+import 'package:orbital_nus/colors.dart';
 import 'cart_item.dart';
 
 class CartListView extends StatelessWidget {
@@ -13,8 +14,8 @@ class CartListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      color: kBackgroundColor,
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: ListView.separated(
         controller: pageController,
         padding: const EdgeInsets.all(12),

@@ -1,16 +1,16 @@
 // List containing boxes (order_box) that displays
-// information of orders that are ready for collection
+// information of orders being prepared
 // displayed in orders_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Orders/models/order_box.dart';
+import 'package:orbital_nus/Buyer%20Side/Orders/models/order_box.dart';
 import 'package:orbital_nus/colors.dart';
 
-class OrdersReadyListView extends StatelessWidget {
+class OrdersPreparingListView extends StatelessWidget {
   final PageController pageController;
   final List<dynamic> orderIds;
 
-  OrdersReadyListView(
+  OrdersPreparingListView(
     this.pageController,
     this.orderIds,
   );
@@ -24,15 +24,9 @@ class OrdersReadyListView extends StatelessWidget {
         controller: pageController,
         padding: const EdgeInsets.all(12),
         itemBuilder: (context, index) {
-          return Column(
-            children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: OrderBox(orderIds[index]),
-                  ),
-                ],
-
-              // Order Collected button
+          return GestureDetector(
+            onTap: () {},
+            child: OrderBox(orderIds[index]),
           );
         },
         separatorBuilder: (context, index) {

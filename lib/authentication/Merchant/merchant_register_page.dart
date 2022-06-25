@@ -1,4 +1,4 @@
-// page for new merchants to register for a merchant account
+// page for new merchants to register for a merchant account (to be completed)
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,6 +26,7 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
     _emailController.dispose();
     _passwordController.dispose();
     _confirmpasswordController.dispose();
+    super.dispose();
   }
 
   // function which stores the messages to be displayed
@@ -34,10 +35,8 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
     switch (regCode) {
       case 1:
         return 'Error: Password is too weak, ensure it has at least 6 characters';
-        break;
       case 2:
         return 'Error: The email provided already has an active account';
-        break;
       case 3:
         return 'Error: Passwords do not match';
     }
@@ -89,15 +88,27 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
   }
 
   Future addMerchantDetails(String name, String email) async {
-    // add onto user database
-    await FirebaseFirestore.instance
-        .collection('users')
-        .add({'name': name, 'email': email, 'userType': 'Merchant'});
+    // add onto restaurants database
+    final getRestaurantId =
+        FirebaseFirestore.instance.collection('restaurants').doc();
+    // store restaurantId as a string to be used
+    String restaurantId = '';
+    await getRestaurantId.get().then((restaurant) {
+      restaurantId = restaurant.reference.id;
+    });
 
-    // add onto merchant database
-    await FirebaseFirestore.instance.collection('merchants').add({
+    // set relevant information for buyer
+    await getRestaurantId.set({
+      'merchantId': restaurantId,
+      'merchantName': name,
+      'isOpenForOrder': false
+    });
+
+    // add onto user database
+    await FirebaseFirestore.instance.collection('users').doc(email).set({
       'name': name,
-      'isOpen': false,
+      'id': restaurantId,
+      'userType': 'Merchant',
     });
   }
 

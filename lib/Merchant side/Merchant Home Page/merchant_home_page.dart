@@ -40,6 +40,8 @@ class _MerchantHomePageState extends State<MerchantHomePage> {
     await FirebaseFirestore.instance
     .collection('orders')
     .where('merchantId', isEqualTo: userInfo.id)
+    .where('isOrderPlaced', isEqualTo: true)
+    .where('isOrderReady', isEqualTo: false)
     .get()
     .then(
         (snapshot) => snapshot.docs.forEach(

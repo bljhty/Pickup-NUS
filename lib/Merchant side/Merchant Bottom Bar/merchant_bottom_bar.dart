@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Merchant%20side/Merchant%20Home%20Page/merchant_home_page.dart';
-import 'package:orbital_nus/Merchant%20side/merchant_profile_page.dart';
+import 'package:orbital_nus/Merchant%20side/Profile/merchant_profile_page.dart';
 import 'package:orbital_nus/Merchant%20side/open_for_order.dart';
 import 'package:orbital_nus/colors.dart';
 
@@ -56,7 +56,7 @@ class MerchantBottomBar extends StatelessWidget {
                 ));
               },
               icon: Icon(
-                Icons.door_front_door_outlined,
+                Icons.meeting_room_outlined,
                 color: MenuState.open == selectMenu
                 ? kSecondaryColor
                 : Colors.grey,

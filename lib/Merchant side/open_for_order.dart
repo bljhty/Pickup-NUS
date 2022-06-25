@@ -34,6 +34,9 @@ class _OpenForOrderState extends State<OpenForOrder> {
         .then((value) {
       userInfo = Username.fromMap(value.data());
     });
+
+    // initial check of the restaurant status
+    await checkOpen();
   }
 
   // function to check whether the restaurant is open or closed
@@ -97,7 +100,7 @@ class _OpenForOrderState extends State<OpenForOrder> {
                         future: checkOpen(),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
-                              ConnectionState.done) {
+                              ConnectionState.done && restaurantStatus != '') {
                             return Text(
                               restaurantStatus,
                               style: const TextStyle(

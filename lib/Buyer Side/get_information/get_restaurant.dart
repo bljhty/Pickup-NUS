@@ -8,6 +8,7 @@ class Restaurant {
   String? distance;
   String? logoUrl;
   String? place;
+  bool? isOpenForOrder;
 
   Restaurant({
     this.merchantId,
@@ -16,6 +17,7 @@ class Restaurant {
     this.distance,
     this.logoUrl,
     this.place,
+    this.isOpenForOrder,
   });
 
   // receiving data from database
@@ -27,6 +29,7 @@ class Restaurant {
       distance: map['distance'],
       logoUrl: map['logoUrl'],
       place: map['place'],
+      isOpenForOrder: map['isOpenForOrder'],
     );
   }
 
@@ -39,6 +42,7 @@ class Restaurant {
       'distance': distance,
       'logoUrl': logoUrl,
       'place': place,
+      'isOpenForOrder': isOpenForOrder,
     };
   }
 }

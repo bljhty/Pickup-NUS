@@ -37,7 +37,7 @@ class _MerchantPastOrdersPageState extends State<MerchantPastOrdersPage> {
     await FirebaseFirestore.instance
         .collection('orders')
         .where('merchantId', isEqualTo: userInfo.id)
-        .where('isOrderCollected', isEqualTo: true)
+        .where('isOrderReady', isEqualTo: true)
         .get()
         .then(
           (snapshot) => snapshot.docs.forEach(

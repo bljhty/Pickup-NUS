@@ -102,7 +102,7 @@ class _OrdersPageState extends State<OrdersPage> {
                   width: double.maxFinite,
                   height: 40,
                   color: Colors.grey,
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.center,
                   child: const Text(
                     'Being prepared:',
                     style: TextStyle(
@@ -123,7 +123,7 @@ class _OrdersPageState extends State<OrdersPage> {
                   width: double.maxFinite,
                   height: 40,
                   color: Colors.grey,
-                  alignment: Alignment.centerLeft,
+                  alignment: Alignment.center,
                   child: const Text(
                     'Ready for Collection:',
                     style: TextStyle(

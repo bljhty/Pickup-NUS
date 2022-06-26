@@ -82,7 +82,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             ),
           ),
 
-          const SizedBox(height: 15),
+          const SizedBox(height: 30),
 
           // Email text box
           Padding(
@@ -104,13 +104,31 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               ),
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 20),
 
           // Reset Password button
-          MaterialButton(
-            onPressed: passwordReset,
-            color: kSecondaryColor,
-            child: const Text('Reset Password'),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: GestureDetector(
+              onTap: passwordReset,
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: kSecondaryColor,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: const Center(
+                  child: Text(
+                    'Reset Password',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),

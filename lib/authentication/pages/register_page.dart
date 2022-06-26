@@ -326,7 +326,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       // );
                     },
                     child: const Text(
-                      'Sign up as a Merchant instead? (Coming soon)',
+                      'Sign up as a Merchant instead?',
                       style: TextStyle(
                         color: kSecondaryColor,
                         fontWeight: FontWeight.bold,

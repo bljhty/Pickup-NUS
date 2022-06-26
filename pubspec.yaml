@@ -74,6 +74,9 @@ flutter:
   - assets/images/res_logo.png
   - assets/images/creamy_pasta.png
   - assets/images/pasta_express.png
+  - assets/images/chicken_cutlet.png
+  - assets/images/crispy_chicken.png
+  - assets/images/techno_western.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

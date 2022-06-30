@@ -2,6 +2,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Buyer%20Side/Profile/edit%20menu/edit_menu_page.dart';
 import 'package:orbital_nus/Merchant%20side/Merchant%20Bottom%20Bar/merchant_bottom_bar.dart';
 import 'package:orbital_nus/Merchant%20side/Profile/Past%20Orders/merchant_past_orders_page.dart';
 import 'package:orbital_nus/authentication/mainpage.dart';
@@ -76,7 +77,12 @@ class MerchantProfilePage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return const EditMenuPage();
+                      }));
+                    },
                     child: Container(
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
@@ -85,7 +91,7 @@ class MerchantProfilePage extends StatelessWidget {
                       ),
                       child: const Center(
                         child: Text(
-                          'Edit Menu (Coming Soon)',
+                          'Edit Menu',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

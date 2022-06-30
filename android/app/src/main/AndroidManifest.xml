@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.orbital_nus">
    <application
-        android:label="orbital_nus"
+        android:label="pickup@NUS"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

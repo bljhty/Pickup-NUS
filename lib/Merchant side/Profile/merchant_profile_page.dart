@@ -2,9 +2,9 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/Profile/edit%20menu/edit_menu_page.dart';
 import 'package:orbital_nus/Merchant%20side/Merchant%20Bottom%20Bar/merchant_bottom_bar.dart';
 import 'package:orbital_nus/Merchant%20side/Profile/Past%20Orders/merchant_past_orders_page.dart';
+import 'package:orbital_nus/Merchant%20side/Profile/edit%20menu/edit_menu_page.dart';
 import 'package:orbital_nus/authentication/mainpage.dart';
 import 'package:orbital_nus/colors.dart';
 

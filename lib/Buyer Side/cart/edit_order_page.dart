@@ -64,15 +64,13 @@ class _EditOrderPageState extends State<EditOrderPage> {
               TextButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const CartPage()
-                  ));
+                      builder: (context) => const CartPage()));
                 },
                 child: const Text('Close'),
               )
             ],
           );
-        }
-    );
+        });
   }
 
   Future deleteOrderNotif() async {
@@ -85,22 +83,21 @@ class _EditOrderPageState extends State<EditOrderPage> {
             actions: <Widget>[
               TextButton(
                 // confirm button
-                  onPressed: () {
-                    deleteOrder();
-                  },
-                  child: const Text('Confirm'),
+                onPressed: () {
+                  deleteOrder();
+                },
+                child: const Text('Confirm'),
               ),
               // cancel button
               TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Cancel'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Text('Cancel'),
               ),
             ],
           );
-        }
-    );
+        });
   }
 
   Future deleteOrder() async {
@@ -110,16 +107,15 @@ class _EditOrderPageState extends State<EditOrderPage> {
         .doc(widget.orderId)
         .delete()
         .then(
-        (doc) => print('document deleted'),
-      onError: (e) => print('error updating document $e'),
-
-    );
+          (doc) => print('document deleted'),
+          onError: (e) => print('error updating document $e'),
+        );
 
     // delete specific orderId from cart of buyer
     await FirebaseFirestore.instance
-    .collection('buyer')
-    .doc(order.buyerId)
-    .update({
+        .collection('buyer')
+        .doc(order.buyerId)
+        .update({
       "cart": FieldValue.arrayRemove([widget.orderId]),
     });
 
@@ -144,12 +140,12 @@ class _EditOrderPageState extends State<EditOrderPage> {
         actions: [
           // delete button
           IconButton(
-              onPressed: () {
-                deleteOrderNotif();
-              },
-              icon: const Icon(
-                Icons.delete_rounded,
-              ),
+            onPressed: () {
+              deleteOrderNotif();
+            },
+            icon: const Icon(
+              Icons.delete_rounded,
+            ),
             alignment: Alignment.center,
           )
         ],

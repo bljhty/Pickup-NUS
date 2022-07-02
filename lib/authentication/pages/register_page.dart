@@ -3,7 +3,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/authentication/Merchant/merchant_register_page.dart';
 import 'package:orbital_nus/colors.dart';
 
 /*

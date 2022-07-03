@@ -1,10 +1,11 @@
 // Widget indicating the special instructions to be the merchant upon ordering
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_order.dart';
+import 'package:orbital_nus/get_information/get_order.dart';
 
 class FoodAddOn extends StatefulWidget {
   final Order order;
+
   FoodAddOn(this.order);
 
   @override
@@ -12,7 +13,6 @@ class FoodAddOn extends StatefulWidget {
 }
 
 class _FoodAddOnState extends State<FoodAddOn> {
-
   // text controller to retrieve value in text field
   final _instructionController = TextEditingController();
 
@@ -27,14 +27,13 @@ class _FoodAddOnState extends State<FoodAddOn> {
   }
 
   @override
-
   void dispose() {
     // clean up the controller when the widget is disposed
     _instructionController.dispose();
     super.dispose();
   }
-  @override
 
+  @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(25),
@@ -44,12 +43,11 @@ class _FoodAddOnState extends State<FoodAddOn> {
           // To include special instructions
           const Text(
             'Special Instructions: ',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 22
-            ),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
           ),
-          const SizedBox(height: 20 ,),
+          const SizedBox(
+            height: 20,
+          ),
 
           TextField(
             controller: _instructionController,
@@ -65,4 +63,3 @@ class _FoodAddOnState extends State<FoodAddOn> {
     );
   }
 }
-

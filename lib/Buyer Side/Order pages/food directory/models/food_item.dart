@@ -2,7 +2,7 @@
 // through food_list_view.dart
 
 import 'package:flutter/material.dart';
-import '../../../get_information/get_food.dart';
+import 'package:orbital_nus/get_information/get_food.dart';
 
 class FoodItem extends StatelessWidget {
   final Food food;

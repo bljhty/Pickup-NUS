@@ -2,7 +2,7 @@
 // through past_order_list_view.dart in past_order_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_order.dart';
+import 'package:orbital_nus/get_information/get_order.dart';
 
 class PastOrderItem extends StatelessWidget {
   final Order order;

@@ -4,9 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Components/Bottom_bar.dart';
-import 'package:orbital_nus/Buyer%20Side/Components/enum.dart';
 import 'package:orbital_nus/Buyer%20Side/Orders/orders_page.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
+import 'package:orbital_nus/get_information/get_username.dart';
 import 'package:orbital_nus/colors.dart';
 import 'models/cart_list_view.dart';
 

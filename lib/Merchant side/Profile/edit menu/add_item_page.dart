@@ -5,10 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20details/models/food_detail_image.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_food.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
 import 'package:orbital_nus/Merchant%20side/Profile/edit%20menu/edit_menu_page.dart';
 import 'package:orbital_nus/colors.dart';
+import 'package:orbital_nus/get_information/get_food.dart';
+import 'package:orbital_nus/get_information/get_username.dart';
 
 class AddItemPage extends StatefulWidget {
   const AddItemPage({Key? key}) : super(key: key);
@@ -161,7 +161,8 @@ class _AddItemPageState extends State<AddItemPage> {
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(RegExp(r"[0-9.]"))
                     ],
-                    decoration: const InputDecoration(labelText: 'Item Price: (\$)'),
+                    decoration:
+                        const InputDecoration(labelText: 'Item Price: (\$)'),
                   ),
                 ],
               ),

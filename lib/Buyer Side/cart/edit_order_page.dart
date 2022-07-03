@@ -6,8 +6,8 @@ import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20details/models/foo
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20details/models/food_detail_image.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20details/models/food_info.dart';
 import 'package:orbital_nus/Buyer%20Side/cart/cart_page.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_food.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_order.dart';
+import 'package:orbital_nus/get_information/get_food.dart';
+import 'package:orbital_nus/get_information/get_order.dart';
 import 'package:orbital_nus/colors.dart';
 
 class EditOrderPage extends StatefulWidget {

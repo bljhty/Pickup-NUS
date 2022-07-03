@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Profile/Past%20Orders/models/past_order_item.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_order.dart';
 import 'package:orbital_nus/colors.dart';
+import 'package:orbital_nus/get_information/get_order.dart';
 
 class PastOrderListView extends StatelessWidget {
   final PageController pageController;

@@ -5,10 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Merchant%20side/Profile/edit%20menu/add_item_page.dart';
 import 'package:orbital_nus/Merchant%20side/Profile/edit%20menu/models/menu_type_list.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_food.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
 import 'package:orbital_nus/Merchant%20side/Profile/edit%20menu/models/item_list_view.dart';
 import 'package:orbital_nus/colors.dart';
+import 'package:orbital_nus/get_information/get_food.dart';
+import 'package:orbital_nus/get_information/get_username.dart';
 
 class EditMenuPage extends StatefulWidget {
   const EditMenuPage({Key? key}) : super(key: key);

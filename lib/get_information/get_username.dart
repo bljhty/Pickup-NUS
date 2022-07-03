@@ -21,11 +21,11 @@ class Username {
   }
 
   // sending data to the database
-Map<String, dynamic> toMap() {
+  Map<String, dynamic> toMap() {
     return {
       'id': id,
       'name': name,
       'userType': userType,
     };
-}
+  }
 }

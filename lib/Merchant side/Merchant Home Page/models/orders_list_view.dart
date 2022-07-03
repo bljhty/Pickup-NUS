@@ -11,22 +11,18 @@ class OrdersListView extends StatefulWidget {
   final List<dynamic> orderIds;
 
   OrdersListView(
-      this.pageController,
-      this.orderIds,
-      );
+    this.pageController,
+    this.orderIds,
+  );
 
   @override
   State<OrdersListView> createState() => _OrdersListViewState();
 }
 
 class _OrdersListViewState extends State<OrdersListView> {
-
   // updates the order for the user to show it is ready for collection
   Future updateOrderReady(String orderId) async {
-    await FirebaseFirestore.instance
-        .collection('orders')
-        .doc(orderId)
-        .update({
+    await FirebaseFirestore.instance.collection('orders').doc(orderId).update({
       'isOrderReady': true,
     });
     // remove the orderId from the list

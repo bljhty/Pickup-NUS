@@ -7,14 +7,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20details/models/food_info.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/restaurant%20selection/restaurant_directory_page.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_order.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
 import 'package:orbital_nus/colors.dart';
+import 'package:orbital_nus/get_information/get_food.dart';
+import 'package:orbital_nus/get_information/get_order.dart';
+import 'package:orbital_nus/get_information/get_username.dart';
 import 'models/food_add_on.dart';
-import '../../get_information/get_food.dart';
 import 'models/food_detail_image.dart';
-
-// The page shown of specific food after clicking on it in the food directory menu
 
 class FoodDetailPage extends StatefulWidget {
   final Food food;
@@ -33,13 +31,11 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
   Username userInfo = Username();
 
   // order class to store the information
-  Order order =
-      Order(
-          quantity: 1, // if not updated, put as 1
-          isOrderPlaced: false,
-          isOrderReady: false,
-          isOrderCollected: false
-      );
+  Order order = Order(
+      quantity: 1, // if not updated, put as 1
+      isOrderPlaced: false,
+      isOrderReady: false,
+      isOrderCollected: false);
 
   Future addToCart() async {
     // obtain information about the logged in buyer
@@ -48,9 +44,9 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
         .doc(user.email)
         .get()
         .then((value) {
-          userInfo = Username.fromMap(value.data());
-          order.buyerName = userInfo.name;
-          order.buyerId = userInfo.id;
+      userInfo = Username.fromMap(value.data());
+      order.buyerName = userInfo.name;
+      order.buyerId = userInfo.id;
     });
 
     // create a new document of orders
@@ -60,9 +56,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
 
     // Store the order Id as a string
     String orderId = '';
-    await getorderId
-        .get()
-        .then((order) {
+    await getorderId.get().then((order) {
       orderId = order.reference.id;
     });
     // input the order into the list of the user's cart
@@ -83,7 +77,7 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
               TextButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const RestaurantDirectoryPage(),
+                    builder: (context) => const RestaurantDirectoryPage(),
                   )); // change to redirect to home
                 },
                 child: const Text('Close'),

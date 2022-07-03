@@ -4,7 +4,6 @@ import 'package:orbital_nus/Buyer%20Side/Profile/profile_screen.dart';
 import 'package:orbital_nus/Buyer%20Side/cart/cart_page.dart';
 import 'package:orbital_nus/Buyer%20Side/Order pages/restaurant%20selection/restaurant_directory_page.dart';
 import 'package:orbital_nus/colors.dart';
-import 'enum.dart';
 
 /*
   Includes the bottom navigation bar into the app which allows users to navigate
@@ -15,6 +14,7 @@ import 'enum.dart';
   Once clicked the icons will be highlighted in a certain color to show
   which page the users are currently on.
 */
+
 class Bottombar extends StatelessWidget {
   const Bottombar({
     Key? key,
@@ -49,9 +49,8 @@ class Bottombar extends StatelessWidget {
                     builder: (context) => const RestaurantDirectoryPage()));
           },
           icon: Icon(Icons.home_outlined,
-              color: MenuState.home == selectMenu
-                  ? kSecondaryColor
-                  : Colors.grey,
+              color:
+                  MenuState.home == selectMenu ? kSecondaryColor : Colors.grey,
               size: 30),
         ),
         //Orders button on bottom navigation bar
@@ -73,9 +72,8 @@ class Bottombar extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => const CartPage()));
           },
           icon: Icon(Icons.shopping_cart_outlined,
-              color: MenuState.cart == selectMenu
-                  ? kSecondaryColor
-                  : Colors.grey,
+              color:
+                  MenuState.cart == selectMenu ? kSecondaryColor : Colors.grey,
               size: 30),
         ),
         // Profile button on bottom navigation bar
@@ -94,3 +92,5 @@ class Bottombar extends StatelessWidget {
     );
   }
 }
+
+enum MenuState { profile, home, orders, cart }

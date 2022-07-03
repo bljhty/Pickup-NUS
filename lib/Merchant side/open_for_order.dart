@@ -4,10 +4,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_restaurant.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
 import 'package:orbital_nus/Merchant%20side/Merchant%20Bottom%20Bar/merchant_bottom_bar.dart';
 import 'package:orbital_nus/colors.dart';
+import 'package:orbital_nus/get_information/get_restaurant.dart';
+import 'package:orbital_nus/get_information/get_username.dart';
 
 class OpenForOrder extends StatefulWidget {
   const OpenForOrder({Key? key}) : super(key: key);
@@ -100,7 +100,8 @@ class _OpenForOrderState extends State<OpenForOrder> {
                         future: checkOpen(),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
-                              ConnectionState.done && restaurantStatus != '') {
+                                  ConnectionState.done &&
+                              restaurantStatus != '') {
                             return Text(
                               restaurantStatus,
                               style: const TextStyle(

@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Components/Bottom_bar.dart';
-import 'package:orbital_nus/Buyer%20Side/Components/enum.dart';
 import 'package:orbital_nus/Buyer%20Side/Profile/Past%20Orders/past_order_page.dart';
 import 'package:orbital_nus/Buyer%20Side/Profile/card_info.dart';
 import 'package:orbital_nus/authentication/mainpage.dart';

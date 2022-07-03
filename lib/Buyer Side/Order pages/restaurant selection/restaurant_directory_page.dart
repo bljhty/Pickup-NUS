@@ -3,8 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Components/Bottom_bar.dart';
-import 'package:orbital_nus/Buyer%20Side/Components/enum.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_restaurant.dart';
+import 'package:orbital_nus/get_information/get_restaurant.dart';
 import 'package:orbital_nus/colors.dart';
 import 'models/place_select.dart';
 import 'models/restaurant_list_view.dart';

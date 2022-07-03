@@ -1,9 +1,9 @@
 // Indicate price and quantity of food in food_detail_page.dart
 
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_order.dart';
 import 'package:orbital_nus/colors.dart';
-import '../../../get_information/get_food.dart';
+import 'package:orbital_nus/get_information/get_food.dart';
+import 'package:orbital_nus/get_information/get_order.dart';
 
 class FoodPriceQuantity extends StatefulWidget {
   final Food food;

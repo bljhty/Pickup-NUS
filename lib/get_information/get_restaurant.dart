@@ -46,6 +46,6 @@ class Restaurant {
     };
   }
 
-  // check if the restaurants are duplicates
+// check if the restaurants are duplicates
 
 }

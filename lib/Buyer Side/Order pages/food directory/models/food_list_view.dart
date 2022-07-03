@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20details/food_detail_page.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_food.dart';
 import 'package:orbital_nus/colors.dart';
+import 'package:orbital_nus/get_information/get_food.dart';
 import 'food_item.dart';
 
 class FoodListView extends StatelessWidget {

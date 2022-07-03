@@ -22,7 +22,8 @@ class MenuTypeList extends StatelessWidget {
           itemBuilder: (context, index) => GestureDetector(
               onTap: () => callback(index),
               child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,

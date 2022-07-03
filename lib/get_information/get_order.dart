@@ -24,7 +24,7 @@ class Order {
     this.isOrderPlaced,
     this.isOrderReady,
     this.isOrderCollected,
-});
+  });
 
   // receiving data from the database
   factory Order.fromMap(map) {

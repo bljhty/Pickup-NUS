@@ -3,10 +3,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_username.dart';
 import 'package:orbital_nus/Merchant%20side/Merchant%20Bottom%20Bar/merchant_bottom_bar.dart';
 import 'package:orbital_nus/Merchant%20side/Merchant%20Home%20Page/models/orders_list_view.dart';
 import 'package:orbital_nus/colors.dart';
+import 'package:orbital_nus/get_information/get_username.dart';
 
 class MerchantHomePage extends StatefulWidget {
   const MerchantHomePage({Key? key}) : super(key: key);
@@ -29,26 +29,23 @@ class _MerchantHomePageState extends State<MerchantHomePage> {
     // obtain information about logged in merchant
     final user = FirebaseAuth.instance.currentUser!;
     await FirebaseFirestore.instance
-    .collection('users')
-    .doc(user.email)
-    .get()
-    .then((value) {
+        .collection('users')
+        .doc(user.email)
+        .get()
+        .then((value) {
       userInfo = Username.fromMap(value.data());
     });
 
     // obtain orderIds that needs to be made by merchant
     await FirebaseFirestore.instance
-    .collection('orders')
-    .where('merchantId', isEqualTo: userInfo.id)
-    .where('isOrderPlaced', isEqualTo: true)
-    .where('isOrderReady', isEqualTo: false)
-    .get()
-    .then(
-        (snapshot) => snapshot.docs.forEach(
-                (orderId) {
-                  orderIds.add(orderId.reference.id);
-                })
-    );
+        .collection('orders')
+        .where('merchantId', isEqualTo: userInfo.id)
+        .where('isOrderPlaced', isEqualTo: true)
+        .where('isOrderReady', isEqualTo: false)
+        .get()
+        .then((snapshot) => snapshot.docs.forEach((orderId) {
+              orderIds.add(orderId.reference.id);
+            }));
   }
 
   @override
@@ -66,18 +63,17 @@ class _MerchantHomePageState extends State<MerchantHomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: const MerchantBottomBar(selectMenu: MenuState.orders),
+      bottomNavigationBar:
+          const MerchantBottomBar(selectMenu: MenuState.orders),
       body: FutureBuilder(
         future: getOrders(),
-        builder: (context, snapshot){
+        builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // List of foods that were ordered to be made
-                Expanded(
-                    child: OrdersListView(pageController, orderIds)
-                ),
+                Expanded(child: OrdersListView(pageController, orderIds)),
               ],
             );
           }

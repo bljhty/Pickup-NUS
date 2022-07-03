@@ -3,11 +3,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Components/Bottom_bar.dart';
-import 'package:orbital_nus/Buyer%20Side/Components/enum.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_food.dart';
-import 'package:orbital_nus/Buyer%20Side/get_information/get_restaurant.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/food_list.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/restaurant_info.dart';
+import 'package:orbital_nus/get_information/get_food.dart';
+import 'package:orbital_nus/get_information/get_restaurant.dart';
 import 'package:orbital_nus/colors.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/food%20directory/models/food_list_view.dart';
 

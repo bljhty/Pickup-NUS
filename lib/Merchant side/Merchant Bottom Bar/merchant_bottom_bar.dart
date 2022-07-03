@@ -8,7 +8,10 @@ import 'package:orbital_nus/Merchant%20side/open_for_order.dart';
 import 'package:orbital_nus/colors.dart';
 
 class MerchantBottomBar extends StatelessWidget {
-  const MerchantBottomBar({Key? key, required this.selectMenu, }) : super(key: key);
+  const MerchantBottomBar({
+    Key? key,
+    required this.selectMenu,
+  }) : super(key: key);
   final MenuState selectMenu;
 
   @override
@@ -23,10 +26,9 @@ class MerchantBottomBar extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            blurRadius: 10,
-            spreadRadius: 2.0
-          ),
+              color: Colors.grey.withOpacity(0.3),
+              blurRadius: 10,
+              spreadRadius: 2.0),
         ],
       ),
       child: Row(
@@ -34,42 +36,39 @@ class MerchantBottomBar extends StatelessWidget {
         children: [
           // Home button
           IconButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const MerchantHomePage(),
-                ));
-              },
-              icon: Icon(
-                Icons.home_outlined,
-                color: MenuState.orders == selectMenu
-                ? kSecondaryColor
-                : Colors.grey,
-                size: 30,
-              ),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const MerchantHomePage(),
+              ));
+            },
+            icon: Icon(
+              Icons.home_outlined,
+              color: MenuState.orders == selectMenu
+                  ? kSecondaryColor
+                  : Colors.grey,
+              size: 30,
+            ),
           ),
 
           // Open button
           IconButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => OpenForOrder()
-                ));
-              },
-              icon: Icon(
-                Icons.meeting_room_outlined,
-                color: MenuState.open == selectMenu
-                ? kSecondaryColor
-                : Colors.grey,
-                size: 30,
-              ),
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => OpenForOrder()));
+            },
+            icon: Icon(
+              Icons.meeting_room_outlined,
+              color:
+                  MenuState.open == selectMenu ? kSecondaryColor : Colors.grey,
+              size: 30,
+            ),
           ),
 
           // Profile button
           IconButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const MerchantProfilePage()
-              ));
+                  builder: (context) => const MerchantProfilePage()));
             },
             icon: Icon(
               Icons.person_outline,
@@ -85,4 +84,4 @@ class MerchantBottomBar extends StatelessWidget {
   }
 }
 
-enum MenuState {orders, open, profile}
+enum MenuState { orders, open, profile }

@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/authentication/Merchant/merchant_register_page.dart';
 import 'package:orbital_nus/colors.dart';
 
 /*
@@ -317,12 +318,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   // sign up as a Merchant
                   GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) {
-                      //     return const MerchantRegisterPage();
-                      //   }),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) {
+                          return const MerchantRegisterPage();
+                        }),
+                      );
                     },
                     child: const Text(
                       'Sign up as a Merchant instead?',

@@ -46,8 +46,19 @@ class _RestaurantDirectoryPageState extends State<RestaurantDirectoryPage> {
         places[restaurant.place!] = [];
       }
       // add current restaurant to the correct list based on their location
-      places[restaurant.place!]?.add(restaurant);
-    });
+      addRestaurant(restaurant);
+      });
+  }
+
+  // function to check if restaurant is a duplicate, if it isn't, add onto the list
+  addRestaurant(Restaurant restaurant) {
+    for (int i = 0; i < places[restaurant.place!]!.length; i++) {
+      if (restaurant.merchantId == places[restaurant.place!]![i].merchantId) {
+        return;
+      }
+    }
+    // checked through the list and no duplicates, add onto the list
+    places[restaurant.place!]?.add(restaurant);
   }
 
   @override

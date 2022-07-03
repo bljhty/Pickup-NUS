@@ -56,8 +56,19 @@ class _OrderDirectoryPageState extends State<OrderDirectoryPage> {
         foodsByType[food.menuType!] = [];
       }
       // add current food into the list of the menuType
-      foodsByType[food.menuType!]?.add(food);
+      addFood(food);
     });
+  }
+
+  // function to check if food is a duplicate, if it isn't add onto the list
+  addFood(Food food) {
+    for (int i = 0; i < foodsByType[food.menuType!]!.length; i++) {
+      if (food.itemId == foodsByType[food.menuType!]![i].itemId) {
+        return;
+      }
+    }
+    // checked through the list and no duplicates, add onto the list
+    foodsByType[food.menuType!]?.add(food);
   }
 
   @override

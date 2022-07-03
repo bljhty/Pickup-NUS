@@ -48,6 +48,10 @@ class _MerchantPastOrdersPageState extends State<MerchantPastOrdersPage> {
         );
   }
 
+  // function to add the order onto the list if it is not a duplicate
+  // TODO: once timestamp is added onto database, finish this function
+  // addOrder(Order order) {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -45,4 +45,7 @@ class Restaurant {
       'isOpenForOrder': isOpenForOrder,
     };
   }
+
+  // check if the restaurants are duplicates
+
 }

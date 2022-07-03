@@ -48,6 +48,11 @@ class _PastOrderPageState extends State<PastOrderPage> {
         );
   }
 
+  // function to add order into list if it is not a duplicate
+  // TODO: once timestamp is added to order, to do up this function
+  // addOrder(Order order) {
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

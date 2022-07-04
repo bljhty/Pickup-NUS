@@ -1,5 +1,6 @@
 // implementation of database to obtain the orders placed by buyers
 class Order {
+  String? orderNum;
   String? buyerId;
   String? buyerName;
   String? merchantId;
@@ -13,6 +14,7 @@ class Order {
   bool? isOrderCollected;
 
   Order({
+    this.orderNum,
     this.buyerId,
     this.buyerName,
     this.merchantId,
@@ -29,6 +31,7 @@ class Order {
   // receiving data from the database
   factory Order.fromMap(map) {
     return Order(
+      orderNum: map['orderNum'],
       buyerId: map['buyerId'],
       buyerName: map['buyerName'],
       merchantId: map['merchantId'],
@@ -46,6 +49,7 @@ class Order {
   // sending data to the database
   Map<String, dynamic> toMap() {
     return {
+      'orderNum': orderNum,
       'buyerId': buyerId,
       'buyerName': buyerName,
       'merchantId': merchantId,

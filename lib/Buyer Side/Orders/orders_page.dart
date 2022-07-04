@@ -96,27 +96,6 @@ class _OrdersPageState extends State<OrdersPage> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // List of foods being prepared
-                Container(
-                  width: double.maxFinite,
-                  height: 40,
-                  color: Colors.grey,
-                  alignment: Alignment.center,
-                  child: const Text(
-                    'Being prepared:',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-
-                Expanded(
-                  child: OrdersPreparingListView(
-                      pageControllerPreparing, orderIdsPreparing),
-                ),
-
                 // List of foods ready for collection
                 Container(
                   width: double.maxFinite,
@@ -136,6 +115,27 @@ class _OrdersPageState extends State<OrdersPage> {
                 Expanded(
                   child:
                       OrdersReadyListView(pageControllerReady, orderIdsReady),
+                ),
+
+                // List of foods being prepared
+                Container(
+                  width: double.maxFinite,
+                  height: 40,
+                  color: Colors.grey,
+                  alignment: Alignment.center,
+                  child: const Text(
+                    'Being prepared:',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+
+                Expanded(
+                  child: OrdersPreparingListView(
+                      pageControllerPreparing, orderIdsPreparing),
                 ),
               ],
             );

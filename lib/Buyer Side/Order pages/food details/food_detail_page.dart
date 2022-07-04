@@ -52,13 +52,18 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
     // create a new document of orders
     // obtain the newly generated orderId
     final getorderId = FirebaseFirestore.instance.collection('orders').doc();
-    await getorderId.set(order.toMap());
 
     // Store the order Id as a string
     String orderId = '';
-    await getorderId.get().then((order) {
-      orderId = order.reference.id;
+    await getorderId.get().then((value) {
+      orderId = value.reference.id;
+      // input the first 4 characters as the order number
+      order.orderNum = orderId.substring(0, 4);
     });
+
+    // map into database the order
+    await getorderId.set(order.toMap());
+
     // input the order into the list of the user's cart
     await FirebaseFirestore.instance
         .collection('buyer')

@@ -42,6 +42,7 @@ class _OrdersReadyListViewState extends State<OrdersReadyListView> {
       color: kBackgroundColor,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: ListView.separated(
+        physics: const NeverScrollableScrollPhysics(),
         controller: widget.pageController,
         padding: const EdgeInsets.all(12),
         itemBuilder: (context, index) {

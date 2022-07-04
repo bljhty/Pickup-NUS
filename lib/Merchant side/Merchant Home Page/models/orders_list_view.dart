@@ -24,6 +24,7 @@ class _OrdersListViewState extends State<OrdersListView> {
   Future updateOrderReady(String orderId) async {
     await FirebaseFirestore.instance.collection('orders').doc(orderId).update({
       'isOrderReady': true,
+      'readyTime': FieldValue.serverTimestamp(),
     });
     // remove the orderId from the list
     widget.orderIds.remove(orderId);

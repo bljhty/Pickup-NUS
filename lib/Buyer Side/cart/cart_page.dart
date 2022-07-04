@@ -51,10 +51,11 @@ class _CartPageState extends State<CartPage> {
 
   // to update the database to submit the order to merchant and empty the cart
   Future submitCart() async {
-    // update database to submit the orders (i.e. change isOrderPlaced to true)
+    // update database to submit the orders (i.e. change isOrderPlaced to true and put timestamp)
     for (var orderId in orderIds) {
       FirebaseFirestore.instance.collection('orders').doc(orderId).update({
         "isOrderPlaced": true,
+        "orderTime": FieldValue.serverTimestamp(),
       });
     }
 

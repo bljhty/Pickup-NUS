@@ -29,6 +29,7 @@ class _OrdersReadyListViewState extends State<OrdersReadyListView> {
         .doc(orderId)
         .update({
       'isOrderCollected': true,
+      'collectedTime': FieldValue.serverTimestamp(),
     });
     // remove the orderId from the list
     widget.orderIds.remove(orderId);

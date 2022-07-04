@@ -3,6 +3,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/colors.dart';
 import 'package:orbital_nus/get_information/get_order.dart';
 
 class OrderBox extends StatefulWidget {
@@ -53,10 +54,32 @@ class _OrderBoxState extends State<OrderBox> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // Order Number/Code
+                        Row(
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: kPrimaryColor,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  ' ${order.orderNum} ',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+
                         // Name of the food item
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
+                            // item name
                             Text(
                               '${order.itemName}',
                               style: const TextStyle(

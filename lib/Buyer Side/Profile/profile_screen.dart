@@ -78,7 +78,7 @@ class _profilescreenState extends State<profilescreen> {
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return const paymentpage();
+                        return const CreditCardPage();
                       }));
                     },
                     child: Container(

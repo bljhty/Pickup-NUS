@@ -27,14 +27,14 @@ class _RegisterPageState extends State<RegisterPage> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _confirmpasswordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-    _confirmpasswordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -48,22 +48,35 @@ class _RegisterPageState extends State<RegisterPage> {
     // error messages
     switch (regCode) {
       case 1:
-        return 'Error: Password is too weak, ensure it has at least 6 characters';
-      case 2:
-        return 'Error: The email provided already has an active account';
-      case 3:
         return 'Error: Passwords do not match';
+      case 2:
+        return 'Error: Not all fields entered';
     }
     // message if registration is alright
     return 'Registration successful';
   }
 
+  // function to check if all the details have been filled up
+  // returns true if all filled up, false if otherwise
+  bool isAllFilledIn() {
+    if (_nameController.text == '' ||
+        _emailController.text == '' ||
+        _passwordController.text == '' ||
+        _confirmPasswordController.text == '') {
+      return false;
+    }
+    return true;
+  }
+
   // function to create a new account for the user to be added onto the database
   Future userSignUp() async {
-    // ensure that 2 password fields matches
     int regCode = 0;
     if (!passwordConfirmed()) {
-      regCode = 3;
+      // ensures that 2 password fields matches
+      regCode = 1;
+    } else if (!isAllFilledIn()) {
+      // ensures all the fields are entered
+      regCode = 2;
     } else {
       // check if user account can be created
       try {
@@ -75,11 +88,23 @@ class _RegisterPageState extends State<RegisterPage> {
         addBuyerDetails(
             _nameController.text.trim(), _emailController.text.trim());
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'weak-password') {
-          regCode = 1;
-        } else if (e.code == 'email-already-in-use') {
-          regCode = 2;
-        }
+        showDialog<void>(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              content: Text('Error: ${e.code}'),
+              actions: <Widget>[
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text('Close')),
+              ],
+            );
+          },
+        );
+        return;
       }
     }
     // Alert message
@@ -128,7 +153,7 @@ class _RegisterPageState extends State<RegisterPage> {
   // function to check if password and confirm password matches
   bool passwordConfirmed() {
     return (_passwordController.text.trim() ==
-        _confirmpasswordController.text.trim());
+        _confirmPasswordController.text.trim());
   }
 
   @override
@@ -249,7 +274,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Padding(
                         padding: const EdgeInsets.only(left: 20.0),
                         child: TextField(
-                          controller: _confirmpasswordController,
+                          controller: _confirmPasswordController,
                           obscureText: true,
                           decoration: const InputDecoration(
                             border: InputBorder.none,

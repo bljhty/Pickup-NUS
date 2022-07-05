@@ -4,8 +4,6 @@
 class Restaurant {
   String? merchantId;
   String? merchantName;
-  String? waitTime;
-  String? distance;
   String? logoUrl;
   String? place;
   bool? isOpenForOrder;
@@ -13,8 +11,6 @@ class Restaurant {
   Restaurant({
     this.merchantId,
     this.merchantName,
-    this.waitTime,
-    this.distance,
     this.logoUrl,
     this.place,
     this.isOpenForOrder,
@@ -25,8 +21,6 @@ class Restaurant {
     return Restaurant(
       merchantId: map['merchantId'],
       merchantName: map['merchantName'],
-      waitTime: map['waitTime'],
-      distance: map['distance'],
       logoUrl: map['logoUrl'],
       place: map['place'],
       isOpenForOrder: map['isOpenForOrder'],
@@ -38,8 +32,6 @@ class Restaurant {
     return {
       'merchantId': merchantId,
       'merchantName': merchantName,
-      'waitTime': waitTime,
-      'distance': distance,
       'logoUrl': logoUrl,
       'place': place,
       'isOpenForOrder': isOpenForOrder,

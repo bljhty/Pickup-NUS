@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:orbital_nus/authentication/auth_page.dart';
 import 'package:orbital_nus/colors.dart';
 
 class MerchantRegisterPage extends StatefulWidget {
@@ -19,37 +20,63 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _confirmpasswordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
+  @override
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
-    _confirmpasswordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
+
+  // List and variable to store location of restaurant
+  List<String> locations = [
+    'Fine Food',
+    'Flavours @ UTown',
+    'Frontier',
+    'TechnoEdge',
+    'The Deck',
+    'YIH'
+  ];
+  String? selectedLocation;
 
   // function which stores the messages to be displayed
   String alertMessage(int regCode) {
     // error messages
     switch (regCode) {
       case 1:
-        return 'Error: Password is too weak, ensure it has at least 6 characters';
-      case 2:
-        return 'Error: The email provided already has an active account';
-      case 3:
         return 'Error: Passwords do not match';
+      case 2:
+        return 'Error: Not all fields entered';
     }
     // message if registration is alright
     return 'Registration request sent, pending approval from administrator';
   }
 
+  // function to check if all the details have been filled up
+  // returns true if all filled up, false if otherwise
+  bool isAllFilledIn() {
+    if (_nameController.text == '' ||
+        _emailController.text == '' ||
+        _passwordController.text == '' ||
+        _confirmPasswordController.text == '' ||
+        selectedLocation == null) {
+      return false;
+    }
+    return true;
+  }
+
   // function to create a new account for the user to be added onto the database
   Future merchantSignUp() async {
-    // ensure that 2 password fields matches
     int regCode = 0;
     if (!passwordConfirmed()) {
-      regCode = 3;
+      // ensures that 2 password fields matches
+      regCode = 1;
+    } else if (!isAllFilledIn()) {
+      // ensures all the fields are entered
+      regCode = 2;
     } else {
       // check if user account can be created
       try {
@@ -61,11 +88,23 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
         addMerchantDetails(
             _nameController.text.trim(), _emailController.text.trim());
       } on FirebaseAuthException catch (e) {
-        if (e.code == 'weak-password') {
-          regCode = 1;
-        } else if (e.code == 'email-already-in-use') {
-          regCode = 2;
-        }
+        showDialog<void>(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              content: Text('Error: ${e.code}'),
+              actions: <Widget>[
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: const Text('Close')),
+              ],
+            );
+          },
+        );
+        return;
       }
     }
     // Alert message
@@ -78,7 +117,12 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
             actions: <Widget>[
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  if (regCode == 0) {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const AuthPage()));
+                  } else {
+                    Navigator.of(context).pop();
+                  }
                 },
                 child: const Text('Close'),
               ),
@@ -101,6 +145,7 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
     await getRestaurantId.set({
       'merchantId': restaurantId,
       'merchantName': name,
+      'place': selectedLocation,
       'isOpenForOrder': false
     });
 
@@ -115,7 +160,7 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
   // function to check if password and confirm password matches
   bool passwordConfirmed() {
     return (_passwordController.text.trim() ==
-        _confirmpasswordController.text.trim());
+        _confirmPasswordController.text.trim());
   }
 
   @override
@@ -171,6 +216,34 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
                         ),
                       ),
                     ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+
+                // Location dropdown menu
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: DropdownButtonFormField(
+                    dropdownColor: Colors.white,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    hint: const Text('Store Location'),
+                    value: selectedLocation,
+                    items: locations
+                        .map((item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(
+                                item,
+                              ),
+                            ))
+                        .toList(),
+                    onChanged: (item) =>
+                        setState(() => selectedLocation = item as String?),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -234,7 +307,7 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
-                        controller: _confirmpasswordController,
+                        controller: _confirmPasswordController,
                         obscureText: true,
                         decoration: const InputDecoration(
                           border: InputBorder.none,

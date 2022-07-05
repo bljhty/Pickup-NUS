@@ -1,5 +1,5 @@
 // Displays information about the restaurant selected
-// Store name, waiting time, distance and logo
+// Store name, waiting time, location and logo
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/colors.dart';
@@ -40,27 +40,14 @@ class RestaurantInfo extends StatelessWidget {
                   // 2nd Column: wait time, distance
                   Row(
                     children: [
-                      Container(
-                          padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                            color: Colors.grey.withOpacity(0.6),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Text(restaurant.waitTime!,
-                              style: const TextStyle(
-                                color: Colors.white,
-                              ))),
-                      const SizedBox(
-                        width: 10,
-                      ),
+                      // Location of restaurant
                       Text(
-                        restaurant.distance!,
+                        restaurant.place!,
                         style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                          color: Colors.white,
                         ),
                       ),
+                      const SizedBox(width: 10,),
                     ],
                   )
                 ],

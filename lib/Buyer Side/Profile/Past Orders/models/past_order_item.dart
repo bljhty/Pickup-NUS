@@ -86,28 +86,17 @@ class PastOrderItem extends StatelessWidget {
                           ))
                     ],
                   ),
-                  // price of food item
-                  Row(
-                    children: [
-                      // Subprice of the food item
-                      const Text(
-                        'Subprice: \$',
-                        style: TextStyle(
-                          color: Color.fromARGB(86, 0, 0, 0),
-                          fontSize: 14,
-                        ),
-                      ),
-                      Text(
-                        '${order.subPrice}',
-                        style: const TextStyle(
-                          color: Color.fromARGB(86, 0, 0, 0),
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
-                  ),
                 ],
               ),
+            ),
+          ),
+
+          // Price of the food item
+          Text(
+            '\$${order.subPrice?.toStringAsFixed(2)}',
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 18,
             ),
           ),
         ],

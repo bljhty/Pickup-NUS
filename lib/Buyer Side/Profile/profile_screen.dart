@@ -72,7 +72,7 @@ class _profilescreenState extends State<profilescreen> {
                 const SizedBox(
                   height: 30,
                 ),
-                Padding(
+                /*Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
                     onTap: () {
@@ -99,7 +99,7 @@ class _profilescreenState extends State<profilescreen> {
                       ),
                     ),
                   ),
-                ),
+                ),*/
                 const SizedBox(
                   height: 30,
                 ),

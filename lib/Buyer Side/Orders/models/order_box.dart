@@ -32,19 +32,19 @@ class _OrderBoxState extends State<OrderBox> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 110,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Row(
-        children: [
-          FutureBuilder(
-            future: getOrderInfo(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                return Expanded(
+    return FutureBuilder(
+      future: getOrderInfo(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return Container(
+            height: 110,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Row(
+              children: [
+                Expanded(
                   child: Container(
                     padding: const EdgeInsets.only(
                       top: 20,
@@ -54,28 +54,6 @@ class _OrderBoxState extends State<OrderBox> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Order Number/Code
-                        Row(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: kPrimaryColor,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  ' ${order.orderNum} ',
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-
                         // Name of the food item
                         Row(
                           children: [
@@ -131,17 +109,37 @@ class _OrderBoxState extends State<OrderBox> {
                               ),
                             ),
                           ],
-                        )
+                        ),
                       ],
                     ),
                   ),
-                );
-              }
-              return const Text('Loading...');
-            },
-          ),
-        ],
-      ),
+                ),
+
+                //Order number
+                Container(
+                  decoration: BoxDecoration(
+                    color: kPrimaryColor,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  child: Center(
+                    child: Text(
+                      ' ${order.orderNum} ',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
     );
   }
 }

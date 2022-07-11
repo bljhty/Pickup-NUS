@@ -17,6 +17,18 @@ class FoodPriceQuantity extends StatefulWidget {
 
 class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
   int _qtyToOrder = 1;
+  num _unitPrice = 0;
+  num _subPrice = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // update _qtyToOrder and _subPrice to reflect the last quantity changes of the order
+    _qtyToOrder = int.parse(widget.order.quantity.toString());
+    _unitPrice = num.parse(widget.food.price.toString());
+    _subPrice = num.parse((int.parse(widget.order.quantity.toString()) * _unitPrice).toStringAsFixed(2));
+    print('unit price: $_unitPrice');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +39,7 @@ class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
         children: [
           // Text holder for price
           Align(
-            alignment: const Alignment(-0.3, 0),
+            alignment: const Alignment(-0.4, 0),
             child: Container(
               width: 120,
               height: double.maxFinite,
@@ -51,7 +63,7 @@ class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
                     ),
                   ),
                   Text(
-                    widget.food.price.toString(),
+                    widget.order.subPrice!.toStringAsFixed(2),
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -64,7 +76,7 @@ class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
 
           // Widget to choose quantity with slider (to be completed)
           Align(
-            alignment: const Alignment(0.3, 0),
+            alignment: const Alignment(0.4, 0),
             child: Container(
               height: double.maxFinite,
               width: 120,
@@ -83,7 +95,10 @@ class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
                         setState(() {
                           if (_qtyToOrder != 1) {
                             _qtyToOrder--;
+                            _subPrice = num.parse((_qtyToOrder * _unitPrice).toStringAsFixed(2));
                             widget.order.quantity = _qtyToOrder;
+                            widget.order.subPrice = _subPrice;
+                            print(widget.order.subPrice); // to check
                           }
                         });
                       },
@@ -117,7 +132,10 @@ class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
                       onPressed: () {
                         setState(() {
                           _qtyToOrder++;
+                          _subPrice = num.parse((_qtyToOrder * _unitPrice).toStringAsFixed(2));
                           widget.order.quantity = _qtyToOrder;
+                          widget.order.subPrice = _subPrice;
+                          print(widget.order.subPrice); // to check
                         });
                       },
                       child: const Text(

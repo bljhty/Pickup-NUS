@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:orbital_nus/authentication/pages/splash_page.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:http/http.dart';
 
 void main() async {
   // Initialise firebase as a database
   WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey =
+      "pk_test_51LJ9VMLYNfP77TLP4lTTBxog2LKizzmwuWG60b5WWtERbrD0TognQNZbqRPPQTNDn0YCposGAykV6Q6XNpFKvrjb00McBQjSkN";
+  await Stripe.instance.applySettings();
   await Firebase.initializeApp(
       name: 'pickup-NUS',
       options: const FirebaseOptions(

@@ -7,6 +7,7 @@ import 'package:orbital_nus/Buyer%20Side/Components/Bottom_bar.dart';
 import 'package:orbital_nus/Buyer%20Side/Orders/orders_page.dart';
 import 'package:orbital_nus/get_information/get_username.dart';
 import 'package:orbital_nus/colors.dart';
+import '../../authentication/pages/paymentpage.dart';
 import 'models/cart_list_view.dart';
 
 /*
@@ -179,6 +180,9 @@ class _CartPageState extends State<CartPage> {
           ),
           onPressed: () {
             confirmSubmission();
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const PaymentPage();
+            }));
           },
         ),
       ),

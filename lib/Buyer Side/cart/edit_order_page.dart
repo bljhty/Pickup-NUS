@@ -153,24 +153,29 @@ class _EditOrderPageState extends State<EditOrderPage> {
       body: FutureBuilder(
           future: getOrder(),
           builder: (context, snapshot) {
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  // image of the food item
-                  // uses food_detail_image.dart
-                  FoodImg(food),
+            if (snapshot.connectionState == ConnectionState.done) {
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    // image of the food item
+                    // uses food_detail_image.dart
+                    FoodImg(food),
 
-                  // information about the food
-                  // uses food_info.dart
-                  FoodInfo(food, order),
-                  const SizedBox(
-                    height: 50,
-                  ),
+                    // information about the food
+                    // uses food_info.dart
+                    FoodInfo(food, order),
+                    const SizedBox(
+                      height: 50,
+                    ),
 
-                  // Additional instructions
-                  FoodAddOn(order),
-                ],
-              ),
+                    // Additional instructions
+                    FoodAddOn(order),
+                  ],
+                ),
+              );
+            }
+            return const Center(
+              child: CircularProgressIndicator(),
             );
           }),
       floatingActionButton: SizedBox(

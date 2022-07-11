@@ -19,6 +19,8 @@ class _FoodAddOnState extends State<FoodAddOn> {
   @override
   initState() {
     super.initState();
+    // input the current instruction into the controller
+    _instructionController.text = widget.order.instructions!;
     // listen for changes in text
     _instructionController.addListener(() {
       // store the instructions into order class

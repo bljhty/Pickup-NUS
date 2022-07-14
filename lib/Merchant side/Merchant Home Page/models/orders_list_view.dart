@@ -3,7 +3,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/Orders/models/order_box.dart';
+import 'package:orbital_nus/Merchant%20side/Merchant%20Home%20Page/models/merchant_order_box.dart';
 import 'package:orbital_nus/colors.dart';
 
 class OrdersListView extends StatefulWidget {
@@ -44,7 +44,7 @@ class _OrdersListViewState extends State<OrdersListView> {
               children: [
                 GestureDetector(
                   onTap: () {},
-                  child: OrderBox(widget.orderIds[index]),
+                  child: MerchantOrderBox(widget.orderIds[index]),
                 ),
 
                 // button to indicate order has been made

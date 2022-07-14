@@ -1,28 +1,24 @@
-// Box listing the information of the order that is
-// based on the OrderId displayed in orders_page.dart
+// Box listing the information of the order for the merchants to view
+// based on the orderId displayed in merchant_home_page.dart
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/colors.dart';
 import 'package:orbital_nus/get_information/get_order.dart';
-import 'package:orbital_nus/get_information/get_restaurant.dart';
 
-class OrderBox extends StatefulWidget {
+class MerchantOrderBox extends StatefulWidget {
   final String orderId;
 
-  OrderBox(this.orderId);
+  MerchantOrderBox(this.orderId);
 
   @override
-  State<OrderBox> createState() => _OrderBoxState();
+  State<MerchantOrderBox> createState() => _MerchantOrderBoxState();
 }
 
-class _OrderBoxState extends State<OrderBox> {
+class _MerchantOrderBoxState extends State<MerchantOrderBox> {
   // placeholder to store information about the order
   Order order = Order();
   DateTime? orderTime;
-
-  // placeholder to store information about the restaurant
-  Restaurant restaurantInfo = Restaurant();
 
   // initialise order information
   Future getOrderInfo() async {
@@ -33,15 +29,6 @@ class _OrderBoxState extends State<OrderBox> {
         .then((value) {
       order = Order.fromMap(value.data());
       orderTime = value.data()!['orderTime'].toDate();
-    });
-
-    // obtain information about the restaurant ordered from
-    await FirebaseFirestore.instance
-        .collection('restaurants')
-        .doc(order.merchantId)
-        .get()
-        .then((value) {
-      restaurantInfo = Restaurant.fromMap(value.data());
     });
   }
 
@@ -72,7 +59,6 @@ class _OrderBoxState extends State<OrderBox> {
                         // Name of the food item
                         Row(
                           children: [
-                            // item name
                             Text(
                               '${order.itemName}',
                               style: const TextStyle(
@@ -84,14 +70,13 @@ class _OrderBoxState extends State<OrderBox> {
                           ],
                         ),
 
-                        // Restaurant name
+                        // Name of Buyer
                         Row(
                           children: [
                             Text(
-                              '${restaurantInfo.place} - ${restaurantInfo.merchantName}',
+                              'Ordered by: ${order.buyerName}',
                               style: const TextStyle(
                                 fontSize: 14,
-                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
@@ -113,7 +98,6 @@ class _OrderBoxState extends State<OrderBox> {
                               style: const TextStyle(
                                 color: Color.fromARGB(86, 0, 0, 0),
                                 fontSize: 12,
-                                fontWeight: FontWeight.bold,
                               ),
                             )
                           ],
@@ -134,6 +118,7 @@ class _OrderBoxState extends State<OrderBox> {
                               '${order.instructions}',
                               style: const TextStyle(
                                 color: Color.fromARGB(86, 0, 0, 0),
+                                fontSize: 12,
                               ),
                             ),
                           ],
@@ -147,6 +132,7 @@ class _OrderBoxState extends State<OrderBox> {
                               'Time Ordered: ${orderTime.toString().substring(0, 19)}',
                               style: const TextStyle(
                                 color: Color.fromARGB(86, 0, 0, 0),
+                                fontSize: 12,
                               ),
                             ),
                           ],

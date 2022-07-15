@@ -64,7 +64,6 @@ class _MerchantOrderBoxState extends State<MerchantOrderBox> {
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                height: 1.5,
                               ),
                             ),
                           ],
@@ -127,9 +126,17 @@ class _MerchantOrderBoxState extends State<MerchantOrderBox> {
                         // Timestamp when order was placed
                         Row(
                           children: [
+                            const Text(
+                              'Order Time: ',
+                              style: TextStyle(
+                                color: Color.fromARGB(86, 0, 0, 0),
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             Text(
                               // show only the date and the time (up to seconds)
-                              'Time Ordered: ${orderTime.toString().substring(0, 19)}',
+                              orderTime.toString().substring(0, 19),
                               style: const TextStyle(
                                 color: Color.fromARGB(86, 0, 0, 0),
                                 fontSize: 12,

@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Profile/Past%20Orders/models/past_order_list_view.dart';
 import 'package:orbital_nus/colors.dart';
-import 'package:orbital_nus/get_information/get_order.dart';
 import 'package:orbital_nus/get_information/get_username.dart';
 
 class MerchantPastOrdersPage extends StatefulWidget {
@@ -20,7 +19,7 @@ class _MerchantPastOrdersPageState extends State<MerchantPastOrdersPage> {
 
   // Placeholders to store information
   Username userInfo = Username();
-  List<Order> pastOrders = [];
+  List<String> pastOrders = [];
 
   Future getPastOrders() async {
     // obtain information about logged in buyer
@@ -42,15 +41,11 @@ class _MerchantPastOrdersPageState extends State<MerchantPastOrdersPage> {
         .then(
           (snapshot) => snapshot.docs.forEach(
             (orderId) {
-              pastOrders.add(Order.fromMap(orderId.data()));
+              pastOrders.add(orderId.reference.id);
             },
           ),
         );
   }
-
-  // function to add the order onto the list if it is not a duplicate
-  // TODO: once timestamp is added onto database, finish this function
-  // addOrder(Order order) {}
 
   @override
   Widget build(BuildContext context) {

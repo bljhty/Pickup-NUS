@@ -20,7 +20,7 @@ class _PastOrderPageState extends State<PastOrderPage> {
 
   // Placeholders to store information
   Username userInfo = Username();
-  List<Order> pastOrders = [];
+  List<String> pastOrders = [];
 
   Future getPastOrders() async {
     // obtain information about logged in buyer
@@ -43,7 +43,7 @@ class _PastOrderPageState extends State<PastOrderPage> {
         .then(
           (snapshot) => snapshot.docs.forEach(
             (orderId) {
-              pastOrders.add(Order.fromMap(orderId.data()));
+              pastOrders.add(orderId.reference.id);
             },
           ),
         );

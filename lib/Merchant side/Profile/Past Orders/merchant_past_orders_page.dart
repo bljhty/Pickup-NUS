@@ -37,6 +37,7 @@ class _MerchantPastOrdersPageState extends State<MerchantPastOrdersPage> {
         .collection('orders')
         .where('merchantId', isEqualTo: userInfo.id)
         .where('isOrderCollected', isEqualTo: true)
+        .orderBy('orderTime', descending: true)
         .get()
         .then(
           (snapshot) => snapshot.docs.forEach(

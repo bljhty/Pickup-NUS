@@ -38,7 +38,7 @@ class _PastOrderPageState extends State<PastOrderPage> {
         .collection('orders')
         .where('buyerId', isEqualTo: userInfo.id)
         .where('isOrderCollected', isEqualTo: true)
-        .orderBy('readyTime', descending: true)
+        .orderBy('orderTime', descending: true)
         .get()
         .then(
           (snapshot) => snapshot.docs.forEach(

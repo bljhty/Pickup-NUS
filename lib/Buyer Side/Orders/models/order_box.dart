@@ -78,7 +78,6 @@ class _OrderBoxState extends State<OrderBox> {
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                height: 1.5,
                               ),
                             ),
                           ],
@@ -91,7 +90,6 @@ class _OrderBoxState extends State<OrderBox> {
                               '${restaurantInfo.place} - ${restaurantInfo.merchantName}',
                               style: const TextStyle(
                                 fontSize: 14,
-                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
@@ -134,6 +132,7 @@ class _OrderBoxState extends State<OrderBox> {
                               '${order.instructions}',
                               style: const TextStyle(
                                 color: Color.fromARGB(86, 0, 0, 0),
+                                fontSize: 12,
                               ),
                             ),
                           ],
@@ -142,11 +141,20 @@ class _OrderBoxState extends State<OrderBox> {
                         // Timestamp when order was placed
                         Row(
                           children: [
+                            const Text(
+                              'Order Time: ',
+                              style: TextStyle(
+                                color: Color.fromARGB(86, 0, 0, 0),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12,
+                              ),
+                            ),
                             Text(
                               // show only the date and the time (up to seconds)
-                              'Time Ordered: ${orderTime.toString().substring(0, 19)}',
+                              orderTime.toString().substring(0, 19),
                               style: const TextStyle(
                                 color: Color.fromARGB(86, 0, 0, 0),
+                                fontSize: 12,
                               ),
                             ),
                           ],

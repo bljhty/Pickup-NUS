@@ -4,7 +4,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/Orders/models/order_box.dart';
+import 'package:orbital_nus/Buyer%20Side/Orders/models/order_ready_box.dart';
 import 'package:orbital_nus/colors.dart';
 
 class OrdersReadyListView extends StatefulWidget {
@@ -50,7 +50,7 @@ class _OrdersReadyListViewState extends State<OrdersReadyListView> {
             children: [
               GestureDetector(
                 onTap: () {},
-                child: OrderBox(widget.orderIds[index]),
+                child: OrderReadyBox(widget.orderIds[index]),
               ),
 
               // button to indicate order has been made

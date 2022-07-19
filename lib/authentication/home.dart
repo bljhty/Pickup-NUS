@@ -3,7 +3,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:orbital_nus/Admin%20Side/Admin%20Home%20Page/admin_home_page.dart';
 import 'package:orbital_nus/Buyer%20Side/Order%20pages/restaurant%20selection/restaurant_directory_page.dart';
+import 'package:orbital_nus/authentication/mainpage.dart';
 import 'package:orbital_nus/get_information/get_username.dart';
 import 'package:orbital_nus/Merchant%20side/open_for_order.dart';
 
@@ -30,6 +32,61 @@ class _HomeState extends State<Home> {
     });
   }
 
+  // Function to direct merchants to the correct pages according to whether they
+  // are approved by the administrator
+  Future merchantDirectory() async {
+    print('enter merchantDirectory');
+    // obtain merchant's adminApproval from database
+    String adminApproval = '';
+    await FirebaseFirestore.instance
+        .collection('restaurants')
+        .doc(userInfo.id)
+        .get()
+        .then((value) {
+      adminApproval = value.data()!['adminApproval'];
+    });
+
+    print('adminApproval: $adminApproval'); // to check
+    // based on the adminApproval, direct them to the correct page
+    String message = '';
+    if (adminApproval == 'Approved') {
+      print('checked and approved');
+      // return const OpenForOrder();
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return const OpenForOrder();
+      }));
+      return;
+    }
+    // not approved, log out and provide alert message
+    else if (adminApproval == 'Pending') {
+      message =
+          'Your account is pending approval from our administrators, please try again later';
+    } else {
+      message =
+          'Your account is not approved, please contact our administrators for more information';
+    }
+
+    showDialog<void>(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Text(message),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut(); // logged user out
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const MainPage();
+                  }));
+                },
+                child: const Text('Close'),
+              ),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -38,9 +95,14 @@ class _HomeState extends State<Home> {
         if (snapshot.connectionState == ConnectionState.done) {
           // check for userType
           if (userInfo.userType == 'Merchant') {
-            return const OpenForOrder();
+            print('check merchant');
+            merchantDirectory();
+          } else if (userInfo.userType == 'Admin') {
+            print('check admin');
+            return const AdminHomePage();
+          } else {
+            return const RestaurantDirectoryPage();
           }
-          return const RestaurantDirectoryPage();
         }
         return const Center(
           child: CircularProgressIndicator(),

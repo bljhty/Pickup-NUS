@@ -146,7 +146,8 @@ class _MerchantRegisterPageState extends State<MerchantRegisterPage> {
       'merchantId': restaurantId,
       'merchantName': name,
       'place': selectedLocation,
-      'isOpenForOrder': false
+      'isOpenForOrder': false,
+      'adminApproval': 'Pending',
     });
 
     // add onto user database

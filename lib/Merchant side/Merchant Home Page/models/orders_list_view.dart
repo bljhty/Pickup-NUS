@@ -37,49 +37,50 @@ class _OrdersListViewState extends State<OrdersListView> {
       color: kBackgroundColor,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: ListView.separated(
-          controller: widget.pageController,
-          padding: const EdgeInsets.all(12),
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: MerchantOrderBox(widget.orderIds[index]),
-                ),
+        controller: widget.pageController,
+        padding: const EdgeInsets.all(12),
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              GestureDetector(
+                onTap: () {},
+                child: MerchantOrderBox(widget.orderIds[index]),
+              ),
 
-                // button to indicate order has been made
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      updateOrderReady(widget.orderIds[index]);
-                    }, // to change the status of the order
-                    child: Container(
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Ready',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
+              // button to indicate order has been made
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: GestureDetector(
+                  onTap: () {
+                    updateOrderReady(widget.orderIds[index]);
+                  }, // to change the status of the order
+                  child: Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Ready',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
                         ),
                       ),
                     ),
                   ),
                 ),
-              ],
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const SizedBox(height: 12);
-          },
-          itemCount: widget.orderIds.length),
+              ),
+            ],
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const SizedBox(height: 12);
+        },
+        itemCount: widget.orderIds.length,
+      ),
     );
   }
 }

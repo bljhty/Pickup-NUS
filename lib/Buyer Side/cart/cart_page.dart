@@ -9,6 +9,12 @@ import 'package:orbital_nus/get_information/get_username.dart';
 import 'package:orbital_nus/colors.dart';
 import '../../authentication/pages/paymentpage.dart';
 import 'models/cart_list_view.dart';
+import 'dart:convert';
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:http/http.dart' as http;
 
 /*
   Cart page which contains orders which are being added in by users by receiving
@@ -116,6 +122,45 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> initPaymentSheet(context,
+        {required String email, required int amount}) async {
+      try {
+        final response = await http.post(
+            Uri.parse(
+                'https://us-central1-pickup-nus.cloudfunctions.net/stripePaymentIntentRequest'),
+            body: {
+              'email': email,
+              'amount': amount.toString(),
+            });
+        final jsonResponse = jsonDecode(response.body);
+        log(jsonResponse.toString());
+
+        await Stripe.instance.initPaymentSheet(
+            paymentSheetParameters: SetupPaymentSheetParameters(
+          paymentIntentClientSecret: jsonResponse['paymentIntent'],
+          merchantDisplayName: 'pickup@nus',
+          customerId: jsonResponse['customer'],
+          customerEphemeralKeySecret: jsonResponse['ephemeralKey'],
+          style: ThemeMode.light,
+          testEnv: true,
+          merchantCountryCode: 'SG',
+        ));
+        await Stripe.instance.presentPaymentSheet();
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('payment completed')),
+        );
+      } catch (e) {
+        if (e is StripeException) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text('Error from stripe')));
+        } else {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text('Error: $e')));
+        }
+      }
+    }
+
     return Scaffold(
       // AppBar with back button and my cart text
       appBar: AppBar(
@@ -178,11 +223,10 @@ class _CartPageState extends State<CartPage> {
               ),
             ],
           ),
-          onPressed: () {
+          onPressed: () async {
+            await initPaymentSheet(context,
+                email: 'example@gmail.com', amount: 1000);
             confirmSubmission();
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return const PaymentPage();
-            }));
           },
         ),
       ),

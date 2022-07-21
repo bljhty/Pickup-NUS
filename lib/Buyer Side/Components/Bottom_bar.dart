@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Buyer%20Side/Orders/orders_page.dart';
-import 'package:orbital_nus/Buyer%20Side/Profile/profile_screen.dart';
+import 'package:orbital_nus/Buyer%20Side/Profile/setting_screen.dart';
 import 'package:orbital_nus/Buyer%20Side/cart/cart_page.dart';
 import 'package:orbital_nus/Buyer%20Side/Order pages/restaurant%20selection/restaurant_directory_page.dart';
 import 'package:orbital_nus/colors.dart';
@@ -80,9 +80,9 @@ class Bottombar extends StatelessWidget {
         IconButton(
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const profilescreen()));
+                MaterialPageRoute(builder: (context) => const settingscreen()));
           },
-          icon: Icon(Icons.person_outline,
+          icon: Icon(Icons.settings,
               color: MenuState.profile == selectMenu
                   ? kSecondaryColor
                   : Colors.grey,

@@ -6,14 +6,14 @@ import 'package:orbital_nus/Buyer%20Side/Profile/card_info.dart';
 import 'package:orbital_nus/authentication/mainpage.dart';
 import 'package:orbital_nus/colors.dart';
 
-class profilescreen extends StatefulWidget {
-  const profilescreen({Key? key}) : super(key: key);
+class settingscreen extends StatefulWidget {
+  const settingscreen({Key? key}) : super(key: key);
 
   @override
-  State<profilescreen> createState() => _profilescreenState();
+  State<settingscreen> createState() => _settingscreenState();
 }
 
-class _profilescreenState extends State<profilescreen> {
+class _settingscreenState extends State<settingscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class _profilescreenState extends State<profilescreen> {
         backgroundColor: kPrimaryColor,
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: const Text('My Profile'),
+        title: const Text('Settings'),
       ),
       bottomNavigationBar: const Bottombar(selectMenu: MenuState.profile),
       backgroundColor: kBackgroundColor,

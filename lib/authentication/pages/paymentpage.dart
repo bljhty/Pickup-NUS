@@ -58,13 +58,37 @@ class PaymentPage extends StatelessWidget {
         title: const Text('Payment Page'),
       ),
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: GestureDetector(
+            onTap: () async {
+              await initPaymentSheet(context,
+                  email: 'example@gmail.com', amount: 1000);
+            },
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: kSecondaryColor,
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: const Center(
+                child: Text(
+                  'Confirm Payment?',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18),
+                ),
+              ),
+            ),
+          ),
+        )
+        /*
           ElevatedButton(
               style: ButtonStyle(
                   foregroundColor:
-                      MaterialStateProperty.all<Color>(Colors.blue)),
+                      MaterialStateProperty.all<Color>(Colors.blue),),
               onPressed: () async {
                 await initPaymentSheet(context,
                     email: 'example@gmail.com', amount: 100);
@@ -74,7 +98,8 @@ class PaymentPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ))
         ],
-      )),
+        */
+      ])),
     );
   }
 }

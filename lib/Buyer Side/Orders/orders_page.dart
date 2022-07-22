@@ -48,7 +48,7 @@ class _OrdersPageState extends State<OrdersPage> {
         .where('buyerId', isEqualTo: userInfo.id)
         .where('isOrderPlaced', isEqualTo: true)
         .where('isOrderReady', isEqualTo: false)
-        .orderBy('orderTime', descending: true)
+        .orderBy('orderTime', descending: false)
         .get()
         .then(
           (snapshot) => snapshot.docs.forEach(
@@ -64,6 +64,7 @@ class _OrdersPageState extends State<OrdersPage> {
         .where('buyerId', isEqualTo: userInfo.id)
         .where('isOrderReady', isEqualTo: true)
         .where('isOrderCollected', isEqualTo: false)
+        .orderBy('orderTime', descending: false)
         .get()
         .then(
           (snapshot) => snapshot.docs.forEach(

@@ -7,12 +7,9 @@ import 'package:orbital_nus/Buyer%20Side/Components/Bottom_bar.dart';
 import 'package:orbital_nus/Buyer%20Side/Orders/orders_page.dart';
 import 'package:orbital_nus/get_information/get_username.dart';
 import 'package:orbital_nus/colors.dart';
-import '../../authentication/pages/paymentpage.dart';
 import 'models/cart_list_view.dart';
 import 'dart:convert';
 import 'dart:developer';
-
-import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 
@@ -34,6 +31,7 @@ class _CartPageState extends State<CartPage> {
   // Placeholders to store information of user
   Username userInfo = Username();
   List<dynamic> orderIds = []; // to store list of orderIds of buyer's cart
+  num totalPrice = 0; // to store the total price of the whole cart
 
   // to obtain the cart of the buyer
   Future getCart() async {
@@ -54,6 +52,9 @@ class _CartPageState extends State<CartPage> {
       final buyerInfo = value.data() as Map<String, dynamic>;
       orderIds = buyerInfo['cart'];
     });
+
+    // obtain the total cost of the whole cart
+    getTotalPrice();
   }
 
   // to update the database to submit the order to merchant and empty the cart
@@ -91,6 +92,21 @@ class _CartPageState extends State<CartPage> {
         );
       },
     );
+  }
+
+  // to get a value of the total price of the cart
+  Future getTotalPrice() async {
+    // get the subPrice of each order and include into totalPrice
+    orderIds.forEach((orderId) async {
+      await FirebaseFirestore.instance
+          .collection('orders')
+          .doc(orderId)
+          .get()
+          .then((value) {
+            num subPrice = value.data()!['subPrice'];
+            totalPrice += subPrice;
+      });
+    });
   }
 
   // Alert dialog pop up to confirm submitting order
@@ -225,7 +241,7 @@ class _CartPageState extends State<CartPage> {
           ),
           onPressed: () async {
             await initPaymentSheet(context,
-                email: 'example@gmail.com', amount: 1000);
+                email: 'example@gmail.com', amount: (totalPrice * 100).toInt());
             confirmSubmission();
           },
         ),

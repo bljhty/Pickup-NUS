@@ -50,6 +50,26 @@ class _AddItemPageState extends State<AddItemPage> {
 
   // Function to add the item into the database
   Future addItem() async {
+    // check if all the details are filled up
+    if (!isAllFilled()) {
+      // provide popup message to ask to fill everything up
+      showDialog(
+        barrierDismissible: false,
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              content: const Text('Please fill in all the details'),
+              actions: <Widget>[
+                TextButton(onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                    child: const Text('Close'))
+              ],
+            );
+          }
+      );
+      return;
+    }
     // obtain newly generated foodId
     final getFoodId = FirebaseFirestore.instance.collection('foods').doc();
 
@@ -93,6 +113,18 @@ class _AddItemPageState extends State<AddItemPage> {
             ],
           );
         });
+  }
+
+  // check if all the text boxes have been filled up
+  bool isAllFilled() {
+    if (_nameController.text == '' ||
+        _priceController.text == '' ||
+        _waitTimeController.text == '' ||
+        _menuTypeController.text == ''
+    ) {
+      return false;
+    }
+    return true;
   }
 
   @override

@@ -35,7 +35,6 @@ class _HomeState extends State<Home> {
   // Function to direct merchants to the correct pages according to whether they
   // are approved by the administrator
   Future merchantDirectory() async {
-    print('enter merchantDirectory');
     // obtain merchant's adminApproval from database
     String adminApproval = '';
     await FirebaseFirestore.instance
@@ -46,12 +45,9 @@ class _HomeState extends State<Home> {
       adminApproval = value.data()!['adminApproval'];
     });
 
-    print('adminApproval: $adminApproval'); // to check
     // based on the adminApproval, direct them to the correct page
     String message = '';
     if (adminApproval == 'Approved') {
-      print('checked and approved');
-      // return const OpenForOrder();
       Navigator.of(context).push(MaterialPageRoute(builder: (context) {
         return const OpenForOrder();
       }));
@@ -75,7 +71,7 @@ class _HomeState extends State<Home> {
             actions: <Widget>[
               TextButton(
                 onPressed: () {
-                  FirebaseAuth.instance.signOut(); // logged user out
+                  FirebaseAuth.instance.signOut(); // logout user
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return const MainPage();
                   }));
@@ -95,10 +91,8 @@ class _HomeState extends State<Home> {
         if (snapshot.connectionState == ConnectionState.done) {
           // check for userType
           if (userInfo.userType == 'Merchant') {
-            print('check merchant');
             merchantDirectory();
           } else if (userInfo.userType == 'Admin') {
-            print('check admin');
             return const AdminHomePage();
           } else {
             return const RestaurantDirectoryPage();

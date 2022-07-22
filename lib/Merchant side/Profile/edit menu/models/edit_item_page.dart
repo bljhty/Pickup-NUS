@@ -241,7 +241,7 @@ class _EditItemPageState extends State<EditItemPage> {
           ),
           elevation: 2,
           child: const Text(
-            'Confirm Edit',
+            'Update',
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,

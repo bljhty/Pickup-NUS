@@ -33,6 +33,21 @@ class _CartPageState extends State<CartPage> {
   List<dynamic> orderIds = []; // to store list of orderIds of buyer's cart
   num totalPrice = 0; // to store the total price of the whole cart
 
+  // to get a value of the total price of the cart
+  Future getTotalPrice() async {
+    // get the subPrice of each order and include into totalPrice
+    orderIds.forEach((orderId) async {
+      await FirebaseFirestore.instance
+          .collection('orders')
+          .doc(orderId)
+          .get()
+          .then((value) {
+        num subPrice = value.data()!['subPrice'];
+        totalPrice += subPrice;
+      });
+    });
+  }
+
   // to obtain the cart of the buyer
   Future getCart() async {
     // obtain information about logged in buyer
@@ -94,48 +109,6 @@ class _CartPageState extends State<CartPage> {
     );
   }
 
-  // to get a value of the total price of the cart
-  Future getTotalPrice() async {
-    // get the subPrice of each order and include into totalPrice
-    orderIds.forEach((orderId) async {
-      await FirebaseFirestore.instance
-          .collection('orders')
-          .doc(orderId)
-          .get()
-          .then((value) {
-            num subPrice = value.data()!['subPrice'];
-            totalPrice += subPrice;
-      });
-    });
-  }
-
-  // Alert dialog pop up to confirm submitting order
-  Future confirmSubmission() async {
-    showDialog<void>(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            content: const Text('Confirm Submit Order?'),
-            actions: <Widget>[
-              //confirm button
-              TextButton(
-                onPressed: () {
-                  submitCart();
-                },
-                child: const Text('Confirm'),
-              ),
-              // cancel button
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Cancel'),
-              ),
-            ],
-          );
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
     Future<void> initPaymentSheet(context,
@@ -166,6 +139,9 @@ class _CartPageState extends State<CartPage> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('payment completed')),
         );
+
+        // submit order to kitchen and clear the cart
+        submitCart();
       } catch (e) {
         if (e is StripeException) {
           ScaffoldMessenger.of(context)
@@ -230,7 +206,7 @@ class _CartPageState extends State<CartPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Text(
-                'Order',
+                'Checkout',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -242,7 +218,6 @@ class _CartPageState extends State<CartPage> {
           onPressed: () async {
             await initPaymentSheet(context,
                 email: 'example@gmail.com', amount: (totalPrice * 100).toInt());
-            confirmSubmission();
           },
         ),
       ),

@@ -31,39 +31,39 @@ class RestaurantItem extends StatelessWidget {
           ),
 
           Expanded(
-              child: Container(
-                padding: const EdgeInsets.only(
-                  top: 20,
-                  left: 10,
-                  right: 10,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        // Restaurant name
-                        Text(
-                          restaurant.merchantName!,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            height: 1.5,
-                          ),
+            child: Container(
+              padding: const EdgeInsets.only(
+                top: 20,
+                left: 10,
+                right: 10,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Restaurant name
+                      Text(
+                        restaurant.merchantName!,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                          height: 1.5,
                         ),
+                      ),
 
-                        // arrow icon to indicate that it can be clicked on
-                        const Icon(
-                          Icons.arrow_forward_ios_outlined,
-                          size: 15,
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              )
-          )
+                      // arrow icon to indicate that it can be clicked on
+                      const Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 15,
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

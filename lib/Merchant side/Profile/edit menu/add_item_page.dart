@@ -54,20 +54,20 @@ class _AddItemPageState extends State<AddItemPage> {
     if (!isAllFilled()) {
       // provide popup message to ask to fill everything up
       showDialog(
-        barrierDismissible: false,
+          barrierDismissible: false,
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
               content: const Text('Please fill in all the details'),
               actions: <Widget>[
-                TextButton(onPressed: () {
-                  Navigator.of(context).pop();
-                },
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
                     child: const Text('Close'))
               ],
             );
-          }
-      );
+          });
       return;
     }
     // obtain newly generated foodId
@@ -120,8 +120,7 @@ class _AddItemPageState extends State<AddItemPage> {
     if (_nameController.text == '' ||
         _priceController.text == '' ||
         _waitTimeController.text == '' ||
-        _menuTypeController.text == ''
-    ) {
+        _menuTypeController.text == '') {
       return false;
     }
     return true;

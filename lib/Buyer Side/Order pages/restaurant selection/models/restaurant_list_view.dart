@@ -14,10 +14,7 @@ class RestaurantListView extends StatelessWidget {
   final Map<String, List<Restaurant>> places;
 
   RestaurantListView(
-      this.selected,
-      this.callback,
-      this.pageController,
-      this.places);
+      this.selected, this.callback, this.pageController, this.places);
 
   @override
   Widget build(BuildContext context) {
@@ -26,38 +23,30 @@ class RestaurantListView extends StatelessWidget {
 
     return Container(
       color: kBackgroundColor,
-      padding: const EdgeInsets.symmetric(horizontal: 25,),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 25,
+      ),
       child: PageView(
           controller: pageController,
           onPageChanged: (index) => callback(index),
           children: category
-              .map((e) =>
-              ListView.separated(
-                padding: EdgeInsets.zero,
-                // Upon tap, redirects to the restaurant's order_directory_page.dart
-                itemBuilder: (context, index) =>
-                    GestureDetector(
+              .map((e) => ListView.separated(
+                    padding: EdgeInsets.zero,
+                    // Upon tap, redirects to the restaurant's order_directory_page.dart
+                    itemBuilder: (context, index) => GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>
-                                OrderDirectoryPage(
-                                    restaurant: places[category[selected]]![index]
-                                )
-                        ));
+                            builder: (context) => OrderDirectoryPage(
+                                restaurant:
+                                    places[category[selected]]![index])));
                       },
                       // uses restaurant_item.dart to lay out how each box looks like
-                      child: RestaurantItem(
-                          places[category[selected]]![index]
-                      ),
+                      child: RestaurantItem(places[category[selected]]![index]),
                     ),
-                separatorBuilder: (_, index) =>
-                const SizedBox(
-                    height: 15
-                ),
-                itemCount: places[category[selected]]!.length,
-              ))
-              .toList()
-      ),
+                    separatorBuilder: (_, index) => const SizedBox(height: 15),
+                    itemCount: places[category[selected]]!.length,
+                  ))
+              .toList()),
     );
   }
 }

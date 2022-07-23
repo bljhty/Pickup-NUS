@@ -46,7 +46,7 @@ class _RestaurantDirectoryPageState extends State<RestaurantDirectoryPage> {
       }
       // add current restaurant to the correct list based on their location
       addRestaurant(restaurant);
-      });
+    });
   }
 
   // function to check if restaurant is a duplicate, if it isn't, add onto the list

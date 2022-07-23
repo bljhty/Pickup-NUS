@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:orbital_nus/authentication/pages/splash_page.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:http/http.dart';
 
 void main() async {
   // Initialise firebase as a database

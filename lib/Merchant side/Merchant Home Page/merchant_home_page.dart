@@ -42,6 +42,7 @@ class _MerchantHomePageState extends State<MerchantHomePage> {
         .where('merchantId', isEqualTo: userInfo.id)
         .where('isOrderPlaced', isEqualTo: true)
         .where('isOrderReady', isEqualTo: false)
+        .orderBy('orderTime', descending: false)
         .get()
         .then((snapshot) => snapshot.docs.forEach((orderId) {
               orderIds.add(orderId.reference.id);

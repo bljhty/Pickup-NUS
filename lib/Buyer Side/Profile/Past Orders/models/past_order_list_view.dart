@@ -8,8 +8,10 @@ class PastOrderListView extends StatelessWidget {
   final PageController pageController;
   final List<String> pastOrders;
 
-  PastOrderListView(this.pageController,
-      this.pastOrders,);
+  PastOrderListView(
+    this.pageController,
+    this.pastOrders,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -17,15 +19,17 @@ class PastOrderListView extends StatelessWidget {
       color: kBackgroundColor,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: ListView.separated(
-          controller: pageController,
-          padding: const EdgeInsets.all(12),
-          itemBuilder: (context, index) {
-            return PastOrderItem(pastOrders[index]);
-          },
-          separatorBuilder: (context, index) {
-            return const SizedBox(height: 12,);
-          },
-          itemCount: pastOrders.length,
+        controller: pageController,
+        padding: const EdgeInsets.all(12),
+        itemBuilder: (context, index) {
+          return PastOrderItem(pastOrders[index]);
+        },
+        separatorBuilder: (context, index) {
+          return const SizedBox(
+            height: 12,
+          );
+        },
+        itemCount: pastOrders.length,
       ),
     );
   }

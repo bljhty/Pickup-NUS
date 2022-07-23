@@ -32,8 +32,10 @@ class _FoodDetailPageState extends State<FoodDetailPage> {
 
   // order class to store the information
   Order order = Order(
-      quantity: 1, // if not updated, put as 1
-      instructions: 'NIL', // if not updated, put as NIL
+      quantity: 1,
+      // if not updated, put as 1
+      instructions: 'NIL',
+      // if not updated, put as NIL
       isOrderPlaced: false,
       isOrderReady: false,
       isOrderCollected: false);

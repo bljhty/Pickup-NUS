@@ -27,8 +27,8 @@ class _AdminHomePageState extends State<AdminHomePage> {
         .where('adminApproval', isEqualTo: 'Pending')
         .get()
         .then((snapshot) => snapshot.docs.forEach((restaurantId) {
-          restaurantIds.add(restaurantId.reference.id);
-    }));
+              restaurantIds.add(restaurantId.reference.id);
+            }));
   }
 
   @override

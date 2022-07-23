@@ -26,7 +26,9 @@ class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
     // update _qtyToOrder and _subPrice to reflect the last quantity changes of the order
     _qtyToOrder = int.parse(widget.order.quantity.toString());
     _unitPrice = num.parse(widget.food.price.toString());
-    _subPrice = num.parse((int.parse(widget.order.quantity.toString()) * _unitPrice).toStringAsFixed(2));
+    _subPrice = num.parse(
+        (int.parse(widget.order.quantity.toString()) * _unitPrice)
+            .toStringAsFixed(2));
     print('unit price: $_unitPrice');
   }
 
@@ -95,7 +97,8 @@ class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
                         setState(() {
                           if (_qtyToOrder != 1) {
                             _qtyToOrder--;
-                            _subPrice = num.parse((_qtyToOrder * _unitPrice).toStringAsFixed(2));
+                            _subPrice = num.parse(
+                                (_qtyToOrder * _unitPrice).toStringAsFixed(2));
                             widget.order.quantity = _qtyToOrder;
                             widget.order.subPrice = _subPrice;
                             print(widget.order.subPrice); // to check
@@ -132,7 +135,8 @@ class _FoodPriceQuantityState extends State<FoodPriceQuantity> {
                       onPressed: () {
                         setState(() {
                           _qtyToOrder++;
-                          _subPrice = num.parse((_qtyToOrder * _unitPrice).toStringAsFixed(2));
+                          _subPrice = num.parse(
+                              (_qtyToOrder * _unitPrice).toStringAsFixed(2));
                           widget.order.quantity = _qtyToOrder;
                           widget.order.subPrice = _subPrice;
                           print(widget.order.subPrice); // to check

@@ -45,36 +45,37 @@ class _ApprovalListViewState extends State<ApprovalListView> {
   Future rejectRestaurantNotif(String restaurantId) async {
     // to request reason for rejection
     showDialog<void>(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text('Reason for Rejecting'),
-            content: TextField(
-              autofocus: true,
-              decoration: const InputDecoration(hintText: 'Enter Reason'),
-              controller: _reasonController,
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Reason for Rejecting'),
+          content: TextField(
+            autofocus: true,
+            decoration: const InputDecoration(hintText: 'Enter Reason'),
+            controller: _reasonController,
+          ),
+          actions: [
+            // Submit button
+            TextButton(
+              onPressed: () {
+                // update adminApproval with reason of rejection
+                rejectRestaurant(restaurantId, _reasonController.text.trim());
+                Navigator.of(context).pop();
+              },
+              child: const Text('Submit'),
             ),
-            actions: [
-              // Submit button
-              TextButton(
-                onPressed: () {
-                  // update adminApproval with reason of rejection
-                  rejectRestaurant(restaurantId, _reasonController.text.trim());
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Submit'),
-              ),
 
-              // Cancel button
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: const Text('Cancel'),
-              ),
-            ],
-          );
-        });
+            // Cancel button
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Cancel'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   // function to reject restaurant's account

@@ -7,6 +7,7 @@ import 'package:orbital_nus/get_information/get_restaurant.dart';
 
 class RestaurantInfo extends StatelessWidget {
   final Restaurant restaurant;
+
   RestaurantInfo(this.restaurant);
 
   @override
@@ -47,7 +48,9 @@ class RestaurantInfo extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                      const SizedBox(width: 10,),
+                      const SizedBox(
+                        width: 10,
+                      ),
                     ],
                   )
                 ],

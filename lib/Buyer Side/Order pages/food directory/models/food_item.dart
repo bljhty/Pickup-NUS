@@ -29,58 +29,56 @@ class FoodItem extends StatelessWidget {
                 fit: BoxFit.fitHeight,
               )),
           Expanded(
-              child: Container(
-            padding: const EdgeInsets.only(
-              top: 20,
-              left: 10,
-              right: 10,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Food name
-                    Text(
-                      food.itemName!,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        height: 1.5,
+            child: Container(
+              padding: const EdgeInsets.only(
+                top: 20,
+                left: 10,
+                right: 10,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      // Food name
+                      Text(
+                        food.itemName!,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          height: 1.5,
+                        ),
                       ),
-                    ),
 
-                    // arrow icon to indicate that it can be clicked on
-                    const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      size: 15,
-                    )
-                  ],
-                ),
-                Row(
-                  // price of the food item
-                  children: [
-                    const Text(
-                      '\$',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                      // arrow icon to indicate that it can be clicked on
+                      const Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 15,
                       ),
-                    ),
-                    Text(
-                      '${food.price}',
-                      style:
-                          const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold
-                          ),
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  ),
+                  Row(
+                    // price of the food item
+                    children: [
+                      const Text(
+                        '\$',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        '${food.price}',
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
-          ))
+          ),
         ],
       ),
     );

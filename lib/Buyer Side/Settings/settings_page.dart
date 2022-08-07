@@ -1,16 +1,22 @@
-/// Page showing the order history, profile settings, menu settings and logout
+/// Page providing miscellaneous settings for the buyer
+/// Includes 'Past Orders' button which redirects buyer to the past orders page
+/// and 'Logout' button which logs user out and redirects back to the login page
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Merchant%20side/Merchant%20Bottom%20Bar/merchant_bottom_bar.dart';
-import 'package:orbital_nus/Merchant%20side/Profile/Past%20Orders/merchant_past_orders_page.dart';
-import 'package:orbital_nus/Merchant%20side/Profile/edit%20menu/edit_menu_page.dart';
+import 'package:orbital_nus/Buyer%20Side/Components/bottom_bar.dart';
+import 'package:orbital_nus/Buyer%20Side/Settings/Past%20Orders/past_order_page.dart';
 import 'package:orbital_nus/authentication/main_page.dart';
 import 'package:orbital_nus/colors.dart';
 
-class MerchantProfilePage extends StatelessWidget {
-  const MerchantProfilePage({Key? key}) : super(key: key);
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({Key? key}) : super(key: key);
 
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,10 +24,9 @@ class MerchantProfilePage extends StatelessWidget {
         backgroundColor: kPrimaryColor,
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: const Text('My Profile'),
+        title: const Text('Settings'),
       ),
-      bottomNavigationBar:
-          const MerchantBottomBar(selectMenu: MenuState.profile),
+      bottomNavigationBar: const BottomBar(selectMenu: MenuState.profile),
       backgroundColor: kBackgroundColor,
       body: SafeArea(
         child: Center(
@@ -29,9 +34,7 @@ class MerchantProfilePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 Image.asset(
                   'assets/images/Logo.png',
                   height: 150,
@@ -42,14 +45,14 @@ class MerchantProfilePage extends StatelessWidget {
                   height: 30,
                 ),
 
-                // Past Orders
+                // Past Orders Button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return const MerchantPastOrdersPage();
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const PastOrderPage();
                       }));
                     },
                     child: Container(
@@ -71,42 +74,11 @@ class MerchantProfilePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
-
-                // Edit Menu button
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return const EditMenuPage();
-                      }));
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        color: kSecondaryColor,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Edit Menu',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
                 const SizedBox(
                   height: 30,
                 ),
 
-                // Log out button
+                // Logout Button
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
@@ -125,7 +97,7 @@ class MerchantProfilePage extends StatelessWidget {
                       ),
                       child: const Center(
                         child: Text(
-                          'Log Out',
+                          'Logout',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

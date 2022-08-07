@@ -1,10 +1,11 @@
-// Page which displays buyer's orders and its current status,
-// whether it is still being prepared or ready for collection
+/// Page displaying buyer's orders that have been checked out
+/// orders that are ready for collection are at top half of page
+/// orders that are being prepared are at bottom half of screen
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:orbital_nus/Buyer%20Side/Components/Bottom_bar.dart';
+import 'package:orbital_nus/Buyer%20Side/Components/bottom_bar.dart';
 import 'package:orbital_nus/Buyer%20Side/Orders/models/orders_preparing_list_view.dart';
 import 'package:orbital_nus/Buyer%20Side/Orders/models/orders_ready_list_view.dart';
 import 'package:orbital_nus/get_information/get_username.dart';
@@ -24,15 +25,17 @@ class _OrdersPageState extends State<OrdersPage> {
   // Placeholders to store information needed
   Username userInfo = Username();
 
-  // to store list of orderIds being prepared
+  // Placeholder list of orderIds being prepared
   List<dynamic> orderIdsPreparing = [];
 
-  // to store list of orderIds that are ready for collection
+  // Placeholder list of orderIds that are ready for collection
   List<dynamic> orderIdsReady = [];
 
-  // to obtain the orders by buyer being prepared/ready for collection
+  /// Obtains information from database about the buyer, and list of orders
+  /// buyer is waiting for
+  /// updates userInfo, orderIdsPreparing and orderIdsReady
   Future getOrders() async {
-    // obtain information about logged in buyer
+    // Obtain information about logged in buyer
     final user = FirebaseAuth.instance.currentUser!;
     await FirebaseFirestore.instance
         .collection('users')
@@ -42,7 +45,7 @@ class _OrdersPageState extends State<OrdersPage> {
       userInfo = Username.fromMap(value.data());
     });
 
-    // obtain orderIds that are being prepared
+    // Obtain orderIds that are being prepared
     await FirebaseFirestore.instance
         .collection('orders')
         .where('buyerId', isEqualTo: userInfo.id)
@@ -58,7 +61,7 @@ class _OrdersPageState extends State<OrdersPage> {
           ),
         );
 
-    // obtain orderIds that are ready for collection
+    // Obtain orderIds that are ready for collection
     await FirebaseFirestore.instance
         .collection('orders')
         .where('buyerId', isEqualTo: userInfo.id)
@@ -90,7 +93,7 @@ class _OrdersPageState extends State<OrdersPage> {
           ),
         ),
       ),
-      bottomNavigationBar: const Bottombar(selectMenu: MenuState.orders),
+      bottomNavigationBar: const BottomBar(selectMenu: MenuState.orders),
       body: FutureBuilder(
         future: getOrders(),
         builder: (context, snapshot) {

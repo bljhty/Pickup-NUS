@@ -1,10 +1,13 @@
-// Bottom navigation bar in the merchant's home page
-// Allows them to navigate between orders, store opening and profile settings
+/// Bottom bar widget displayed for the merchant pages
+/// displayed and provides buttons to redirect to merchant orders page,
+/// open/close restaurant page and profile page
+///
+/// @param selectMenu shows and highlights the respective pages that is selected
 
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Merchant%20side/Merchant%20Home%20Page/merchant_home_page.dart';
 import 'package:orbital_nus/Merchant%20side/Profile/merchant_profile_page.dart';
-import 'package:orbital_nus/Merchant%20side/open_for_order.dart';
+import 'package:orbital_nus/Merchant%20side/open_for_order_page.dart';
 import 'package:orbital_nus/colors.dart';
 
 class MerchantBottomBar extends StatelessWidget {
@@ -53,8 +56,8 @@ class MerchantBottomBar extends StatelessWidget {
           // Open button
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => OpenForOrder()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const OpenForOrderPage()));
             },
             icon: Icon(
               Icons.meeting_room_outlined,
@@ -84,4 +87,6 @@ class MerchantBottomBar extends StatelessWidget {
   }
 }
 
+/// Provides the navigation to the 3 of merchant's main pages
+/// Parameters to be inputted in MerchantBottomBar function
 enum MenuState { orders, open, profile }

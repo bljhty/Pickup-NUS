@@ -1,10 +1,11 @@
-// Home Page for administrators to approve/reject newly registered merchants
+/// Page after administrator logs in successfully
+/// Allows administrators to approve/reject newly registered merchants
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Admin%20Side/Admin%20Home%20Page/models/approval_list_view.dart';
-import 'package:orbital_nus/authentication/mainpage.dart';
+import 'package:orbital_nus/authentication/main_page.dart';
 import 'package:orbital_nus/colors.dart';
 
 class AdminHomePage extends StatefulWidget {
@@ -20,7 +21,8 @@ class _AdminHomePageState extends State<AdminHomePage> {
   // Placeholders to store information
   List<String> restaurantIds = [];
 
-  // Function to obtain the list of pending merchants waiting for approval
+  /// Obtains from database the list of pending merchants waiting for approval
+  /// and updates it into restaurantIds variable
   Future getPendingMerchants() async {
     await FirebaseFirestore.instance
         .collection('restaurants')
@@ -46,7 +48,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
           ),
         ),
         actions: [
-          // Log Out Button
+          // Logout Button
           IconButton(
             onPressed: () {
               FirebaseAuth.instance.signOut();

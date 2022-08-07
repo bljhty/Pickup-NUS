@@ -1,4 +1,24 @@
-// implementation of database to obtain the orders placed by buyers
+/// Implementation of database to obtain information of orders made by buyers
+/// receive/send data from 'orders' collection in Firestore Database
+///
+/// @param orderNum Order number displayed for users, obtained from last 4
+/// characters of the order's document Id
+/// @param buyerId Id of buyer in collection 'buyer' who made order
+/// @param buyerName Name of buyer who made the order
+/// @param merchantId Id of merchant in collection 'restaurants' whose food
+/// is from
+/// @param itemName Name of food item ordered
+/// @param itemId Id of food item in collection 'foods'
+/// @param instructions Additional instructions for buyer would like to provide
+/// to restaurant
+/// @param quantity Quantity of food item ordered
+/// @param subPrice Total price of the order
+/// @param isOrderPlaced Boolean to represent if order has been checked out
+/// @param isOrderReady Boolean to represent if order is made by restaurant
+/// ready for collection
+/// @param isOrderCollected Boolean to represent if order has been collected
+/// by buyer
+
 class Order {
   String? orderNum;
   String? buyerId;
@@ -28,7 +48,7 @@ class Order {
     this.isOrderCollected,
   });
 
-  // receiving data from the database
+  // Receiving data from the database
   factory Order.fromMap(map) {
     return Order(
       orderNum: map['orderNum'],
@@ -46,7 +66,7 @@ class Order {
     );
   }
 
-  // sending data to the database
+  // Sending data to the database
   Map<String, dynamic> toMap() {
     return {
       'orderNum': orderNum,

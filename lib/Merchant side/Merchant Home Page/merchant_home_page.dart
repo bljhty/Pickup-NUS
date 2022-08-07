@@ -1,10 +1,14 @@
-// Home page for merchants, indicates the orders that they have to make
+/// Page showing the orders the restaurant needs to make for buyers
+/// from the order that were made earliest being placed on top and orders latest
+/// placed at the bottom
+/// when order has been made, merchant to click on the 'Ready' button below the
+/// order to indicate to buyer that their order is ready for collection
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:orbital_nus/Merchant%20side/Merchant%20Bottom%20Bar/merchant_bottom_bar.dart';
-import 'package:orbital_nus/Merchant%20side/Merchant%20Home%20Page/models/orders_list_view.dart';
+import 'package:orbital_nus/Merchant%20side/Merchant%20Home%20Page/Models/orders_list_view.dart';
 import 'package:orbital_nus/colors.dart';
 import 'package:orbital_nus/get_information/get_username.dart';
 
@@ -21,12 +25,15 @@ class _MerchantHomePageState extends State<MerchantHomePage> {
   // Placeholders to store information needed
   Username userInfo = Username();
 
-  // to store list of orderIds to be prepared
+  // Placeholders to store list of orderIds to be prepared
   List<dynamic> orderIds = [];
 
-  // to obtain the orderIds needed to be prepared
+  /// Obtains information from database for information of merchant
+  /// list of order Ids required to be prepared and updates userInfo and
+  /// orderIds variables
+  /// To sort order Ids, with older orders listing first
   Future getOrders() async {
-    // obtain information about logged in merchant
+    // Obtain information about logged in merchant
     final user = FirebaseAuth.instance.currentUser!;
     await FirebaseFirestore.instance
         .collection('users')
@@ -36,7 +43,7 @@ class _MerchantHomePageState extends State<MerchantHomePage> {
       userInfo = Username.fromMap(value.data());
     });
 
-    // obtain orderIds that needs to be made by merchant
+    // Obtain orderIds that needs to be made by merchant
     await FirebaseFirestore.instance
         .collection('orders')
         .where('merchantId', isEqualTo: userInfo.id)

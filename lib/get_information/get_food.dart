@@ -1,4 +1,14 @@
-// implementation of database to obtain the menu items available
+/// Implementation of database to obtain information of the food items
+/// receive/send data from 'foods' collection in Firestore Database
+///
+/// @param merchantId Id of document storing merchant's information
+/// @param itemName Name of food item
+/// @param itemId Id of food item in collection 'foods'
+/// @param menuType Menu type of food item (i.e. Mains, Sides, etc.)
+/// @param imgUrl Url link of the image for the food item
+/// @param waitTime estimated waiting time for making food item
+/// @param price Price of food item
+
 class Food {
   String? merchantId;
   String? itemName;
@@ -18,7 +28,7 @@ class Food {
     this.price,
   });
 
-  // receiving data from the database
+  // Receiving data from the database
   factory Food.fromMap(map) {
     return Food(
       merchantId: map['merchantId'],
@@ -27,11 +37,11 @@ class Food {
       menuType: map['menuType'],
       imgUrl: map['imgUrl'],
       waitTime: map['waitTime'],
-      price: map['price'], // if don't work try double.parse(map['price'])
+      price: map['price'],
     );
   }
 
-  // sending data to the database
+  // Sending data to the database
   Map<String, dynamic> toMap() {
     return {
       'merchantId': merchantId,

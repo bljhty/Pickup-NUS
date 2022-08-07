@@ -6,7 +6,7 @@ Proposed Level of Achievement: Gemini
 
 Latest README: [shorturl.at/cKPWY](https://shorturl.at/cKPWY)
 
-![](../../Downloads/5282.png)
+![5282](https://user-images.githubusercontent.com/88082961/183298951-a5a717c3-375a-4189-a6c7-162acac9a3ab.png)
 
 # About the project
 pickup@NUS is an mobile (Android) application for ordering and paying for food from NUS stalls, which then can be self-picked up by the buyers at the stalls

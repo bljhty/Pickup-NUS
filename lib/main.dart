@@ -1,7 +1,13 @@
+/// Initial startup file for running pickup@NUS
+/// Initialises Firebase services, which runs our authentication
+/// (Authentication), database (Firestore Database)
+/// Also initialises Flutter Stripe for payment (does not actually charge people
+/// due to nature of project)
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:orbital_nus/authentication/pages/splash_page.dart';
+import 'package:orbital_nus/Authentication/Pages/splash_page.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() async {
@@ -18,8 +24,6 @@ void main() async {
           messagingSenderId: '416661094567',
           projectId: 'pickup-nus'));
 
-  // fetch the restaurants available from firebase
-
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
@@ -34,7 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splashscreen(),
+      home: SplashPage(),
     );
   }
 }

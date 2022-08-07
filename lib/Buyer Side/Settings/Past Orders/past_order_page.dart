@@ -1,9 +1,6 @@
-/// Page listing the past orders that the restaurant has completed
-/// past orders defined as orders that have been collected by buyers
-/// orders are listed with the most recent being on the top and oldest being at
-/// the bottom
-/// Page can be assessed via the 'Past Orders' button in the merchant's profile
-/// page
+/// Page displaying a list of past orders made by buyer
+/// Past orders defined as orders that have already been collected
+/// can be assessed by the 'Past Orders' button in the settings page
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,24 +9,22 @@ import 'package:orbital_nus/Buyer%20Side/Settings/Past%20Orders/Models/past_orde
 import 'package:orbital_nus/colors.dart';
 import 'package:orbital_nus/get_information/get_username.dart';
 
-class MerchantPastOrdersPage extends StatefulWidget {
-  const MerchantPastOrdersPage({Key? key}) : super(key: key);
+class PastOrderPage extends StatefulWidget {
+  const PastOrderPage({Key? key}) : super(key: key);
 
   @override
-  State<MerchantPastOrdersPage> createState() => _MerchantPastOrdersPageState();
+  State<PastOrderPage> createState() => _PastOrderPageState();
 }
 
-class _MerchantPastOrdersPageState extends State<MerchantPastOrdersPage> {
+class _PastOrderPageState extends State<PastOrderPage> {
   final pageController = PageController();
 
   // Placeholders to store information
   Username userInfo = Username();
   List<String> pastOrders = [];
 
-  /// Obtain information from database about the logged in merchant and
-  /// its orders completed (orders placed, ready and collected) sorted by
-  /// descending date
-  /// updates userInfo and pastOrders variables
+  /// Obtains information from database about the buyer and their past orders
+  /// and updates userInfo and pastOrders variables
   Future getPastOrders() async {
     // Obtain information about logged in buyer
     final user = FirebaseAuth.instance.currentUser!;
@@ -44,7 +39,7 @@ class _MerchantPastOrdersPageState extends State<MerchantPastOrdersPage> {
     // Obtain list of past orders and store in pastOrders
     await FirebaseFirestore.instance
         .collection('orders')
-        .where('merchantId', isEqualTo: userInfo.id)
+        .where('buyerId', isEqualTo: userInfo.id)
         .where('isOrderCollected', isEqualTo: true)
         .orderBy('orderTime', descending: true)
         .get()
@@ -65,7 +60,7 @@ class _MerchantPastOrdersPageState extends State<MerchantPastOrdersPage> {
         backgroundColor: kPrimaryColor,
         centerTitle: true,
         title: const Text(
-          'Order history',
+          'Past Orders',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,

@@ -1,5 +1,12 @@
-// implementation of database to obtain the merchants available as
-// restaurants to order from
+/// Implementation of database to obtain information of restaurants
+/// receive/send data from 'restaurants' collection in Firestore Database
+///
+/// @param merchantId Id of merchant's document in collection 'restaurants'
+/// @param merchantName Name of restaurant
+/// @param logoUrl Url location of restaurant's logo photo
+/// @param place Location of restaurant
+/// @param isOrderForOrder Boolean to represent if restaurant is open/closed for
+/// ordering
 
 class Restaurant {
   String? merchantId;
@@ -16,7 +23,7 @@ class Restaurant {
     this.isOpenForOrder,
   });
 
-  // receiving data from database
+  // Receiving data from database
   factory Restaurant.fromMap(map) {
     return Restaurant(
       merchantId: map['merchantId'],
@@ -27,7 +34,7 @@ class Restaurant {
     );
   }
 
-  // sending data to the database
+  // Sending data to the database
   Map<String, dynamic> toMap() {
     return {
       'merchantId': merchantId,
@@ -37,7 +44,4 @@ class Restaurant {
       'isOpenForOrder': isOpenForOrder,
     };
   }
-
-// check if the restaurants are duplicates
-
 }

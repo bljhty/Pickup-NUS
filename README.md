@@ -4,7 +4,7 @@ An Android application done by Team Oreo: Bryan Lee and Thomas Alba
 For Project Orbital 2022 (CP2106)
 Proposed Level of Achievement: Gemini
 
-Latest README: [shorturl.at/cKPWY](https://shorturl.at/cKPWY)
+Latest README: [https://bit.ly/pickupNUSreadme](https://bit.ly/pickupNUSreadme)
 
 ![5282](https://user-images.githubusercontent.com/88082961/183298951-a5a717c3-375a-4189-a6c7-162acac9a3ab.png)
 
@@ -13,7 +13,7 @@ pickup@NUS is an mobile (Android) application for ordering and paying for food f
 
 # Installation
 1) Downloading APK file
-   1) Using your android phone/emulator, download the [APK file](https://drive.google.com/file/d/1hGzRCbAMoKygMFAbfnZrWWN-an7XcEL2/view?usp=sharing)
+   1) Using your android phone/emulator, download the [APK file](https://bit.ly/pickup-NUS)
    2) Open the APK file to download the application
    3) Should it not download, go to your system settings and allow applications from unknown sources
 

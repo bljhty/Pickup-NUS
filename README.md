@@ -6,7 +6,7 @@ Level of Achievement: Gemini
 
 Latest README: [https://bit.ly/pickupNUSreadme](https://bit.ly/pickupNUSreadme)
 
-![5282](https://user-images.githubusercontent.com/88082961/184476291-d85dc3d5-d183-444a-a9a4-0f923be0db39.png)
+![5282](https://user-images.githubusercontent.com/88082961/184476829-ed98cdb3-d7eb-4da3-8bec-505cf3cb3d26.png)
 
 # About the project
 pickup@NUS is an mobile (Android) application for ordering and paying for food from NUS stalls, which then can be self-picked up by the buyers at the stalls

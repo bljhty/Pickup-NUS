@@ -1,12 +1,12 @@
 # pickup@NUS
 
-An Android application done by Team Oreo: Bryan Lee and Thomas Alba
+An Android application done by Team Oreo: Lee Jun Hao Bryan and Thomas Joseph Lee Alba
 For Project Orbital 2022 (CP2106)
-Proposed Level of Achievement: Gemini
+Level of Achievement: Gemini
 
 Latest README: [https://bit.ly/pickupNUSreadme](https://bit.ly/pickupNUSreadme)
 
-![5282](https://user-images.githubusercontent.com/88082961/183298951-a5a717c3-375a-4189-a6c7-162acac9a3ab.png)
+![5282](https://user-images.githubusercontent.com/88082961/184476291-d85dc3d5-d183-444a-a9a4-0f923be0db39.png)
 
 # About the project
 pickup@NUS is an mobile (Android) application for ordering and paying for food from NUS stalls, which then can be self-picked up by the buyers at the stalls
